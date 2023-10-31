@@ -1,0 +1,15 @@
+*.aux
+*.auxlock
+*.bbl
+*.bcf
+*.blg
+*.db
+*.dep
+*.dpth
+*.log
+*.md5
+*.out
+*.run.xml
+*.synctex.gz
+*.synctex(busy)
+*.toc
