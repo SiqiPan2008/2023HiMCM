@@ -177,10 +177,11 @@
 			\centering
 			\begin{tikzpicture}
 				\begin{axis}[
-					title=The Sine Function,
+					title=The Square Function,
 					xlabel={$x$},
 					ylabel={$\sin x$}
 					]
+					\addplot [blue, domain=-6:6, samples=201] {x^2};
 					% \addplot [blue] table {./data/TryData.dat};
 				\end{axis}
 			\end{tikzpicture}
