@@ -18,16 +18,16 @@ def get_guass_data(min_limit, max_limit, ratio):
         data = max_limit
     return data
 
-def get_adaption_ratio(humidity, temperatuer):
+def get_adaption_ratio(humidity, temperature):
     h_level = 3
     if humidity >= 0.8 or humidity <= 0.4:
         h_level = 1
     elif humidity >= 0.7 or humidity <= 0.5:
         h_level = 2
     t_level = 3
-    if temperatuer >= 30 or temperatuer <= 6:
+    if temperature >= 30 or temperature <= 6:
         t_level = 1
-    elif temperatuer >= 24 or temperatuer <= 12:
+    elif temperature >= 24 or temperature <= 12:
         t_level = 2
     level = 0.5 * h_level + 0.5 * t_level
     return (level - 1) / 2
@@ -51,6 +51,11 @@ class Dandelion:
         self.day = day
         self.x = 0
         self.y = 0
+
+class Spread_Result:
+    def __init__(self, number, distance):
+        self.number = number
+        self.distance = distance
 
 ####################################################################
 # solve dandelion spread
@@ -104,8 +109,7 @@ def solve_dandelion_spread(run_times, env, days):
     start_time = time.time()
 
     id = 1
-    rows = []
-
+    result = []
     for iRun in range(run_time):
         dandelions = []
         dandelions.append(Dandelion(Status.Unknown, 120))
@@ -217,14 +221,16 @@ def solve_dandelion_spread(run_times, env, days):
                         dandelion.day = cur_day
                         dandelion.status = Status.InterDis
 
+        rows = []
         for iDandelion in range(len(dandelions)):
             dandelion = dandelions[iDandelion]
             row = [id, iDandelion+1, iRun+1, str(dandelion.status), dandelion.x, dandelion.y]
             rows.append(row)
             id = id + 1
+        result.append(rows)
 
     print('total time = ' + str(time.time() - start_time))
-    return rows
+    return result
 
 ####################################################################
 # get mean distance from rows
