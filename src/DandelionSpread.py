@@ -238,5 +238,17 @@ def solve_dandelion_spread(run_times, env, days):
 def get_mean_dist(rows):
     total_distance = 0
     for row in rows:
-        total_distance = total_distance + math.sqrt(row[4]*row[4] + row[5]*row[5])
+        total_distance += math.sqrt(row[4]*row[4] + row[5]*row[5])
     return total_distance / len(rows)
+
+def get_mean_dist_all(data_all):
+    total_distance = 0
+    for data in data_all:
+        total_distance += get_mean_dist(data)
+    return total_distance / len(data_all)
+
+def get_mean_number_all(data_all):
+    total_number = 0
+    for data in data_all:
+        total_number += len(data)
+    return total_number / len(data_all)
