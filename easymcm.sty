@@ -22,15 +22,17 @@
 \typeout{easymcm package, version 5.2.2}
 
 % 基本宏包 
-\RequirePackage[letterpaper,margin=2.5cm,bottom=1.5cm]{geometry}  % 页边距和纸张大小
+\RequirePackage[letterpaper,margin=1.5cm,top=2cm,bottom=1.5cm]{geometry}  % 页边距和纸张大小
 \RequirePackage{fancyhdr,fancybox}  % 设置页眉页脚
 \RequirePackage{ifthen}  % 逻辑结构
 \RequirePackage{lastpage}  % 生成"Page X of XX"
 \RequirePackage{paralist}  % 修改 itemize 各项间距
 \RequirePackage{indentfirst}  % 全文首行缩进
 \RequirePackage[toc,page,title,titletoc,header]{appendix}  % 附录定制
-\RequirePackage{enumerate} % Enuemrate环境
+\RequirePackage{enumerate} % Enumerate环境
 \RequirePackage[shortlabels]{enumitem} % Enumerate自定义样式
+\RequirePackage{setspace} % 行距环境
+\singlespacing % 设置行距
 
 
 % 引用设置
