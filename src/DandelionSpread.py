@@ -60,7 +60,7 @@ class Spread_Result:
 ####################################################################
 # solve dandelion spread
 ####################################################################
-def solve_dandelion_spread(run_times, env, days):
+def solve_dandelion_spread(run_times, env, month_data = None):
     ####################################################################
     # input data
     ####################################################################
@@ -114,7 +114,7 @@ def solve_dandelion_spread(run_times, env, days):
         dandelions = []
         dandelions.append(Dandelion(Status.Unknown, 120))
         number_map = {}
-        for iDay in range(days):
+        for iDay in range(360):
             cur_day = start_day + iDay
             act_day = cur_day % 360
             cur_Temp = - 1.41421 * T_sd * math.cos(act_day*math.pi/180) + T_mean
@@ -184,23 +184,21 @@ def solve_dandelion_spread(run_times, env, days):
 
                     dis_seed = int(dis_seed * prop_seed_survival)
                     for iSeed in range(dis_seed):
-                        angle = random.uniform(0, math.pi/2)
+                        angle = random.uniform(0, math.pi*2)
                         wind = -1
                         while wind < 0:
                             wind = random.gauss(W_mean, W_sd)
                         distance = wind * get_guass_data(stalk_h_min, stalk_h_max, adaption_ratio) / v_v
                         #try long-distance dispersal
                         r = random.uniform(0, 1)
-                        ldd = -1.316 * math.log(r)
+                        ldd = -1.89 * math.log(r)
                         if ldd > distance:
                             distance = ldd
                         newDandelion = Dandelion(Status.Seed, cur_day)
                         newDandelion.x = distance * math.cos(angle)
                         newDandelion.y = distance * math.sin(angle)
                         if newDandelion.x < 0:
-                            newDandelion.x = 0
-                        if newDandelion.y < 0:
-                            newDandelion.y = 0
+                            continue
                         block_x = int(newDandelion.x)
                         block_y = int(newDandelion.y)
                         item_in_block = number_map.get((block_x, block_y))
@@ -220,6 +218,15 @@ def solve_dandelion_spread(run_times, env, days):
                     if day_in_status >= days_dis_interdis:
                         dandelion.day = cur_day
                         dandelion.status = Status.InterDis
+
+            if month_data is not None and (iDay + 1) % 30 == 0:
+                rows = []
+                for iDandelion in range(len(dandelions)):
+                    dandelion = dandelions[iDandelion]
+                    row = [id, iDandelion+1, iRun+1, str(dandelion.status), dandelion.x, dandelion.y]
+                    rows.append(row)
+                    id = id + 1
+                month_data.append(rows)
 
         rows = []
         for iDandelion in range(len(dandelions)):

@@ -15,7 +15,7 @@ def sa(variable, param_min, param_max, param_gap):
     for param in params:
         env = envs[selected_location]
         env[variable] = param
-        data = ds.solve_dandelion_spread(10, env, 360)
+        data = ds.solve_dandelion_spread(1000, env)
         numbers.append(ds.get_mean_number_all(data))
         distances.append(ds.get_mean_dist_all(data))
 
