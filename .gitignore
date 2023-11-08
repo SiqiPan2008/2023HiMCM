@@ -14,3 +14,4 @@
 *.synctex.gz
 *.synctex(busy)
 *.toc
+__pycache__/
