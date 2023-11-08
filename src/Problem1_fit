@@ -1,0 +1,29 @@
+import DandelionSpread as ds
+import Environment as e
+import Utility as u
+
+def get_params(param_min, param_max, param_gap):
+    params = [param_min + i * param_gap for i in range(int((param_max - param_min) / param_gap) + 1)]
+    return params
+
+MuTs = get_params(0, 30, 10)
+StdTs = get_params(0, 10, 5)
+MuWs = get_params(0, 15, 5)
+StdWs = get_params(0, 10, 5)
+Hums = get_params(0, 1, 0.5)
+
+id = 1
+rows = [['id', 'MuT', 'StdT', 'MuW', 'StdW', 'Hum', 'Number', 'Distance']]
+for MuT in MuTs:
+    for StdT in StdTs:
+        for MuW in MuWs:
+            for StdW in StdWs:
+                for Hum in Hums:
+                    if MuT == 0 and StdT == 0 or MuW == 0 and StdW == 0:
+                        continue
+                    env = {'MuT':MuT, 'StdT':StdT, 'MuW':MuW, 'StdW':StdW, 'Hum':Hum}
+                    data = ds.solve_dandelion_spread(1, env, 360)[0]
+                    distance = ds.get_mean_dist(data)
+                    rows.append((id, MuT, StdT, MuW, StdW, Hum, len(data), distance))
+
+u.output_csv('output\\fitting.csv', rows)

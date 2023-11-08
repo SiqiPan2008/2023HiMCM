@@ -1,7 +1,6 @@
 import DandelionSpread as ds
 import Environment as e
 import Utility as u
-import math
 
 envs = e.get_environment()
 selected_location = 'FL'
