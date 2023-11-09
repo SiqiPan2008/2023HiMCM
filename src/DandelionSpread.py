@@ -60,7 +60,7 @@ class Spread_Result:
 ####################################################################
 # solve dandelion spread
 ####################################################################
-def solve_dandelion_spread(run_times, env, start_month = 4, month_data = None):
+def solve_dandelion_spread(run_times, env, start_month, month_data = None):
     ####################################################################
     # input data
     ####################################################################

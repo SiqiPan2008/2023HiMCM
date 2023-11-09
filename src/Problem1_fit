@@ -22,7 +22,7 @@ for MuT in MuTs:
                     if MuT == 0 and StdT == 0 or MuW == 0 and StdW == 0:
                         continue
                     env = {'MuT':MuT, 'StdT':StdT, 'MuW':MuW, 'StdW':StdW, 'Hum':Hum}
-                    data = ds.solve_dandelion_spread(1, env)[0]
+                    data = ds.solve_dandelion_spread(1, env, env['StartMonth'])[0]
                     distance = ds.get_mean_dist(data)
                     rows.append((id, MuT, StdT, MuW, StdW, Hum, len(data), distance))
 
