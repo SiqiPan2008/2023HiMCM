@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 
-df = pd.read_csv('output\\spread_coordinate_DC.csv')
+df = pd.read_csv('output\\spread_coordinate_KS.csv')
 plt.scatter(df['x'], df['y'], color='blue', marker='o')
 
 plt.title("Kansas")
