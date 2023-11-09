@@ -1,0 +1,20 @@
+import pandas as pd
+import Utility as u
+
+input_data = pd.read_csv('input\\USRIISv2_MasterList.csv')
+
+output_file_path = 'input\\plant.csv'
+output_data = pd.read_csv(output_file_path)
+
+output_rows = [['scientificName', 'vernacularName', 'phylum', 'class', 'order', 'family', 'WebLink', 'degreeOfEstablishment']]
+for index, row in output_data.iterrows():
+    sci_name = row['scientificName']
+    ver_name = row['vernacularName']
+    found = False
+    for index1, row1 in input_data.iterrows():
+        if (row1['scientificName'] == sci_name and row1['vernacularName'] == ver_name):
+            output_rows.append([sci_name, ver_name, row1['phylum'], row1['class'], row1['order'], row1['family'], row['WebLink'], row['degreeOfEstablishment']]);
+            found = True
+            break
+
+u.output_csv('input\\plant_output.csv', output_rows)

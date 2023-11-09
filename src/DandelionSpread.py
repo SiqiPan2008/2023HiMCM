@@ -60,7 +60,7 @@ class Spread_Result:
 ####################################################################
 # solve dandelion spread
 ####################################################################
-def solve_dandelion_spread(run_times, env, month_data = None):
+def solve_dandelion_spread(run_times, env, start_month = 4, month_data = None):
     ####################################################################
     # input data
     ####################################################################
@@ -74,7 +74,7 @@ def solve_dandelion_spread(run_times, env, month_data = None):
     T_not_dis = 24
     p_dis = 0.125
     
-    start_day = 120
+    start_day = start_month * 30
 
     stalk_h_min = 0.12
     stalk_h_max = 0.40
