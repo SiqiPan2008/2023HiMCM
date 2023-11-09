@@ -16,8 +16,8 @@ plt.rcParams['font.size'] = 7.5
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(7, 2))
 
 
-ax1.hist(numArr, bins = 30, color = '#5588DD', edgecolor='black', alpha = 0.8, density = True)
-ax2.hist(distArr, bins = 30, color = '#5588DD', edgecolor='black', alpha = 0.8, density = True)
+ax1.hist(numArr, bins = 30, color = '#5588DD', edgecolor='black', alpha = 0.8, density = True, linewidth = 0.3)
+ax2.hist(distArr, bins = 30, color = '#5588DD', edgecolor='black', alpha = 0.8, density = True, linewidth = 0.3)
 
 ax1.set_xlabel('Number')
 ax2.set_xlabel('Mean distance (m)')

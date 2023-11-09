@@ -8,7 +8,7 @@ numArr = df['number'].to_numpy()
 distArr = df['distance'].to_numpy()
 
 locs = ['DC', 'FL', 'HI', 'AK', 'CA', 'KS']
-loc = 'FL'
+loc = 'DC'
 axMax = {
     'FL': 10,
     'HI': 10,
@@ -38,12 +38,12 @@ plt.rcParams.update({
 })
 
 rows = 2
-cols = 6
-fig, subplots = plt.subplots(rows, cols, figsize=(8, 16/3))
+cols = 3
+fig, subplots = plt.subplots(rows, cols, figsize=(6, 8))
 
 for i in range(rows):
     for j in range(cols):
-        df = pd.read_csv('Output\\spread_course_' + str(cols * i + j + 1) + '_' + loc + '.csv')
+        df = pd.read_csv('Output\\spread_course_12_' + locs[i * cols + j] + '.csv')
         arrX = df['x'].values
         arrY = df['y'].values
         stat = df['status'].values
@@ -52,12 +52,12 @@ for i in range(rows):
             colors.append(stat_color[stat[k]])
 
         subplots[i, j].scatter(arrX, arrY, s=0.5, c=colors, alpha=0.9)
-        xMax = axMax[loc]
+        xMax = axMax[locs[i * cols + j]]
         subplots[i, j].set_xlim([0, xMax])
         subplots[i, j].set_ylim([-xMax, xMax])
         subplots[i, j].set_yticks([-xMax, -xMax / 2, 0, xMax / 2, xMax])
         subplots[i, j].set_xticks([0, xMax / 2, xMax])
-        subplots[i, j].text(0.97 * xMax, -0.97 * xMax, 'The end of ' + months[(cols * i + j + 4) % 12], ha='right', va='bottom', size=6)
+        subplots[i, j].text(0.95 * xMax, -0.95 * xMax, months[(cols * i + j + 4) % 12] + ' 1st', ha='right', va='bottom')
         if i != rows - 1:
             subplots[i, j].tick_params(axis='x', which='both', top=False, bottom=False, labeltop=False, labelbottom=False)
         if j != 0:
@@ -68,9 +68,9 @@ rd = plt.Line2D([], [], color='#FF0000', marker='o', linestyle='None', markersiz
 be = plt.Line2D([], [], color='#0000FF', marker='o', linestyle='None', markersize=2)
 bk = plt.Line2D([], [], color='#000000', marker='o', linestyle='None', markersize=2)
 blank = plt.Line2D([], [])
-fig.legend(handles=[be, gr, rd, bk], labels=['Seed', 'Developing / inter-dispersal', 'Dispersal', 'Dormancy / hold'], loc='lower center', ncol=4, bbox_to_anchor=(0.5,0.02))
-fig.text(0.93, 0.075, '(m)', ha='right', va='bottom')
+fig.legend(handles=[be, gr, rd, bk], labels=['Seed', 'Developing / inter-dispersal', 'Dispersal', 'Dormancy / hold'], loc='lower center', ncol=4, bbox_to_anchor=(0.5,0.03))
+fig.text(0.926, 0.08, '(m)', ha='right', va='bottom')
 
 plt.subplots_adjust(wspace=0.1, hspace=0.05)
-plt.savefig('..\\figures\\spread_course-time.pdf', bbox_inches = 'tight')
+plt.savefig('..\\figures\\spread_course-location.pdf', bbox_inches = 'tight')
 plt.show()
