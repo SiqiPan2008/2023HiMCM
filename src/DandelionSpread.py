@@ -60,7 +60,7 @@ class Spread_Result:
 ####################################################################
 # solve dandelion spread
 ####################################################################
-def solve_dandelion_spread(run_times, env, start_month, month_data = None):
+def solve_dandelion_spread(run_times, env, start_month, output_data = None, isMonth = True):
     ####################################################################
     # input data
     ####################################################################
@@ -219,14 +219,15 @@ def solve_dandelion_spread(run_times, env, start_month, month_data = None):
                         dandelion.day = cur_day
                         dandelion.status = Status.InterDis
 
-            if month_data is not None and (iDay + 1) % 30 == 0:
-                rows = []
-                for iDandelion in range(len(dandelions)):
-                    dandelion = dandelions[iDandelion]
-                    row = [id, iDandelion+1, iRun+1, str(dandelion.status), dandelion.x, dandelion.y]
-                    rows.append(row)
-                    id = id + 1
-                month_data.append(rows)
+            if output_data is not None:
+                if isMonth and (iDay + 1) % 30 == 0 or isMonth == False:
+                    rows = []
+                    for iDandelion in range(len(dandelions)):
+                        dandelion = dandelions[iDandelion]
+                        row = [id, iDandelion+1, iRun+1, str(dandelion.status), dandelion.x, dandelion.y]
+                        rows.append(row)
+                        id = id + 1
+                    output_data.append(rows)
 
         rows = []
         for iDandelion in range(len(dandelions)):
