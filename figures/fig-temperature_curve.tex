@@ -1,0 +1,29 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{external}
+\tikzexternalize
+
+\begin{document}
+	
+	\begin{tikzpicture}
+		\begin{axis}[
+			xlabel=$t \\ (\mathrm{day})$,
+			ylabel=$T (\mathrm{^\circ C})$,
+			xmin=-0.5, xmax=4/3*pi+0.5,
+			ymin=-0.7*pi, ymax=1.4*pi,
+			domain=0:4/3*pi,
+			samples=1000,
+			axis lines=middle,
+			clip=false,			
+			width=12cm,
+			height=4cm,
+			ticks=none
+			]
+			\addplot [blue, thick] {-0.75*pi*cos(deg(x)*1.5)+0.25*pi};
+		\end{axis}
+		\draw[grey, <->] (2/3*pi, 0) -- (2/3*pi, 0);
+		
+	\end{tikzpicture}
+	
+\end{document}
