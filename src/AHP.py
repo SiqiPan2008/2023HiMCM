@@ -15,8 +15,9 @@ def AHP(matrix):
     print('CR = ', CR)
     print('----------End CR-------------')
     k = matrix/matrix.sum(0)
-    w = k.sum(1)
+    w = k.sum(1)/n
     print('weight = ', w)
+    print('sum(weight) = ', sum(w))
     return w
 
 print('cal CR for matrix global')
