@@ -7,10 +7,7 @@ df = pd.read_csv('Output\\spread_result_FL.csv')
 numArr = df['number'].to_numpy()
 distArr = df['distance'].to_numpy()
 
-locs = ['FL', 'HI', 'AK', 'CA', 'KS']
-start_months = [5, 9, 9, 8, 8]
-loc = 'DC'
-start_month = 9
+locs = ['AK', 'CA', 'HI', 'FL', 'KS']
 axMax = {
     'FL': 10,
     'HI': 10,

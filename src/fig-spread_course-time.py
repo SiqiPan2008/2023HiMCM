@@ -8,7 +8,7 @@ numArr = df['number'].to_numpy()
 distArr = df['distance'].to_numpy()
 
 locs = ['DC', 'FL', 'HI', 'AK', 'CA', 'KS']
-loc = 'FL'
+loc = 'DC'
 axMax = {
     'FL': 10,
     'HI': 10,
@@ -51,13 +51,13 @@ for i in range(rows):
         for k in range(len(stat)):
             colors.append(stat_color[stat[k]])
 
-        subplots[i, j].scatter(arrX, arrY, s=0.5, c=colors, alpha=0.9)
+        subplots[i, j].scatter(arrX, arrY, s=0.5, c=colors, alpha=0.8)
         xMax = axMax[loc]
         subplots[i, j].set_xlim([0, xMax])
         subplots[i, j].set_ylim([-xMax, xMax])
         subplots[i, j].set_yticks([-xMax, -xMax / 2, 0, xMax / 2, xMax])
         subplots[i, j].set_xticks([0, xMax / 2, xMax])
-        subplots[i, j].text(0.97 * xMax, -0.97 * xMax, 'The end of ' + months[(cols * i + j + 4) % 12], ha='right', va='bottom', size=6)
+        subplots[i, j].text(0.97 * xMax, -0.97 * xMax, 'The end of ' + months[(cols * i + j + 8) % 12], ha='right', va='bottom', size=6)
         if i != rows - 1:
             subplots[i, j].tick_params(axis='x', which='both', top=False, bottom=False, labeltop=False, labelbottom=False)
         if j != 0:

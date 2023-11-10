@@ -22,8 +22,10 @@ ax2.hist(distArr, bins = 30, color = '#5588DD', edgecolor='black', alpha = 0.8, 
 ax1.set_xlabel('Number')
 ax2.set_xlabel('Mean distance (m)')
 ax1.set_ylabel('Frequency / bin width')
+ax2.set_ylabel('Frequency / bin width', rotation = -90, labelpad = 10)
+ax2.yaxis.set_label_position('right')
 ax2.yaxis.tick_right()
 
 plt.subplots_adjust(wspace=0.04, hspace=0)
 plt.savefig('..\\figures\\number-frequency.pdf', bbox_inches = 'tight')
-#plt.show()
+plt.show()

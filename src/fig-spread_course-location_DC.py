@@ -2,11 +2,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-df = pd.read_csv('Output\\spread_result_FL.csv')
-
-numArr = df['number'].to_numpy()
-distArr = df['distance'].to_numpy()
-
 locs = ['FL', 'HI', 'AK', 'CA', 'KS']
 start_months = [5, 9, 9, 8, 8]
 loc = 'DC'
@@ -40,20 +35,29 @@ plt.rcParams.update({
 })
 
 df = pd.read_csv('Output\\spread_coordinate_' + loc + '.csv')
-arrX = df['x'].values
-arrY = df['y'].values
+arrX = df['x'].to_numpy()
+arrY = df['y'].to_numpy()
+stat = df['status'].to_numpy()
 
 max_distance = 30
-mask = x < max_distance
-x_filtered = x[mask]
-y_filtered = y[mask]
+mask = arrX < max_distance
+arrX = arrX[mask]
+arrY = arrY[mask]
+stat = stat[mask]
+mask = arrY < max_distance
+arrX = arrX[mask]
+arrY = arrY[mask]
+stat = stat[mask]
+mask = arrY > - max_distance
+arrX = arrX[mask]
+arrY = arrY[mask]
+stat = stat[mask]
 
-stat = df['status'].values
 colors = []
 for k in range(len(stat)):
     colors.append(stat_color[stat[k]])
 
-plt.figure(figsize=(1, 2))
+plt.figure(figsize=(4, 8))
 plt.scatter(arrX, arrY, s=0.5, c=colors, alpha=0.9)
 xMax = axMax[loc]
 plt.xlim([0, xMax])
