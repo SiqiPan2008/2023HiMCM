@@ -67,11 +67,32 @@
 	
 	\subsection{Environmental Factors}
 	
-		\subsubsection{Variables and Data}
-		
+		\subsubsection{Overview}
+			
 			Six locations in the US were chosen for analysis.  We consider five properties of the environment and obtained the data for the six chosen locations, as shown in [USE REFERENCE FOR TABLE].  
 			
-			Table: 6 locations and corresponding parameter values
+			Table caption!!!
+			
+			{
+				\fontsize{10}{14}\selectfont
+				{
+					\begin{longtable}{ccc}
+						\caption{Environmental variables}
+						\label{tb:vars}\\
+						\toprule
+						Symbol&Description&Unit\\
+						\toprule
+						$\mu_T$&Mean temperature&$^\circ$C\\
+						$\sigma_T$&Standard deviation of temperature&$^\circ$C\\
+						$\mu_W$&Mean wind speed&m/s\\
+						$\sigma_W$&Standard deviation of wind speed&m/s\\
+						$\mu_H$&Mean humidity&\%\\
+						\bottomrule
+					\end{longtable}
+				}
+			}
+			
+			
 		
 		\subsubsection{Adaption Factor}
 		
@@ -144,7 +165,31 @@
 			We combine the two distances by taking $\max\{s_N, s_L\}$.   This is the distance that the seed travels.
 			
 			Finally, the leafs of dandelions have a radius of around 15cm.  If a seed were to land without falling on the leaf of another dandelion, the maximum density should be $(1/0.15)^2$ = 45 plants/m$^2$.  If a seed arrives at a location whose vicinity has a density greater than the maximum density, the seed fails to land.
-	
+		
+		\subsubsection{Locations}
+		
+			Six locations in the US were chosen for analysis.  We consider five properties of the environment and obtained the data for the six chosen locations, as shown in [USE REFERENCE FOR TABLE].  
+			
+			{
+				\fontsize{10}{14}\selectfont
+				{
+					\begin{longtable}{ccccccc}
+						\caption{Environmental variable values for six locations}
+						\label{tb:locs}\\
+						\toprule
+						State&Abbreviation&$\mu_T$ ($^\circ$C)&$\sigma_T$ ($^\circ$C)&$\mu_W$ (m/s)&$\sigma_W$ (m/s)&$\mu_H$ (\%)\\
+						\toprule
+						Alaska&AK&-0.05&9.08&7.27&1.42&81.46\\
+						California&CA&16.20&4.99&6.02&0.90&80.36\\
+						District of Columbia&DC&12.64&8.63&13.97&9.51&77.49\\
+						Florida&FL&22.11&4.76&6.51&1.71&77.05\\
+						Hawaii&HI&22.75&1.40&6.23&0.69&74.64\\
+						Kansas&KS&12.58&9.98&8.58&1.55&79.37\\
+						\bottomrule
+					\end{longtable}
+				}
+			}
+		
 	\subsection{Dandelion Life Cycle}
 	
 		We simulate the spread of dandelions by tracking every plant over time and recording its life stage and location.  A dandelion can transfer between 6 states, which are: \textbf{seed}, \textbf{developing}, \textbf{dispersal}, \textbf{inter-dispersal}, \textbf{hold}, and \textbf{dormancy}.  The previous four stages are shown in \textbf{Fig.\ref{fig:lifeCycle}}.
@@ -185,14 +230,34 @@
 		
 			Our model contains several random variables.  We choose to use the Monte Carlo method to simulate.  We tally the number of dandelions and record the mean distance from (0, 0), the origin, where the first dandelion is located.
 			
-			First, we have to determine the starting time of simulation.  The model was run with the starting date set to Jan.\,1st, Feb.\,1st, \ldots, and Dec.\,1st for all 6 locations.  The results for Florida are shown in \textbf{Fig.\ref{fig:start}}.  We observe that the number varies greatly among the runs, but the mean distance is approximately the same.  For each location, the starting date is chosen such that the number of dandelions at the end of 12 months is maximized.  For instance, the starting date is May\,1st for Florida.  
+			First, we have to determine the starting time of simulation.  The model was run with the starting date set to Jan.\,1st, Feb.\,1st, \ldots, and Dec.\,1st for all 6 locations.  The results for Florida are shown in \textbf{Fig.\ref{fig:start}}.  We observe that the number varies greatly among the runs, but the mean distance is approximately the same.  For each location, the starting date is chosen such that the number of dandelions at the end of 12 months is maximized.  The number of dandelions corresponding to the chosen dates are marked blue in [TABLE].
 			
 			\begin{figure}
 				\centering
 				\includegraphics{start_month-number.pdf}
-				\caption{Number and mean distance of dandelions in Florida when simulation starts at different times}
+				\caption{Number and mean distance of dandelions in Florida when simulation starts at different dates}
 				\label{fig:start}
 			\end{figure}
+			
+			{
+				\fontsize{10}{14}\selectfont
+				{
+					\begin{longtable}{ccccccccccccc}
+						\caption{Number of dandelions at six locations when simulation starts at different dates}
+						\label{tb:start}\\
+						\toprule
+						State&Jan.&Feb.&Mar.&Apr.&May&Jun.&Jul.&Aug.&Sept.&Oct.&Nov.&Dec.\\
+						\toprule
+						AK&74&79&70&35&44&75&43&49&\color{blue}\textbf{82}&72&74&75\\
+						CA&547&567&545&532&585&561&544&\color{blue}\textbf{596}&564&566&581&563\\
+						DC&1611&1589&1609&1563&1680&1657&1673&1733&\color{blue}\textbf{1808}&1696&1677&1658\\
+						FL&424&417&505&895&\color{blue}\textbf{905}&453&375&384&706&436&435&736\\
+						HI&519&329&610&593&586&596&308&543&\color{blue}\textbf{618}&383&385&600\\
+						KS&823&276&268&405&548&274&266&\color{blue}\textbf{1067}&287&288&950&834\\
+						\bottomrule
+					\end{longtable}
+				}
+			}
 			
 			Next we ran the model 1000 times for each location.  The resulting frequency histogram is shown in \textbf{Fig.\ref{fig:freqDand}}.  We can see that both the number and the mean distance follow a distribution similar to a normal one.  We calculated several statistics for each location, which are displayed in [TABLE FOR NUMBER].
 			
@@ -205,12 +270,14 @@
 			
 			We examine the distribution of the number of dandelions.  For all the locations, the confidence interval of the mean is relatively small, which implies the mean is quite accurate.  The standard deviation and range are relatively large, which shows that the spread of dandelions is easily affected by fluctuations in environmental factors and other random factors.  For all locations except California, the distribution is platykurtic, which means it is flatter and less concentrated than the normal distribution.  For all locations except Alaska, the distribution is skewed to the left.  The mass of the distribution is concentrated on the right, so the number of dandelions is more likely to be greater than the mean rather than smaller.  However, because of the unfavorable environmental conditions in Alaska, the number is more likely to be smaller than the mean in that location.  We can draw the same conclusions from comparing the mean and the median as from the skewness.
 			
-			remember to write the sample quantity and unit \\
+			We examine the distribution of the number of dandelions.  For all the locations, the confidence interval of the mean is relatively small, which implies the mean is quite accurate.  The standard deviation and range are relatively large, which shows that the spread of dandelions is easily affected by fluctuations in environmental factors and other random factors.  For all locations except California, the distribution is platykurtic
 			
 			{
 				\fontsize{10}{14}\selectfont
 				{
 					\begin{longtable}{cccccccc}
+						\caption{Statistics of the distribution of the number of dandelions at six locations}
+						\label{tb:numDistribution}\\
 						\toprule
 						Location&Mean&Standard Deviation&Kurtosis&Skewness&Range&Median&Confidence Level (95.0\%)\\
 						\toprule
@@ -231,6 +298,8 @@
 				\fontsize{10}{14}\selectfont
 				{
 					\begin{longtable}{cccccccc}
+						\caption{Statistics of the distribution of the mean distance at six locations}
+						\label{tb:distDistribution}\\
 						\toprule
 						Location&Mean&Standard Deviation&Kurtosis&Skewness&Range&Median&Confidence Level (95.0\%)\\
 						\toprule
@@ -325,7 +394,10 @@
 			\fontsize{10}{14}\selectfont
 			{
 			\begin{longtable}{p{0.2in}p{1.5in}p{4.3in}}
-			
+				
+				\caption{Factors considered for the impact factor}
+				\label{tb:factors}\\
+				
 				\toprule
 				\multicolumn{1}{c}{\textbf{Symbol}} 
 					& \multicolumn{1}{c}{\textbf{Aspect}}
@@ -389,6 +461,10 @@
 			\fontsize{10}{18}\selectfont
 			{
 				\begin{longtable}{c|ccccccccc|ccccc||cccc}
+					
+					\caption{Comparison matrix of AHP}
+					\label{tb:mat}\\
+					
 					\toprule
 					&$A_1$&$A_2$&$A_3$&$A_4$&$A_5$&$A_6$&$A_7$&$A_8$&$A_9$&$B_1$&$B_2$&$B_3$&$B_4$&$B_5$&$C_1$&$C_2$&$C_3$&$C_4$\\
 					\toprule
@@ -424,6 +500,9 @@
 			\fontsize{10}{14}\selectfont
 			{
 				\begin{longtable}{cccccccc}
+					\caption{Consistency test of global and local comparison matrices}
+					\label{tb:consistency}\\
+					
 					\toprule
 					Impact Factor&Attribute Number&max eigenvalue 
 					&\multirow{2}{*}{$\mathrm{CI}=\frac{\lambda_{max}-n}{n-1}$}
@@ -448,6 +527,9 @@
 			\fontsize{10}{14}\selectfont
 			{
 				\begin{longtable}{c|ccccccccc}
+					\caption{Weights of global and local factors}
+					\label{tb:weights}\\
+					
 					\toprule
 					Type&$\alpha_1$&$\alpha_2$&$\alpha_3$&$\alpha_4$&$\alpha_5$&$\alpha_6$&$\alpha_7$&$\alpha_8$&$\alpha_9$\\
 					\toprule
@@ -470,6 +552,9 @@
 			\fontsize{10}{14}\selectfont
 			{
 				\begin{longtable}{cccccc}
+					\caption{Rankings of selected plants}
+					\label{tb:ranks}\\
+					
 					\toprule
 					Rank&Scientific Name&Vernacular Name&Duration&Growing Habit&IF$_g$\\
 					\toprule
@@ -496,50 +581,13 @@
 			\fontsize{10}{14}\selectfont
 			{
 				\begin{longtable}{ccccccc}
+					\caption{Distribution of impact factor}
+					\label{tb:IFDistribution}\\
+					
 					\toprule
 					Mean&Standard Deviation&Kurtosis&Skewness&Range&Median&Confidence Level (95.0\%)\\
 					\toprule
 					57.9&8.65&0.81&0.41&50.51&57.25&1.13\\
-					\bottomrule
-				\end{longtable}
-			}
-		}
-		
-		hello!!! \\
-
-		{
-			\fontsize{10}{14}\selectfont
-			{
-				\begin{longtable}{ccccccc}
-					\toprule
-					State&Abbreviation&$\mu_T$ ($^\circ$C)&$\sigma_T$ ($^\circ$C)&$\mu_W$ (m/s)&$\sigma_W$ (m/s)&$\mu_H$ (\%)\\
-					\toprule
-					Alaska&AK&-0.05&9.08&7.27&1.42&81.46\\
-					California&CA&16.20&4.99&6.02&0.90&80.36\\
-					District of Columbia&DC&12.64&8.63&13.97&9.51&77.49\\
-					Florida&FL&22.11&4.76&6.51&1.71&77.05\\
-					Hawaii&HI&22.75&1.40&6.23&0.69&74.64\\
-					Kansas&KS&12.58&9.98&8.58&1.55&79.37\\
-					\bottomrule
-				\end{longtable}
-			}
-		}
-		
-		hello!!! \\
-
-		{
-			\fontsize{10}{14}\selectfont
-			{
-				\begin{longtable}{ccccccccccccc}
-					\toprule
-					State&Jan.&Feb.&Mar.&Apr.&May&Jun.&Jul.&Aug.&Sept.&Oct.&Nov.&Dec\\
-					\toprule
-					AK&74&79&70&35&44&75&43&49&\color{blue}\textbf{82}&72&74&75\\
-					CA&547&567&545&532&585&561&544&\color{blue}\textbf{596}&564&566&581&563\\
-					DC&1611&1589&1609&1563&1680&1657&1673&1733&\color{blue}\textbf{1808}&1696&1677&1658\\
-					FL&424&417&505&895&\color{blue}\textbf{905}&453&375&384&706&436&435&736\\
-					HI&519&329&610&593&586&596&308&543&\color{blue}\textbf{618}&383&385&600\\
-					KS&823&276&268&405&548&274&266&\color{blue}\textbf{1067}&287&288&950&834\\
 					\bottomrule
 				\end{longtable}
 			}
