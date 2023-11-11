@@ -60,3 +60,5 @@ def GetLocalW():
                     [3, 1, 1/5., 1, 3, 1/5., 1/2., 1/5., 1/3., 1/7., 1/3., 1, 1/2., 1/2., 1/3., 1/3., 1/3., 1]])
     return AHP(matrixL)
 
+GetGlobalaW()
+GetLocalW()
