@@ -35,13 +35,19 @@
 	
 		\begin{enumerate}
 			
-			\item The dandelion is located at the midpoint of an edge of a square field, which has dimensions of 100m$\times$100m (1 hectare).  When seeds are blown out of the field, they are neglected.
+			\item \textbf{The dandelion is located at the midpoint of an edge of a square field, which has dimensions of 100m$\times$100m (1 hectare).  When seeds are blown out of the field, they are neglected.}
 			\vspace{-0.125in}
 			\begin{description}
 				\item[Justification:] The problem states that the dandelion is adjacent to the field.  Thus, we consider the dandelion to be located on the edge of the field.  Furthermore, we limit our consideration within the field.  Seeds that land outside the field are considered to be negligible, possibly due to a river or forest that borders the field.
 			\end{description}
 			
-			\item Wind direction is uniformly distributed from $0^\circ$ to $360^\circ$.
+			\item \textbf{The field is an open field, with no plants that can hinder the spread of dandelions.}
+			\vspace{-0.125in}
+			\begin{description}
+				\item[Justification:] This assumption means that: \textbf{a.} dandelion seeds are not intercepted by other plants; and \textbf{b.} dandelions do not have to compete with other plants.  To consider other plants, we would have to obtain data about the distribution, morphology, growth habits, etc., of the local plants, which would make our model too complex.
+			\end{description}
+			
+			\item \textbf{Wind direction is uniformly distributed from 0$^\circ$ to 360$^\circ$.}
 			\vspace{-0.125in}
 			\begin{description}
 				\item[Justification:] Though we could obtain data about wind direction, we decided not to use them.  Wind direction can be affected by many factors and is very variable.  Consequently, local wind directions may be different from those observed at a weather station.
@@ -49,21 +55,51 @@
 				Moreover, we do not know on which edge the dandelion is located, and we cannot determine wind from which direction will blow the seeds into the field.  If wind direction is uniformly distributed, all directions are equivalent and we can let the dandelion be located on any of the edges.
 			\end{description}
 			
-			\item Assumption 4
+			\item \textbf{Dandelions do not die.}
 			\vspace{-0.125in}
 			\begin{description}
-				\item[Justification:] The frea
-			\end{description}
-			
-			\item Assumption 4
-			\vspace{-0.125in}
-			\begin{description}
-				\item[Justification:] The frea
+				\item[Justification:] Dandelions are resistant to drought and cold temperature.  When they are partly eaten, they can regrow from the taproot.  Therefore, it is relatively difficult for them to die.
+				
+				The death of dandelions can be caused by: \textbf{a.} insects or pathogens; \textbf{b.} humans (through herbicides or other methods); or \textbf{c.} extreme weather.  It is too difficult for us to obtain the data required for a., and it is very likely that, when dandelions are introduced as a non-native plant, it does not encounter natural enemies.  And for b. and c., we can consider a natural environment with no extreme weather conditions.  
 			\end{description}
 			
 		\end{enumerate}
 	
 	\subsection{Environmental Factors}
+	
+		Variables table? : $\mu_T$, $\sigma_T$, $\mu_W$, $\sigma_W$, $\mu_H$, $k_T$, $k_H$, $k$, $T$, $t$, $v_h$
+		
+		Six locations in the US were chosen for analysis.  We consider five properties of the environment and obtained the data for the six chosen locations, as shown in [USE REFERENCE FOR TABLE].  
+		
+		Table: 6 locations and corresponding parameter values
+		
+		We calculate an adaption factor $k$ from $\mu_T$ and $\mu_H$.  First, we determine the adaption factors for temperature and humidity respectively, according to [USE REFERENCE FOR TABLE].
+		
+		Table: $\mu_T \to k_T$, $\mu_H \to k_H$
+		
+		Then, we calculate the mean value of $k_T$ and $k_H$, and normalize it so that $k \in [0, 1]$.
+		
+		\begin{equation}
+			k = \frac12 \left( \frac{k_T + k_H}2 - 1 \right)
+		\end{equation}
+		
+		We suppose that the temperature follows a sinusoidal curve, as shown in \ref{fig:temp}.  This helps us simplify 
+		
+		\begin{align}
+			\mu_T &= \lim_{n \to \infty} \frac{1}{n} \sum_{k = 1}^{n} T(t_k) \notag \\
+			&= \lim_{n \to \infty} \frac{1}{360} \sum_{k = 1}^{n} T(t_k) \Delta t \notag \\
+			&= \frac1{360} \int_0^{360} (-A \cos{\frac{2\pi}{360} t} + B) \, \mathrm{d}t.
+		\end{align}
+		
+		Similarly, we 
+		
+		\begin{equation}
+			\sigma_T^2 = \frac1{360} \int_0^{360} \left[ (-A \cos{\frac{2\pi}{360} t} + B) - \mu_T \right] ^2 \mathrm{d}t.
+		\end{equation}
+		
+		\begin{equation}
+			T = -\sqrt2 \sigma_T \cos{\frac{2\pi}{360} t} + \mu_T
+		\end{equation}
 	
 		\begin{figure}
 			\centering
@@ -81,16 +117,32 @@
 			\label{fig:lifeCycle}
 		\end{figure}
 
-	\subsection{Dandelion Life Cycle}
-
-	\begin{figure}
-		\centering
-		\includegraphics {wind_mode.pdf}
-		\caption{Dandelion dispersal distance}
-		\label{fig:dispersal}
-	\end{figure}
-	
 	\subsection{Dispersal Distance}
+		
+		\begin{figure}
+			\centering
+			\includegraphics {wind_mode.pdf}
+			\caption{Dandelion dispersal distance}
+			\label{fig:dispersal}
+		\end{figure}	
+		
+		\begin{equation}
+			\frac{h}{v_v} = \frac{s_N}{v_h}
+		\end{equation}
+		
+		\begin{equation}
+			s_N = \frac{v_h}{v_v} h
+		\end{equation}
+		
+		\begin{equation}
+			\mathrm{P} (s_L < 0) = 1 - ae^{-0 \cdot b} = 0, \quad \mathrm{P} (s_L < 10) = 1 - ae^{- 10 b} = 1 - 0.5\%
+		\end{equation}
+		
+		\begin{equation}
+			\mathrm{P} (s_L < s) = 1 - e^{-0.53 s}
+		\end{equation}
+		
+		We take $\max\{s_N, s_L\}$ to be the distance that the seed travels.
 		
 		\begin{figure}
 			\centering
