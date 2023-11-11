@@ -20,7 +20,7 @@ def AHP(matrix):
     print('sum(weight) = ', sum(w))
     return w
 
-def GetGlolbaW():
+def GetGlobalaW():
     print('cal CR for matrix global')
     matrixG = np.array([[1, 1/3., 1/7., 1/3., 1, 1/7., 1/4., 1/7., 1/5., 1/9., 1/5., 1/3., 1/4., 1/4.],
                     [3, 1, 1/5., 1, 3, 1/5., 1/2., 1/5., 1/3., 1/7., 1/3., 1, 1/2., 1/2.],
