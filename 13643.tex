@@ -50,7 +50,7 @@
 			\item \textbf{Wind direction is uniformly distributed from 0$^\circ$ to 360$^\circ$.}
 			\vspace{-0.125in}
 			\begin{description}
-				\item[Justification:] Though we could obtain data about wind direction, we decided not to use them.  Wind direction can be affected by many factors and is very variable.  Consequently, local wind directions may be different from those observed at a weather station.
+				\item[Justification:] \label{assumption:wind} Though we could obtain data about wind direction, we decided not to use them.  Wind direction can be affected by many factors and is very variable.  Consequently, local wind directions may be different from those observed at a weather station.
 				
 				Moreover, we do not know on which edge the dandelion is located, and we cannot determine wind from which direction will blow the seeds into the field.  If wind direction is uniformly distributed, all directions are equivalent and we can let the dandelion be located on any of the edges.
 			\end{description}
@@ -97,62 +97,60 @@
 			We suppose that the temperature follows a sinusoidal curve, as shown in Figure \ref{fig:temp}, as trigonometric functions are convenient for modeling periodical fluctuations.  We further assume that the lowest temperature is reached on Jan.1st, or when $t = 0$.  We observe that the period of the function is 360 (for convenience, we suppose each month is 30 days long).  Thus, the equation for the curve is:
 			
 			\begin{equation}
-				T(t) = -A \cos{\frac{2\pi}{360} t} + B.
+				T = -A \cos{\frac{2\pi}{360} t} + B. \notag
 			\end{equation}
 			
-			We take $n$ evenly spaced sample points along the curve.  They have coordinates $(t_1, T(t_1)), \dots$, $(t_n, T(t_n))$ and the interval between two adjacent points is $\Delta t = 360/n$.  The mean of the $T$-coordinates of these points should be equal to the mean temperature, $\mu_T$.  This equality also holds when $n$ goes to infinity.  Therefore, 
-			
-			\begin{align}\label{eq:MuT}
-				\mu_T &= \lim_{n \to \infty} \frac{1}{n} \sum_{k = 1}^{n} T(t_k) \notag \\
-				&= \lim_{n \to \infty} \frac{1}{360} \sum_{k = 1}^{n} T(t_k) \Delta t \notag \\
-				&= \frac1{360} \int_0^{360} (-A \cos{\frac{2\pi}{360} t} + B) \, \mathrm{d}t.
-			\end{align}
-			
-			Similarly, we have
-			
-			\begin{equation}\label{eq:StdT}
-				\sigma_T^2 = \frac1{360} \int_0^{360} \left[ (-A \cos{\frac{2\pi}{360} t} + B) - \mu_T \right] ^2 	\mathrm{d}t.
-			\end{equation}
-			
-			Combining equations (\ref{eq:MuT}) and (\ref{eq:StdT}), we can solve for $A$ and $B$.
+			The points on this curve should satisfy the following two conditions:
 			
 			\begin{equation}
-				T(t) = -\sqrt2 \sigma_T \cos{\frac{2\pi}{360} t} + \mu_T
+				\mu_T = \frac1{360} \int_0^{360} (-A \cos{\frac{2\pi}{360} t} + B) \, \mathrm{d}t, \notag
+			\end{equation}
+			
+			\begin{equation}
+				\sigma_T^2 = \frac1{360} \int_0^{360} \left[ (-A \cos{\frac{2\pi}{360} t} + B) - \mu_T \right] ^2 	\mathrm{d}t. \notag
+			\end{equation}
+			
+			With the two equations above, we can solve for $A$ and $B$, and get
+			
+			\begin{equation}
+				T(t) = -\sqrt2 \sigma_T \cos{\frac{2\pi}{360} t} + \mu_T.
 			\end{equation}
 	
-		\subsubsection{Wind and Dispersal Distance}
-		
+		\subsubsection{Wind and Dispersal}
+			
+			For the direction of seed dispersal, we assume that the seed always follows the direction of the wind, which is uniformly distributed from 0$^\circ$ to 360$^\circ$ according to Assumption \ref{assumption:wind}.  
+			
+			For the distance of seed dispersal, we consider two types of wind, horizontal wind and updraft.  See Figure \ref{fig:dispersal} for the two different types of wind.
+			
 			\begin{figure}
 				\centering
 				\includegraphics {wind_mode.pdf}
 				\caption{Dandelion dispersal distance}
 				\label{fig:dispersal}
-			\end{figure}	
+			\end{figure}
+			
+			In the case of horizontal wind, we have
 			
 			\begin{equation}
-				\frac{h}{v_v} = \frac{s_N}{v_h}
+				 \frac{s_N}{v_h} = \frac{h}{v_v},
 			\end{equation}
 			
-			\begin{equation}
-				s_N = \frac{v_h}{v_v} h
-			\end{equation}
+			where $s_N$ ($N$ for \textit{N}ormal) is the distance that the seed travels, $v_h$ is the speed of the horizontal wind, $h$ is the height of the dandelion, and $v_v$ is the vertical component of the velocity of the seed.  $v_h$ is known for a given day and $h$ is known for a given plant.  $v_v$ is approximately constant, with value 0.4 m/s.  Thus, we can calculate the value of $s_N$.
 			
-			\begin{equation}
-				\mathrm{P} (s_L < 0) = 1 - ae^{-0 \cdot b} = 0, \quad \mathrm{P} (s_L < 10) = 1 - ae^{- 10 b} = 1 - 0.5\%
-			\end{equation}
-			
-			\begin{equation}
-				\mathrm{P} (s_L < s) = 1 - e^{-0.53 s}
-			\end{equation}
-			
-			We take $\max\{s_N, s_L\}$ to be the distance that the seed travels.
-			
-			\begin{figure}
+			\begin{wrapfigure}{l}{0.579\textwidth}
 				\centering
 				\includegraphics{fig-wind_curve.pdf}
-				\caption{Cumulative distribution function of long-distance dispersal}
+				\caption{Cumulative distribution function of\\long-distance dispersal}
 				\label{fig:longDistance}
-			\end{figure}
+			\end{wrapfigure}
+			
+			In the case of updraft, we suppose that the distance $s_L$ ($L$ for \textit{L}ong-distance) follows an exponential distribution, which can be expressed by the cumulative distribution function $\mathrm{P} (s_L < s) = 1 - ae^{-bs}$.  We know that $\mathrm{P} (s_L < 0) = 0$.  We also know that the probability of a seed being blown further than 10m is 0.5\%, i.e., $\mathrm{P} (s_L > 10) = 0.5\%$.  Therefore we can obtain
+			
+			\begin{equation}
+				\mathrm{P} (s_L < s) = 1 - e^{-0.53 s}.
+			\end{equation}
+			
+			We combine the two distances by taking $\max\{s_N, s_L\}$.   This is the distance that the seed travels.
 	
 	\subsection{Dandelion Life Cycle}
 	
@@ -162,6 +160,8 @@
 			\caption{Dandelion life cycle}
 			\label{fig:lifeCycle}
 		\end{figure}
+		
+		
 		
 	\subsection{Algorithm}
 	
