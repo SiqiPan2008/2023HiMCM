@@ -75,15 +75,7 @@
 		
 		\subsubsection{Adaption Factor}
 		
-			We calculate an adaption factor $k$ from $\mu_T$ and $\mu_H$.  First, we determine the adaption factors for temperature and humidity respectively, according to [USE REFERENCE FOR TABLE].
-			
-			Table: $\mu_T \to k_T$, $\mu_H \to k_H$
-			
-			Then, we calculate the mean value of $k_T$ and $k_H$, and normalize it so that $k \in [0, 1]$.
-			
-			\begin{equation}
-				k = \frac12 \left( \frac{k_T + k_H}2 - 1 \right)
-			\end{equation}
+			We calculate an adaption factor $k$ using $T$ and $\mu_H$.  Dandelions prefer temperate climates and relatively high humidity.  We divide temperature into three ranks, which respectively indicate that the temperature is very suitable, moderately suitable, or unsuitable for dandelions.  A rank for humidity is obtained in the same way.  Thus, on a given day, we calculate $k$ by computing the arithmetic mean of the rank for temperature and humidity, and scale $k$ so that $k \in [0, 1]$.
 		
 		\subsubsection{Temperature}
 		
@@ -94,13 +86,13 @@
 				\label{fig:temp}
 			\end{wrapfigure}
 			
-			We suppose that the temperature follows a sinusoidal curve, as shown in Figure \ref{fig:temp}, as trigonometric functions are convenient for modeling periodical fluctuations.  We further assume that the lowest temperature is reached on Jan.1st, or when $t = 0$.  We observe that the period of the function is 360 (for convenience, we suppose each month is 30 days long).  Thus, the equation for the curve is:
+			We suppose that the temperature follows a sinusoidal curve, as shown in \textbf{Fig.\ref{fig:temp}}, as trigonometric functions are convenient for modeling periodical fluctuations.  We further assume that the lowest temperature is reached on Jan.1st, or when $t = 0$.  We observe that the period of the function is 360 (for convenience, we suppose each month is 30 days long).  Thus, the equation for the curve is:
 			
 			\begin{equation}
 				T = -A \cos{\frac{2\pi}{360} t} + B. \notag
 			\end{equation}
 			
-			The points on this curve should satisfy the following two conditions:
+			The points on this curve should satisfy the two following conditions:
 			
 			\begin{equation}
 				\mu_T = \frac1{360} \int_0^{360} (-A \cos{\frac{2\pi}{360} t} + B) \, \mathrm{d}t, \notag
@@ -113,14 +105,15 @@
 			With the two equations above, we can solve for $A$ and $B$, and get
 			
 			\begin{equation}
-				T(t) = -\sqrt2 \sigma_T \cos{\frac{2\pi}{360} t} + \mu_T.
+				T = -\sqrt2 \sigma_T \cos{\frac{2\pi}{360} t} + \mu_T.
 			\end{equation}
 	
 		\subsubsection{Wind and Dispersal}
+		\label{subsubsec:wind}
 			
 			For the direction of seed dispersal, we assume that the seed always follows the direction of the wind, which is uniformly distributed from 0$^\circ$ to 360$^\circ$ according to Assumption \ref{assumption:wind}.  
 			
-			For the distance of seed dispersal, we consider two types of wind, horizontal wind and updraft.  See Figure \ref{fig:dispersal} for the two different types of wind.
+			For the distance of seed dispersal, we consider two types of wind, horizontal wind and updraft.  See \textbf{Fig.\ref{fig:dispersal}} for the two different types of wind.
 			
 			\begin{figure}
 				\centering
@@ -130,11 +123,9 @@
 			\end{figure}
 			
 			In the case of horizontal wind, we have
-			
 			\begin{equation}
 				 \frac{s_N}{v_h} = \frac{h}{v_v},
 			\end{equation}
-			
 			where $s_N$ ($N$ for \textit{N}ormal) is the distance that the seed travels, $v_h$ is the speed of the horizontal wind, $h$ is the height of the dandelion, and $v_v$ is the vertical component of the velocity of the seed.  $v_h$ is known for a given day and $h$ is known for a given plant.  $v_v$ is approximately constant, with value 0.4 m/s.  Thus, we can calculate the value of $s_N$.
 			
 			\begin{wrapfigure}{l}{0.579\textwidth}
@@ -151,9 +142,13 @@
 			\end{equation}
 			
 			We combine the two distances by taking $\max\{s_N, s_L\}$.   This is the distance that the seed travels.
+			
+			Finally, the leafs of dandelions have a radius of around 15cm.  If a seed were to land without falling on the leaf of another dandelion, the maximum density should be $(1/0.15)^2$ = 45 plants/m$^2$.  If a seed arrives at a location whose vicinity has a density greater than the maximum density, the seed fails to land.
 	
 	\subsection{Dandelion Life Cycle}
 	
+		We track every dandelion over time and record its life stage and location.  A dandelion can transfer between 6 states, which are: \textbf{seed}, \textbf{developing}, \textbf{dispersal}, \textbf{inter-dispersal}, \textbf{hold}, and \textbf{dormancy}.  The previous four stages are shown in \textbf{Fig.\ref{fig:longDistance}}.
+		
 		\begin{figure}
 			\centering
 			\includegraphics {life_cycle.pdf}
@@ -161,7 +156,26 @@
 			\label{fig:lifeCycle}
 		\end{figure}
 		
+		Out of all the \textbf{seed}s that land in the field, only 2\% will successfully germinate.  These seeds will spend 3 days to grow into the developing stage.
 		
+		The \textbf{developing} stage lasts 69--107 days.  This is because it takes a seed 60--95 days to grow into a flower, and it takes an additional 9--12 days for the seeds on the flower to mature.  The exact duration of this stage is determined by the adaption factor $k$.  During this stage, the scape of the flower is grown.  The height of the flower is in the range 12--40cm and is determined by $k$.
+		
+		The \textbf{dispersal} stage lasts 10 days.  A dandelion plant can produce around 10 seed heads per year, and it usually flowers twice, so it produces 5 heads every time it blooms.  Each head has 150--200 seeds, and the exact number is determined by $k$.  It takes each head 2 days to disperse its seeds.  The seeds are dispersed per the method stated in \textbf{Section \ref{subsubsec:wind}}.
+		
+		When the temperature is higher than $24^\circ C$, only 12.5\% of the flowers bloom and disperse their seeds.  Thus, when $T > 24^\circ C$, we let dandelions successfully enter the dispersal stage by a probability of 12.5\%, and the rest are moved into the hold stage.
+		
+		The \textbf{inter-dispersal} stage is the stage after dandelions exit dispersal and before they enter dispersal again.  In this stage, dandelions regrow their scapes and flowers.  Since most dandelions that flowered in spring usually flower again in fall, the duration of this stage is set to be exactly half a year, which is 180 days.  
+		
+		Dandelions can only enter the \textbf{hold} stage when $T > 24^\circ C$.  During this stage, flowers are held in buds and dispersal is diminished.  As soon as $T$ falls below $24^\circ C$, dandelions return to the stage before it entered the hold stage.  
+		
+		Dandelions can only enter the \textbf{dormancy} stage when $T < 0^\circ C$.  During this stage, the temperature is low and it is likely that it snows.  Therefore, all life activities of dandelions are paused.  As soon as $T$ rises above $0^\circ C$, dandelions resume the stage before it entered dormancy.
+		
+		The duration of the developing stage, the height of the plant, and the number of seeds per head are all determined by the adaption factor $k$.  The three values all follow a normal distribution with
+		\[
+			\mu = \left( \mathrm{worst} + \frac{\mathrm{best} - \mathrm{worst}}4 \right) + k \frac{\mathrm{best} - \mathrm{worst}}2, \,
+			\sigma = \frac{\mathrm{best} - \mathrm{worst}}{12}.
+		\]
+		The best value is the minimum value for the duration, and it is the maximum value for the height and the number of seeds.  The worst value is the opposite of the best one.
 		
 	\subsection{Algorithm}
 	
@@ -169,7 +183,7 @@
 	
 		\subsubsection{Results}
 		
-			text
+			Our model contains several random variables
 			
 			\begin{figure}
 				\centering
@@ -185,25 +199,19 @@
 				\label{fig:freqDand}
 			\end{figure}
 			
-			
-			\begin{figure}
-				\centering
-				\includegraphics{spread_course-time.pdf}
-				\caption{The spread of dandelion during a 12-month period in the District of Columbia}
-				\label{fig:spreadDC}
-			\end{figure}
-			
-			Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet 
-			
 			\begin{figure}
 				\centering
 				\includegraphics{spread_course-location_non_DC.pdf}
 				\caption{The spread of dandelions at the end of 12 months at different locations}
 				\label{fig:scatter5loc}
 			\end{figure}
-			
-			Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet
-			
+					
+			\begin{figure}
+				\centering
+				\includegraphics{spread_course-time.pdf}
+				\caption{The spread of dandelion during a 12-month period in the District of Columbia}
+				\label{fig:spreadDC}
+			\end{figure}
 					
 			\begin{figure}
 				\centering
