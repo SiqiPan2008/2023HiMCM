@@ -16,7 +16,7 @@ colors = ['#00CC00', '#00CC00', '#00CC00', '#FFFFFF',
         '#CC8844', '#CC8844', '#CC8844', '#CC8844', '#FFFFFF', 
         '#0000CC', '#0000CC', '#0000CC', '#0000CC', '#FFFFFF', 
         '#CC0000', '#CC0000', '#CC0000', '#FFFFFF', 
-        '#EE00EE', '#EE00EE', '#EE00EE', '#EE00EE']
+        '#990099', '#990099', '#990099', '#990099']
 labels = ['Slow', 'Moderate', 'Rapid', '',
           'None', 'Low', 'Medium', 'High', '',
           'None', 'Slow', 'Moderate', 'Rapid', '',
@@ -27,7 +27,7 @@ lpos = [2, 0, 1, 0,
         1, 3, 0, 2, 0,
         1, 2, 0, 0,
         1, 3, 0, 2]
-w = 0.3
+w = 0.4
 plt.figure(figsize=(6, 2))
 
 mins = []
@@ -50,7 +50,7 @@ plt.grid(axis='y', linewidth=0.3)
 plt.bar(x, mins, color='white', label=labels, width=w, alpha=0)
 plt.bar(x, ranges, color=colors, label=labels, width=w, edgecolor='black', bottom = mins, alpha=0.7, linewidth = 0.3)
 plt.ylim([30, 90])
-plt.ylabel('Impact factor')
+plt.ylabel('Global impact factor')
 plt.xticks(x, labels, rotation = -90)
 ax = plt.gca()
 ax.set_axisbelow(True)

@@ -31,7 +31,7 @@ colors = [
 ]
 months = ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May', 'Jun.', 'Jul.', 'Aug.', 'Sept.', 'Oct.', 'Nov.', 'Dec.']
 devm = ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th', '10th', '11th', '12th']
-w = 0.6
+w = 0.5
 
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(8, 2))
 
@@ -53,9 +53,9 @@ for i in range(12):
         increment[j + 1].append(arr[j + 1] - arr[j])
         cumulative[j + 1].append(arr[j + 1])
 
-ax1.bar(x, increment[0], color=colors[0], label = devm[0], width=w)
+ax1.bar(x, increment[0], color=colors[0], label = devm[0], width=w, edgecolor = 'black', linewidth=0.3)
 for i in range(11):
-    ax1.bar(x, increment[i + 1], color=colors[i + 1], bottom = cumulative[i], label = devm[i + 1], width=w)
+    ax1.bar(x, increment[i + 1], color=colors[i + 1], bottom = cumulative[i], label = devm[i + 1], width=w, edgecolor = 'black', linewidth=0.3)
 
 
 
@@ -75,9 +75,9 @@ for i in range(12):
         increment[j + 1].append(arr[j + 1] - arr[j])
         cumulative[j + 1].append(arr[j + 1])
 
-ax2.bar(x, increment[0], color=colors[0], label = devm[0], width=w)
+ax2.bar(x, increment[0], color=colors[0], label = devm[0], width=w, edgecolor = 'black', linewidth=0.3)
 for i in range(11):
-    ax2.bar(x, increment[i + 1], color=colors[i + 1], bottom = cumulative[i], label = devm[i + 1], width=w)
+    ax2.bar(x, increment[i + 1], color=colors[i + 1], bottom = cumulative[i], label = devm[i + 1], width=w, edgecolor = 'black', linewidth=0.3)
 
 
 handles, labels = plt.gca().get_legend_handles_labels()
