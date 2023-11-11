@@ -41,7 +41,7 @@
 				\item[Justification:] The problem states that the dandelion is adjacent to the field.  Thus, we consider the dandelion to be located on the edge of the field.  Furthermore, we limit our consideration within the field.  Seeds that land outside the field are considered to be negligible, possibly due to a river or forest that borders the field.
 			\end{description}
 			
-			\item \textbf{The field is an open field, with no plants that can hinder the spread of dandelions.}
+			\item \textbf{The field is open with no plants that hinder the spread of dandelions.}
 			\vspace{-0.125in}
 			\begin{description}
 				\item[Justification:] This assumption means that: \textbf{a.} dandelion seeds are not intercepted by other plants; and \textbf{b.} dandelions do not have to compete with other plants.  To consider other plants, we would have to obtain data about the distribution, morphology, growth habits, etc., of the local plants, which would make our model too complex.
@@ -147,7 +147,7 @@
 	
 	\subsection{Dandelion Life Cycle}
 	
-		We track every dandelion over time and record its life stage and location.  A dandelion can transfer between 6 states, which are: \textbf{seed}, \textbf{developing}, \textbf{dispersal}, \textbf{inter-dispersal}, \textbf{hold}, and \textbf{dormancy}.  The previous four stages are shown in \textbf{Fig.\ref{fig:longDistance}}.
+		We simulate the spread of dandelions by tracking every plant over time and recording its life stage and location.  A dandelion can transfer between 6 states, which are: \textbf{seed}, \textbf{developing}, \textbf{dispersal}, \textbf{inter-dispersal}, \textbf{hold}, and \textbf{dormancy}.  The previous four stages are shown in \textbf{Fig.\ref{fig:lifeCycle}}.
 		
 		\begin{figure}
 			\centering
@@ -156,26 +156,26 @@
 			\label{fig:lifeCycle}
 		\end{figure}
 		
+		The duration of the developing stage, the height of the plant, and the number of seeds per head are determined by the adaption factor $k$.  The three parameters follow normal distributions with
+		\begin{equation}
+			\mu = \left( \mathrm{worst} + \frac{\mathrm{best} - \mathrm{worst}}4 \right) + k \frac{\mathrm{best} - \mathrm{worst}}2, \,
+			\sigma = \frac{\mathrm{best} - \mathrm{worst}}{12}.
+		\end{equation}
+		The worst and best values for each of the parameters are given later in the section.
+		
 		Out of all the \textbf{seed}s that land in the field, only 2\% will successfully germinate.  These seeds will spend 3 days to grow into the developing stage.
 		
-		The \textbf{developing} stage lasts 69--107 days.  This is because it takes a seed 60--95 days to grow into a flower, and it takes an additional 9--12 days for the seeds on the flower to mature.  The exact duration of this stage is determined by the adaption factor $k$.  During this stage, the scape of the flower is grown.  The height of the flower is in the range 12--40cm and is determined by $k$.
+		The \textbf{developing} stage lasts 69--107 days.  This is because it takes a seed 60--95 days to grow into a flower, and it takes an additional 9--12 days for the seeds on the flower to mature.  The exact duration of this stage is determined by $k$ (worst = 107, best = 69).  During this stage, the scape of the flower is grown.  The height of the flower is in the range 12--40cm and is determined by $k$ (worst = 12, best = 40).
 		
-		The \textbf{dispersal} stage lasts 10 days.  A dandelion plant can produce around 10 seed heads per year, and it usually flowers twice, so it produces 5 heads every time it blooms.  Each head has 150--200 seeds, and the exact number is determined by $k$.  It takes each head 2 days to disperse its seeds.  The seeds are dispersed per the method stated in \textbf{Section \ref{subsubsec:wind}}.
+		The \textbf{dispersal} stage lasts 10 days.  A dandelion plant can produce around 10 seed heads per year, and it usually flowers twice, so it produces 5 heads every time it blooms.  Each head has 150--200 seeds, and the exact number is determined by $k$ (worst = 150, best = 200).  It takes each head 2 days to disperse its seeds.  The seeds are dispersed per the method stated in \textbf{Section \ref{subsubsec:wind}}.
 		
-		When the temperature is higher than $24^\circ C$, only 12.5\% of the flowers bloom and disperse their seeds.  Thus, when $T > 24^\circ C$, we let dandelions successfully enter the dispersal stage by a probability of 12.5\%, and the rest are moved into the hold stage.
+		When the temperature is higher than $24^\circ$C, only 12.5\% of the flowers bloom and disperse their seeds.  We let dandelions successfully enter the dispersal stage by a probability of 12.5\%, and the rest are moved into the hold stage.
 		
 		The \textbf{inter-dispersal} stage is the stage after dandelions exit dispersal and before they enter dispersal again.  In this stage, dandelions regrow their scapes and flowers.  Since most dandelions that flowered in spring usually flower again in fall, the duration of this stage is set to be exactly half a year, which is 180 days.  
 		
-		Dandelions can only enter the \textbf{hold} stage when $T > 24^\circ C$.  During this stage, flowers are held in buds and dispersal is diminished.  As soon as $T$ falls below $24^\circ C$, dandelions return to the stage before it entered the hold stage.  
+		Dandelions can only enter the \textbf{hold} stage when $T > 24^\circ$C.  During this stage, flowers are held in buds and dispersal is diminished.  As soon as $T$ falls below $24^\circ$C, dandelions return to the stage before it entered the hold stage.  
 		
-		Dandelions can only enter the \textbf{dormancy} stage when $T < 0^\circ C$.  During this stage, the temperature is low and it is likely that it snows.  Therefore, all life activities of dandelions are paused.  As soon as $T$ rises above $0^\circ C$, dandelions resume the stage before it entered dormancy.
-		
-		The duration of the developing stage, the height of the plant, and the number of seeds per head are all determined by the adaption factor $k$.  The three values all follow a normal distribution with
-		\[
-			\mu = \left( \mathrm{worst} + \frac{\mathrm{best} - \mathrm{worst}}4 \right) + k \frac{\mathrm{best} - \mathrm{worst}}2, \,
-			\sigma = \frac{\mathrm{best} - \mathrm{worst}}{12}.
-		\]
-		The best value is the minimum value for the duration, and it is the maximum value for the height and the number of seeds.  The worst value is the opposite of the best one.
+		Dandelions can only enter the \textbf{dormancy} stage when $T < 0^\circ$C.  During this stage, the temperature is low and it is likely that it snows.  Therefore, all life activities of dandelions are paused.  As soon as $T$ rises above $0^\circ$C, dandelions resume the stage before it entered dormancy.
 		
 	\subsection{Algorithm}
 	
@@ -185,12 +185,16 @@
 		
 			Our model contains several random variables.  We choose to use the Monte Carlo method to simulate.
 			
+			First, we have to determine the starting time of simulation.  The model was run with the starting date set to Jan.\,1st, Feb.\,1st, \ldots, and Dec.\,1st for all 6 locations.  The results for Florida are shown in \textbf{Fig.\ref{fig:start}}.  We observe that the number varies greatly among the runs, but the mean distance is approximately the same.  For each location, the starting date is chosen such that the number of dandelions at the end of 12 months is maximized.  For instance, the starting date is May\,1st for Florida.  
+			
 			\begin{figure}
 				\centering
 				\includegraphics{start_month-number.pdf}
 				\caption{Number and mean distance of dandelions in Florida when simulation starts at different times}
 				\label{fig:start}
 			\end{figure}
+			
+			Next we ran the model 1000 times for each location.  The resulting frequency histogram is shown in \textbf{Fig.\ref{fig:freqDand}}.  
 			
 			\begin{figure}
 				\centering
