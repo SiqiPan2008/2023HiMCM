@@ -16,7 +16,7 @@ plt.figure(figsize = (4, 2))
 
 plt.hist(imfac, bins = 30, color = '#5588DD', edgecolor='black', alpha = 0.8, density = True, linewidth = 0.3)
 
-plt.xlabel('Impact factor')
+plt.xlabel('Global impact factor')
 plt.ylabel('Frequency / bin width')
 
 plt.subplots_adjust(wspace=0.04, hspace=0)
