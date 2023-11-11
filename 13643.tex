@@ -126,7 +126,7 @@
 			\begin{equation}
 				 \frac{s_N}{v_h} = \frac{h}{v_v},
 			\end{equation}
-			where $s_N$ ($N$ for \textit{N}ormal) is the distance that the seed travels, $v_h$ is the speed of the horizontal wind, $h$ is the height of the dandelion, and $v_v$ is the vertical component of the velocity of the seed.  $v_h$ is known for a given day and $h$ is known for a given plant.  $v_v$ is approximately constant, with value 0.4 m/s.  Thus, we can calculate the value of $s_N$.
+			where $s_N$ ($N$ for \textit{N}ormal) is the distance that the seed travels, $v_h$ is the speed of the horizontal wind, $h$ is the height of the dandelion, and $v_v$ is the vertical component of the velocity of the seed.  $v_v$ follows a normal distribution with $\mu = \mu_W$ and $\sigma = \sigma_W$.  $h$ is known for any given plant.  $v_v$ is approximately constant, with value 0.4 m/s.  Thus, we can calculate the value of $s_N$.
 			
 			\begin{wrapfigure}{l}{0.579\textwidth}
 				\centering
@@ -183,7 +183,7 @@
 	
 		\subsubsection{Results}
 		
-			Our model contains several random variables.  We choose to use the Monte Carlo method to simulate.
+			Our model contains several random variables.  We choose to use the Monte Carlo method to simulate.  We tally the number of dandelions and record the mean distance from (0, 0), the origin, where the first dandelion is located.
 			
 			First, we have to determine the starting time of simulation.  The model was run with the starting date set to Jan.\,1st, Feb.\,1st, \ldots, and Dec.\,1st for all 6 locations.  The results for Florida are shown in \textbf{Fig.\ref{fig:start}}.  We observe that the number varies greatly among the runs, but the mean distance is approximately the same.  For each location, the starting date is chosen such that the number of dandelions at the end of 12 months is maximized.  For instance, the starting date is May\,1st for Florida.  
 			
@@ -194,7 +194,7 @@
 				\label{fig:start}
 			\end{figure}
 			
-			Next we ran the model 1000 times for each location.  The resulting frequency histogram is shown in \textbf{Fig.\ref{fig:freqDand}}.  
+			Next we ran the model 1000 times for each location.  The resulting frequency histogram is shown in \textbf{Fig.\ref{fig:freqDand}}.  We can see that both the number and the mean distance follow a distribution similar to a normal one.  We calculated several statistics for each location, which are displayed in [TABLE FOR NUMBER].
 			
 			\begin{figure}
 				\centering
@@ -202,6 +202,8 @@
 				\caption{Frequency distribution of number and mean distance of dandelions in Florida}
 				\label{fig:freqDand}
 			\end{figure}
+			
+			We examine the distribution of the number of dandelions.  For all the locations, the confidence interval of the mean is relatively small, which implies the mean is quite accurate.  The standard deviation and range are relatively large, which shows that the spread of dandelions is easily affected by fluctuations in environmental factors and other random factors.  For all locations except California, the distribution is platykurtic, which means it is flatter and less concentrated than the normal distribution.  For all locations except Alaska, the distribution is skewed to the left.  The mass of the distribution is concentrated on the right, so the number of dandelions is more likely to be greater than the mean rather than smaller.  However, because of the unfavorable environmental conditions in Alaska, the number is more likely to be smaller than the mean in that location.  We can draw the same conclusions from comparing the mean and the median as from the skewness.
 			
 			remember to write the sample quantity and unit \\
 			
@@ -243,13 +245,17 @@
 				}
 			}
 			
+			Out of the 1000 runs, we selected the run that makes the number of dandelions closest to the mean value.  The positions and states of the dandelions at the end of 12 months are drawn in \textbf{Fig.\ref{fig:scatter5loc}}.  For all locations except the District of Columbia, most of the dandelions grow in a semicircular ring that is centered at the origin.  Alaska is apparently unsuitable for dandelions to spread.  In California, Hawaii, Florida, and Kansas, dandelions all spread at a moderate speed.
+			
 			\begin{figure}
 				\centering
 				\includegraphics{spread_course-location_non_DC.pdf}
 				\caption{The spread of dandelions at the end of 12 months at different locations}
 				\label{fig:scatter5loc}
 			\end{figure}
-					
+			
+			The positions and states of the dandelions at the end of each of the 12 months are plotted for the District of Columbia (see \textbf{Fig.\ref{fig:spreadDC}}).  The dandelions form a semicircle around the first dandelion.  The closer to the origin, the denser the plants.
+			
 			\begin{figure}
 				\centering
 				\includegraphics{spread_course-time.pdf}

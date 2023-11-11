@@ -14,7 +14,7 @@ param_data = [
     (r'$\sigma_T$ ($℃$)', 100, 50),
     (r'$\mu_W$ (m/s)', 150, 50),
     (r'$\sigma_W$ (m/s)', 150, 50),
-    (r'$\mu_H$ (%)', 10, 5)
+    (r'$\mu_H$ (%)', 1000, 500)
 ]
 
 for p in range(5):
@@ -22,6 +22,8 @@ for p in range(5):
 
     df = pd.read_csv('Output\\' + params[p] + '_sa.csv')
     pVal = df[params[p]].to_numpy()
+    if p == 4:
+        pVal *= 100
     num = df['number'].to_numpy()
     dist = df['mean_distance'].to_numpy()
 
