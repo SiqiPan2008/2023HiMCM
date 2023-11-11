@@ -9,14 +9,14 @@ plt.rcParams['font.serif'] = ['cmr10']
 plt.rcParams['font.size'] = 7.5
 
 x = np.arange(1, 23, 1)
-plant = ['Growth Rate', 'Fruit Seed Abundance', 'Seed Spread Rate', 'Seedling Vigor', 'Toxicity']
+plant = ['Melilotus officinalis', 'Fruit Seed Abundance', 'Seed Spread Rate', 'Seedling Vigor', 'Toxicity']
 nlabel = [2, 3, 2, 2, 2]
 slabel = [0, 3, 7, 10, 13]
 colors = ['#4444CC', '#888888', '', 
-          '#4444CC', '', '#888888', '', 
+          '#4444CC', '#CCCC44', '#888888', '', 
           '#4444CC', '#888888', '', 
-          '#4444CC', '#888888', '', 
-          '#4444CC', '#888888', '', ]
+          '#4444CC', '#CCCC44', '', 
+          '#4444CC', '#888888']
 labels = ['FL', 'AK', ''
           'FL', 'NV', 'AK', ''
           'FL', 'AK', ''
@@ -42,6 +42,7 @@ for i in range(len(cat)):
         mins.append(0)
         ranges.append(0)
 
+'''
 plt.grid(axis='y', linewidth=0.3)
 plt.bar(x, mins, color='white', label=labels, width=w, alpha=0)
 plt.bar(x, ranges, color=colors, label=labels, width=w, edgecolor='black', bottom = mins, alpha=0.7, linewidth = 0.3)
@@ -65,7 +66,7 @@ plt.axvline(x=4, linestyle='--', color='grey', linewidth=0.3)
 plt.axvline(x=9, linestyle='--', color='grey', linewidth=0.3)
 plt.axvline(x=14, linestyle='--', color='grey', linewidth=0.3)
 plt.axvline(x=18, linestyle='--', color='grey', linewidth=0.3)
-
+'''
 
 
 plt.subplots_adjust(wspace=0.04, hspace=0)
