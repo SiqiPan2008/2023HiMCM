@@ -6,7 +6,7 @@ import Utility as u
 def calculateIF(input_file_name, isGlobal):
 
     if isGlobal:
-        w = np.array(ahp.GetGlobalaW());
+        w = np.array(ahp.GetGlobalW());
     else:
         w = np.array(ahp.GetLocalW());
 
