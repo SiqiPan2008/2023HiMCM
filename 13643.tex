@@ -134,7 +134,7 @@
 			
 			For the distance of seed dispersal, we consider two types of wind, horizontal wind and updraft.  See \textbf{Fig.\ref{fig:dispersal}} for the two different types of wind.
 			
-			\begin{figure}
+			\begin{figure}[htbp]
 				\centering
 				\includegraphics {wind_mode.pdf}
 				\caption{Dandelion dispersal distance}
@@ -192,7 +192,7 @@
 	
 		We simulate the spread of dandelions by tracking every plant over time and recording its life stage and location.  A dandelion can transfer between 6 states, which are: \textbf{seed}, \textbf{developing}, \textbf{dispersal}, \textbf{inter-dispersal}, \textbf{hold}, and \textbf{dormancy}.  The previous four stages are shown in \textbf{Fig.\ref{fig:lifeCycle}}.
 		
-		\begin{figure}
+		\begin{figure}[htbp]
 			\centering
 			\includegraphics {life_cycle.pdf}
 			\caption{Dandelion life cycle}
@@ -230,7 +230,7 @@
 			
 			First, we have to determine the starting time of simulation.  The model was run with the starting date set to Jan.\,1st, Feb.\,1st, \ldots, and Dec.\,1st for all 6 locations.  The results for Florida are shown in \textbf{Fig.\ref{fig:start}}.  We observe that the number varies greatly among the runs, but the mean distance is approximately the same.  For each location, the starting date is chosen such that the number of dandelions at the end of 12 months is maximized.  The number of dandelions corresponding to the chosen dates are marked blue in [TABLE].
 			
-			\begin{figure}
+			\begin{figure}[htbp]
 				\centering
 				\includegraphics{start_month-number.pdf}
 				\caption{Number and mean distance in Florida when simulation starts at different months}
@@ -259,7 +259,7 @@
 			
 			Next we ran the model 1000 times for each location.  The resulting frequency histogram is shown in \textbf{Fig.\ref{fig:freqDand}}.  We can see that both the number and the mean distance follow a distribution similar to a normal one.  We calculated several statistics for each location, which are displayed in [TABLE FOR NUMBER].
 			
-			\begin{figure}
+			\begin{figure}[htbp]
 				\centering
 				\includegraphics{number-frequency.pdf}
 				\caption{Frequency distribution of number and mean distance in Florida}
@@ -314,7 +314,7 @@
 			
 			Out of the 1000 runs, we selected the run that makes the number of dandelions closest to the mean value.  The positions and states of the dandelions at the end of 12 months are drawn in \textbf{Fig.\ref{fig:scatter5loc}}.  For all locations except the District of Columbia, most of the dandelions grow in a semicircular ring that is centered at the origin.  Alaska is apparently unsuitable for dandelions to spread.  In California, Hawaii, Florida, and Kansas, dandelions all spread at a moderate speed.
 			
-			\begin{figure}
+			\begin{figure}[htbp]
 				\centering
 				\includegraphics{spread_course-location_non_DC.pdf}
 				\caption{The spread at the end of 12 months at different locations}
@@ -323,14 +323,14 @@
 			
 			The positions and states of the dandelions at the end of each of the 12 months are plotted for the District of Columbia (see \textbf{Fig.\ref{fig:spreadDC}}).  The dandelions form a semicircle around the first dandelion.  The closer to the origin, the denser the plants.
 			
-			\begin{figure}
+			\begin{figure}[htbp]
 				\centering
 				\includegraphics{spread_course-time.pdf}
 				\caption{The spread during 12 months in the District of Columbia}
 				\label{fig:spreadDC}
 			\end{figure}
 					
-			\begin{figure}
+			\begin{figure}[htbp]
 				\centering
 				\includegraphics{number_mean_distance-time.pdf}
 				\caption{Number and mean distance over time}
@@ -339,7 +339,7 @@
 		
 		\subsubsection{Sensitivity Analysis}
 		
-			\begin{figure}
+			\begin{figure}[htbp]
 				\centering
 				\begin{minipage}{0.04\textwidth}\end{minipage}
 				\begin{minipage}{0.46\textwidth}
@@ -595,21 +595,21 @@
 
 	\subsection{Sensitivity Analysis}
 	
-		\begin{figure}
+		\begin{figure}[htbp]
 			\centering
 			\includegraphics{IF-frequency.pdf}
 			\caption{Frequency distribution of global impact factor}
 			\label{fig:freqIF}
 		\end{figure}
 	
-		\begin{figure}
+		\begin{figure}[htbp]
 			\centering
 			\includegraphics{categories-IF.pdf}
 			\caption{Sensitivity analysis}
 			\label{fig:IFfactors}
 		\end{figure}
 		
-		\begin{figure}
+		\begin{figure}[htbp]
 			\centering
 			\includegraphics{IF_local-loc.pdf}
 			\caption{Local impact factor}
