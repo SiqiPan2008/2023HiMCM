@@ -28,7 +28,7 @@ lpos = [2, 0, 1, 0,
         1, 2, 0, 0,
         1, 3, 0, 2]
 w = 0.3
-plt.figure(figsize=(8, 2))
+plt.figure(figsize=(6, 2))
 
 mins = []
 ranges = []
@@ -46,9 +46,9 @@ for i in range(len(cat)):
         mins.append(0)
         ranges.append(0)
 
-plt.grid(axis='y', linewidth=0.5)
+plt.grid(axis='y', linewidth=0.3)
 plt.bar(x, mins, color='white', label=labels, width=w, alpha=0)
-plt.bar(x, ranges, color=colors, label=labels, width=w, edgecolor='black', bottom = mins, alpha=0.7)
+plt.bar(x, ranges, color=colors, label=labels, width=w, edgecolor='black', bottom = mins, alpha=0.7, linewidth = 0.3)
 plt.ylim([30, 90])
 plt.ylabel('Impact factor')
 plt.xticks(x, labels, rotation = -90)
