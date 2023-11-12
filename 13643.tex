@@ -39,24 +39,30 @@
 	
 		\begin{enumerate}
 			
-			\item \textbf{The dandelion is located at the midpoint of an edge of a square field, which has dimensions of 100m$\times$100m (1 hectare).  When seeds are blown out of the field, they are neglected.}
+			\item \textbf{The dandelion is at the midpoint of a square field's edge, which is 100m long.  Seeds that are blown out of the field are neglected.}
 			\vspace{-0.125in}
 			\begin{description}
-				\item[Justification:] The problem states that the dandelion is adjacent to the field.  Thus, we consider the dandelion to be located on the edge of the field.  Furthermore, we limit our consideration within the field.  Seeds that land outside the field are considered to be negligible, possibly due to a river or forest that borders the field.
+				\item[Justification:] According to the problem, the dandelion is adjacent to the field.  It is reasonable that we set the plant on an edge.  Furthermore, we limit our considerations within the field.  We may assume that a river or forest borders the field, so seeds cannot spread outside.
 			\end{description}
 			
-			\item \textbf{The field is open with no plants that hinder the spread of dandelions.}
+			\item \textbf{The field is open and planar.}
 			\vspace{-0.125in}
 			\begin{description}
-				\item[Justification:] This assumption means that: \textbf{a.} dandelion seeds are not intercepted by other plants; and \textbf{b.} dandelions do not have to compete with other plants.  To consider other plants, we would have to obtain data about the distribution, morphology, growth habits, etc., of the local plants, which would make our model too complex.
+				\item[Justification:] We only consider the case of flat terrain.  This helps us simplify the spread into two dimensions.  Besides, crop fields and grasslands are usually plains.  Dandelion spread in these terrains are of greatest interest.
+			\end{description}
+			
+			\item \textbf{No other plants hinder the spread of dandelions.}
+			\vspace{-0.125in}
+			\begin{description}
+				\item[Justification:] This means \textbf{a.} dandelion seeds are not intercepted by other plants; and \textbf{b.} dandelions do not have to compete with other plants.  To consider other plants, we would have to obtain data about the distribution, morphology, growth habits, etc., of the local plants.  These would make our model too complex.
 			\end{description}
 			
 			\item \textbf{Wind direction is uniformly distributed from 0$^\circ$ to 360$^\circ$.}
 			\vspace{-0.125in}
 			\begin{description}
-				\item[Justification:] \label{assumption:wind} Though we could obtain data about wind direction, we decided not to use them.  Wind direction can be affected by many factors and is very variable.  Consequently, local wind directions may be different from those observed at a weather station.
+				\item[Justification:] \label{assumption:wind} Wind direction is very variable and local wind directions may be different from those at a weather station.  Therefore, we decided not to use the wind direction data we obtained.
 				
-				Moreover, we do not know on which edge the dandelion is located, and we cannot determine wind from which direction will blow the seeds into the field.  If wind direction is uniformly distributed, all directions are equivalent and we can let the dandelion be located on any of the edges.
+				Moreover, we do not know on which edge the dandelion is located.  We cannot determine which wind blows the seeds into the field.  If wind direction is uniformly distributed, all directions are equivalent and we can let the dandelion be located on an arbitrary edge.
 			\end{description}
 			
 			\item \textbf{Dandelions do not die.}
@@ -64,124 +70,177 @@
 			\begin{description}
 				\item[Justification:] Dandelions are resistant to drought and cold temperature.  When they are partly eaten, they can regrow from the taproot.  Therefore, it is relatively difficult for them to die.
 				
-				The death of dandelions can be caused by: \textbf{a.} insects or pathogens; \textbf{b.} humans (through herbicides or other methods); or \textbf{c.} extreme weather.  It is too difficult for us to obtain the data required for a., and it is very likely that, when dandelions are introduced as a non-native plant, it does not encounter natural enemies.  And for b. and c., we can consider a natural environment with no extreme weather conditions.  
+				The death of dandelions can be caused by \textbf{a.} insects or pathogens; \textbf{b.} humans (through herbicides or other means); or \textbf{c.} extreme weather.  It is likely that dandelions do not encounter natural enemies when it is introduced to a new location, so we decide to neglect a.  For b. and c., we can consider a natural environment with no extreme weather conditions.  
 			\end{description}
 			
 		\end{enumerate}
+		
 	
 	
+
 	
-	
-	
-	\subsection{Environmental Factors}
-	
-		\subsubsection{Overview}
-			
-			We consider five environmental factors, which are shown in \textbf{Table \ref{tb:vars}}.  Based on these factors, we will calculate an adaption factor $k$, obtain an expression of temperature $T$ versus time $t$, and devise a seed dispersal model.  Finally, we will choose six locations in the US for our model.
-			
+	\subsection{Model Overview}
+		
+		We consider five environmental factors, as shown in \textbf{Table \ref{tb:vars}}, and we will construct a temperature curve in \textbf{Section \ref{sec:temp}}.  The environment affects dandelion spread in two major ways.  First, wind influences seed dispersal.  We will model this in \textbf{Section \ref{sec:wind}}.  Second, the combined effect of temperature and humidity influences many aspects in dandelion growth.  We will introduce an adaptation factor $k$ for this in \textbf{Section \ref{sec:af}}.  
+		
+		{
+			\fontsize{10}{14}\selectfont
 			{
-				\fontsize{10}{14}\selectfont
-				{
-					\begin{longtable}{ccc}
-						\caption{Environmental factors}
-						\label{tb:vars}\\
-						\toprule
-						Symbol&Description&Unit\\
-						\toprule
-						$\mu_T$&Mean temperature&$^\circ$C\\
-						$\sigma_T$&Standard deviation of temperature&$^\circ$C\\
-						$\mu_W$&Mean wind speed&m/s\\
-						$\sigma_W$&Standard deviation of wind speed&m/s\\
-						$\mu_H$&Mean humidity&\%\\
-						\bottomrule
-					\end{longtable}
-				}
+				\begin{longtable}{ccc}
+					\caption{Environmental factors}
+					\label{tb:vars}\\
+					\toprule
+					Symbol&Description&Unit\\
+					\toprule
+					$\mu_T$&Mean temperature&$^\circ$C\\
+					$\sigma_T$&Standard deviation of temperature&$^\circ$C\\
+					$\mu_W$&Mean wind speed&m/s\\
+					$\sigma_W$&Standard deviation of wind speed&m/s\\
+					$\mu_H$&Mean humidity&\%\\
+					\bottomrule
+				\end{longtable}
 			}
-			
-			
+		}
+	
+		Our model simulates the spread of dandelions by tracking every single dandelion.  Every dandelion behaves according to a life cycle pattern, which we will model in \textbf{Section \ref{sec:life}}.  
 		
-		\subsubsection{Adaption Factor}
-		
-			We calculate an adaption factor $k$ using $T$ and $\mu_H$.  Dandelions prefer temperate climates and relatively high humidity.  We divide temperature into three ranks, which respectively indicate that the temperature is very suitable, moderately suitable, or unsuitable for dandelions.  A rank for humidity is obtained in the same way.  Thus, on a given day, we calculate $k$ by computing the arithmetic mean of the rank for temperature and humidity, and scale $k$ so that $k \in [0, 1]$.
-		
-		
-		
-		\subsubsection{Temperature}
-		
-			\begin{wrapfigure}{l}{0.5\textwidth}
-				\centering
-				\includegraphics{fig-temperature_curve.pdf}
-				\caption{Temperature curve}
-				\label{fig:temp}
-			\end{wrapfigure}
-			
-			We suppose that the temperature follows a sinusoidal curve, as shown in \textbf{Fig.\ref{fig:temp}}, as trigonometric functions are convenient for modeling periodical fluctuations.  We only consider locations in the northern hemisphere, so we further assume that the lowest temperature is reached on Jan.1st, or when $t = 0$.  We observe that the period of the function is 360 (for convenience, we suppose each month is 30 days long).  Thus, the equation for the curve is:
-			
-			\[
-				T = -A \cos{\frac{2\pi}{360} t} + B.
-			\]
-			
-			The points on this curve should satisfy the two following conditions:
-			
-			\[
-				\mu_T = \frac1{360} \int_0^{360} (-A \cos{\frac{2\pi}{360} t} + B) \, \mathrm{d}t,
-			\]
-			
-			\[
-				\sigma_T^2 = \frac1{360} \int_0^{360} \left[ (-A \cos{\frac{2\pi}{360} t} + B) - \mu_T \right] ^2 	\mathrm{d}t.
-			\]
-			
-			With the two equations above, we can solve for $A$ and $B$, and get
-			
-			\begin{equation} \label{eq:temp}
-				T = -\sqrt2 \sigma_T \cos{\frac{2\pi}{360} t} + \mu_T.
-			\end{equation}
+		We will introduce several random variables to allow for some natural variation.  These will make it very hard to directly solve or analyze the model.  Therefore, we will use the Monte Carlo method and run the simulation many times.
 	
 	
 	
-		\subsubsection{Wind and Dispersal}
-		\label{subsubsec:wind}
+	\subsection{Temperature Curve}
+	\label{sec:temp}
+	
+		\begin{wrapfigure}{r}{0.475\textwidth}
+			\vspace{-0.4cm}
+			\centering
+			\includegraphics{fig-temperature_curve.pdf}
+			\caption{Temperature curve}
+			\label{fig:temp}
+		\end{wrapfigure}
+		
+		We assume that the temperature follows a sinusoidal curve, as shown in \textbf{Fig.\ref{fig:temp}}.  We only consider locations in the northern hemisphere, so we further assume that the lowest temperature is reached on Jan.1st, when time $t = 0$.  We observe that the period of the curve is 360 (for convenience, we set each month to 30 days).  Thus, we write the equation as:
+		
+		\[
+			T = -A \cos{\frac{2\pi}{360} t} + B.
+		\]
+		
+		These conditions should be satisfied:
+		
+		\[
+			\mu_T = \frac1{360} \int_0^{360} (-A \cos{\frac{2\pi}{360} t} + B) \, \mathrm{d}t,
+		\]
+		
+		\[
+			\sigma_T^2 = \frac1{360} \int_0^{360} \left[ (-A \cos{\frac{2\pi}{360} t} + B) - \mu_T \right] ^2 	\mathrm{d}t.
+		\]
+		
+		Solving for $A$ and $B$, we get
+		
+		\begin{equation} \label{eq:temp}
+			T = -\sqrt2 \sigma_T \cos{\frac{2\pi}{360} t} + \mu_T.
+		\end{equation}
+
+
+
+
+
+	\subsection{Wind and Dispersal}
+	\label{sec:wind}
+		
+		For the \textbf{direction} of seed dispersal, we assume that the seed always follows the direction of the wind, which is uniformly distributed from 0$^\circ$ to 360$^\circ$ according to \textbf{Assumption \ref{assumption:wind}}.  
+		
+		For the \textbf{distance} of seed dispersal, we consider two types of wind, horizontal wind and updraft (see \textbf{Fig.\ref{fig:dispersal}}).  The seed travels either a ``normal'' distance $s_N$ due to horizontal wind or a ``long'' distance $s_L$ due to updraft.  We take the $\max\{s_N, s_L\}$ for the distance that the seed travels.
+		
+		\begin{figure}[htbp]
+			\centering
+			\includegraphics {wind_mode.pdf}
+			\caption{Dandelion dispersal distance}
+			\label{fig:dispersal}
+		\end{figure}
+		
+		In the case of horizontal wind, we have
+		\begin{equation}\label{eq:hwind}
+		 \frac{s_N}{v_h} = \frac{h}{v_v},
+		\end{equation}
+		where $v_h$ is the speed of the horizontal wind, $h$ is the height of the dandelion, and $v_v$ is the vertical component of the velocity of the seed.  $v_h$ follows a normal distribution with $\mu_{v_h} = \mu_W$ and $\sigma_{v_h} = \sigma_W$.  $h$ can be determined for any given plant.  $v_v$ is approximately constant, with value 0.4 m/s.  Thus, we can calculate the value of $s_N$.
+		
+		\begin{wrapfigure}{r}{0.5\textwidth}
+			\vspace{-0.75cm}
+			\centering
+			\includegraphics{fig-wind_curve.pdf}
+			\caption{Cumulative distribution function of\\long-distance dispersal}
+			\label{fig:longDistance}
+		\end{wrapfigure}
+		
+		In the case of updraft, we suppose that $s_L$ follows an exponential distribution with cumulative distribution function $\mathrm{P} (s_L < s) = 1 - ae^{-bs}$.  We know $\mathrm{P} (s_L < 0) = 0$.  We also know that the probability of a seed being blown further than 10m is 0.5\%.  Therefore we can obtain
+		
+		\begin{equation}\label{eq:updraft}
+			\mathrm{P} (s_L < s) = 1 - e^{-0.53 s}.
+		\end{equation}
+		
+		Finally, the leafs of dandelions have a radius of around 15cm.  If a seed were to land without falling on the leaf of another dandelion, the dandelion density should be less than $(1/0.15)^2$ = 45 plants/m$^2$.  If a seed arrives at a location whose vicinity has a density greater than this maximum value, the seed fails to land.
+		
+		
+		
+		
+		
+	\subsection{Adaptation Factor}
+	\label{sec:af}
+		
+			We introduce an adaptation factor $k$ using $T$ and $\mu_H$.  Dandelions prefer temperate climates and relatively high humidity.  We divide temperature into three ranks, which respectively indicate that the temperature is very, moderately, or not very suitable for dandelions.  A rank for humidity is obtained in the same way.  On a given day, we calculate $k$ by computing the arithmetic mean of the rank for temperature and humidity and scaling $k$ so that $0 \leq k \leq 1$.
 			
-			For the direction of seed dispersal, we assume that the seed always follows the direction of the wind, which is uniformly distributed from 0$^\circ$ to 360$^\circ$ according to \textbf{Assumption \ref{assumption:wind}}.  
-			
-			For the distance of seed dispersal, we consider two types of wind, horizontal wind and updraft.  See \textbf{Fig.\ref{fig:dispersal}} for the two different types of wind.
-			
-			\begin{figure}[htbp]
-				\centering
-				\includegraphics {wind_mode.pdf}
-				\caption{Dandelion dispersal distance}
-				\label{fig:dispersal}
-			\end{figure}
-			
-			In the case of horizontal wind, we have
-			\begin{equation}\label{eq:hwind}
-				 \frac{s_N}{v_h} = \frac{h}{v_v},
+			We use $k$ to determine the mean value of some parameters of dandelions, such as the height of the plant.  To allow for some variation, we let the parameters follow normal distributions with
+			\begin{equation}\label{eq:k}
+				\mu_{\mathrm{parameter}} = \left( \mathrm{worst} + \frac{\mathrm{best} - \mathrm{worst}}4 \right) + k \frac{\mathrm{best} - \mathrm{worst}}2, \,
+				\sigma_{\mathrm{parameter}} = \frac{\mathrm{best} - \mathrm{worst}}{12}.
 			\end{equation}
-			where $s_N$ ($N$ for \textit{N}ormal) is the distance that the seed travels, $v_h$ is the speed of the horizontal wind, $h$ is the height of the dandelion, and $v_v$ is the vertical component of the velocity of the seed.  $v_v$ follows a normal distribution with $\mu = \mu_W$ and $\sigma = \sigma_W$.  $h$ is known for any given plant.  $v_v$ is approximately constant, with value 0.4 m/s.  Thus, we can calculate the value of $s_N$.
-			
-			\begin{wrapfigure}{l}{0.579\textwidth}
-				\centering
-				\includegraphics{fig-wind_curve.pdf}
-				\caption{Cumulative distribution function of\\long-distance dispersal}
-				\label{fig:longDistance}
-			\end{wrapfigure}
-			
-			In the case of updraft, we suppose that the distance $s_L$ ($L$ for \textit{L}ong-distance) follows an exponential distribution, which can be expressed by the cumulative distribution function $\mathrm{P} (s_L < s) = 1 - ae^{-bs}$.  We know that $\mathrm{P} (s_L < 0) = 0$.  We also know that the probability of a seed being blown further than 10m is 0.5\%, i.e., $\mathrm{P} (s_L > 10) = 0.5\%$.  Therefore we can obtain
-			
-			\begin{equation}\label{eq:updraft}
-				\mathrm{P} (s_L < s) = 1 - e^{-0.53 s}.
-			\end{equation}
-			
-			We combine the two distances by taking $\max\{s_N, s_L\}$.   This is the distance that the seed travels.
-			
-			Finally, the leafs of dandelions have a radius of around 15cm.  If a seed were to land without falling on the leaf of another dandelion, the maximum density should be $(1/0.15)^2$ = 45 plants/m$^2$.  If a seed arrives at a location whose vicinity has a density greater than the maximum density, the seed fails to land.
+			The worst and best values for the relevant parameters will be given in \textbf{Section \ref{sec:life}}.  If the a parameter falls exceeds the worst or best values, it is set to that value.
 		
 		
 		
-		\subsubsection{Locations}
 		
-			We choose 6 locations in the US so that we have a variety of temperature and wind conditions.  Alaska is cold; California, the District of Columbia, and Kansas are warm; and Florida and Hawaii are relatively hot.  Alaska, the District of Columbia, and Kansas have distinct seasons; California and Florida show moderate temperature variation; and Hawaii has very stable temperature.  The wind conditions also exhibit different patterns.  The District of Columbia has notably large wind speed.
-						
+		
+	\subsection{Dandelion Life Cycle}
+	\label{sec:life}
+		
+		A dandelion can transfer between 6 states: \textbf{seed}, \textbf{developing}, \textbf{dispersal}, \textbf{inter-dispersal}, \textbf{hold}, and \textbf{dormancy}.
+		
+		\begin{figure}[htbp]
+			\centering
+			\includegraphics {life_cycle.pdf}
+			\caption{Dandelion life cycle}
+			\label{fig:lifeCycle}
+		\end{figure}
+		
+		Out of all \textbf{seed}s, only 2\% will successfully germinate.  These seeds will spend 3 days growing into the developing stage.
+		
+		The \textbf{developing} stage is the stage when the flower is grown and the seeds ripen.  It takes a seed 60--95 days to grow into a flower, and it takes an additional 9--12 days for the seeds on the flower to mature.  The exact duration of this stage is determined by the adaptation factor $k$ (worst = 107, best = 69).
+		
+		The height of the flower is determined by $k$ (worst = 12, best = 40) when developing finishes.
+		
+		When $T > 24^\circ$C, only 12.5\% of the flowers bloom and disperse their seeds.  We let dandelions enter dispersal by probability 12.5\% and move the rest into the hold stage.
+		
+		The \textbf{dispersal} stage lasts 10 days.  A dandelion plant can produce around 10 seed heads per year and it usually flowers twice, so it produces 5 heads every time it flowers.  The number of seeds on each head is determined by $k$ (worst = 150, best = 200).  It takes each head 2 days to disperse its seeds.  The seeds are dispersed per the method stated in \textbf{Section \ref{sec:wind}}.
+
+		The \textbf{inter-dispersal} stage is the stage between two dispersal stages of a plant.  In this stage, dandelions regrow their scapes and flowers.  Since most dandelions that flowered in spring usually flower again in fall, the duration of this stage is set to be half a year, which is 180 days.  
+		
+		Dandelions can only enter the \textbf{hold} stage when $T > 24^\circ$C.  Flowers are held in buds and dispersal is diminished.  As soon as $T$ falls below $24^\circ$C, flowers can bloom and disperse seeds.  
+		
+		Dandelions can only enter the \textbf{dormancy} stage when $T < 0^\circ$C.  The temperature is low and it is likely that it snows.  All life activities of dandelions are paused.  As soon as $T$ rises above $0^\circ$C, dandelions resume the stage before it entered dormancy.
+		
+		
+		
+		
+		
+	\subsection{Algorithm}
+	
+	\subsection{Dandelion Spread Results}
+	
+		\subsubsection{Simulation Conditions}
+		
+			We choose 6 locations in the US so that we have a variety of temperature and wind conditions.  AK is cold; CA, DC, and KS are warm; and FL and HI are relatively hot.  AK, DC, and KS have distinct seasons; CA and FL show moderate temperature fluctuations; and HI has very stable temperature.  The wind conditions also exhibit different patterns.  DC has notably large wind speed.  The values of the five environmental factors are listed in \textbf{Table \ref{tb:locs}}.  
+			
 			{
 				\fontsize{10}{14}\selectfont
 				{
@@ -201,56 +260,8 @@
 					\end{longtable}
 				}
 			}
-		
-		
-		
-		
-		
-	\subsection{Dandelion Life Cycle}
-	
-		We simulate the spread of dandelions by tracking every plant over time and recording its life stage and location.  A dandelion can transfer between 6 states, which are: \textbf{seed}, \textbf{developing}, \textbf{dispersal}, \textbf{inter-dispersal}, \textbf{hold}, and \textbf{dormancy}.  The previous four stages are shown in \textbf{Fig.\ref{fig:lifeCycle}}.
-		
-		\begin{figure}[htbp]
-			\centering
-			\includegraphics {life_cycle.pdf}
-			\caption{Dandelion life cycle}
-			\label{fig:lifeCycle}
-		\end{figure}
-		
-		The duration of the developing stage, the height of the plant, and the number of seeds per head are determined by the adaption factor $k$.  The three parameters follow normal distributions with
-		\begin{equation}\label{eq:k}
-			\mu = \left( \mathrm{worst} + \frac{\mathrm{best} - \mathrm{worst}}4 \right) + k \frac{\mathrm{best} - \mathrm{worst}}2, \,
-			\sigma = \frac{\mathrm{best} - \mathrm{worst}}{12}.
-		\end{equation}
-		The worst and best values for each of the parameters are given later in the section.
-		
-		Out of all the \textbf{seed}s that land in the field, only 2\% will successfully germinate.  These seeds will spend 3 days to grow into the developing stage.
-		
-		The \textbf{developing} stage lasts 69--107 days.  This is because it takes a seed 60--95 days to grow into a flower, and it takes an additional 9--12 days for the seeds on the flower to mature.  The exact duration of this stage is determined by $k$ (worst = 107, best = 69).  During this stage, the scape of the flower is grown.  The height of the flower is in the range 12--40cm and is determined by $k$ (worst = 12, best = 40).
-		
-		The \textbf{dispersal} stage lasts 10 days.  A dandelion plant can produce around 10 seed heads per year, and it usually flowers twice, so it produces 5 heads every time it blooms.  Each head has 150--200 seeds, and the exact number is determined by $k$ (worst = 150, best = 200).  It takes each head 2 days to disperse its seeds.  The seeds are dispersed per the method stated in \textbf{Section \ref{subsubsec:wind}}.
-		
-		When the temperature is higher than $24^\circ$C, only 12.5\% of the flowers bloom and disperse their seeds.  We let dandelions successfully enter the dispersal stage by a probability of 12.5\%, and the rest are moved into the hold stage.
-		
-		The \textbf{inter-dispersal} stage is the stage after dandelions exit dispersal and before they enter dispersal again.  In this stage, dandelions regrow their scapes and flowers.  Since most dandelions that flowered in spring usually flower again in fall, the duration of this stage is set to be exactly half a year, which is 180 days.  
-		
-		Dandelions can only enter the \textbf{hold} stage when $T > 24^\circ$C.  During this stage, flowers are held in buds and dispersal is diminished.  As soon as $T$ falls below $24^\circ$C, dandelions return to the stage before it entered the hold stage.  
-		
-		Dandelions can only enter the \textbf{dormancy} stage when $T < 0^\circ$C.  During this stage, the temperature is low and it is likely that it snows.  Therefore, all life activities of dandelions are paused.  As soon as $T$ rises above $0^\circ$C, dandelions resume the stage before it entered dormancy.
-		
-		
-		
-		
-		
-	\subsection{Algorithm}
-	
-	\subsection{Dandelion Spread Results}
-	
-		\subsubsection{Results}
-		
-			Our model contains several random variables.  We choose to use the Monte Carlo method to simulate.  We tally the number of dandelions and record the mean distance from (0, 0), the origin, where the first dandelion is located.
 			
-			First, we have to determine the starting time of simulation.  The model was run with the starting date set to Jan.\,1st, Feb.\,1st, \ldots, and Dec.\,1st for all 6 locations.  The results for Florida are shown in \textbf{Fig.\ref{fig:start}}.  We observe that the number varies greatly among the runs, but the mean distance is approximately the same.  For each location, the starting date is chosen such that the number of dandelions at the end of 12 months is maximized.  The number of dandelions corresponding to the chosen dates are marked blue in \textbf{Table \ref{tb:start}}.
+			We also have to determine the starting time of simulation.  We run the model with starting dates Jan.\,1st, Feb.\,1st, \ldots, and Dec.\,1st for all 6 locations.  The results for Florida are shown in \textbf{Fig.\ref{fig:start}}.  The dandelion number varies greatly among the runs, but the mean distance is approximately the same.  For each location, the starting date is chosen such that the number of dandelions is maximized.  The number of dandelions corresponding to the chosen dates are marked blue in \textbf{Table \ref{tb:start}}.
 			
 			\begin{figure}[htbp]
 				\centering
@@ -279,7 +290,11 @@
 				}
 			}
 			
-			Next we ran the model 1000 times for each location.  The resulting frequency histogram is shown in \textbf{Fig.\ref{fig:freqDand}}.  We can see that both the number and the mean distance follow a distribution similar to a normal one.  We calculated several statistics for each location, which are displayed in \textbf{Table \ref{tb:numDistribution}}.
+			
+			
+		\subsubsection{Results}
+		
+			We run the model 1000 times for each location.  The resulting frequency histogram for Florida is shown in \textbf{Fig.\ref{fig:freqDand}}.  We can see that both the number and the mean distance follow an approximately normal distribution.  We calculated several statistics for each location, which are displayed in \textbf{Table \ref{tb:numDistribution}} and \textbf{Table \ref{tb:distDistribution}}.
 			
 			\begin{figure}[htbp]
 				\centering
@@ -288,7 +303,9 @@
 				\label{fig:freqDand}
 			\end{figure}
 			
-			We examine the distribution of the number of dandelions.  For all the locations, the confidence interval of the mean is relatively small, which implies the mean is quite accurate.  The standard deviation and range are relatively large, which shows that the spread of dandelions is easily affected by fluctuations in environmental factors and other random factors.  For all locations except California, the distribution is platykurtic, which means it is flatter and less concentrated than the normal distribution.  For all locations except Alaska, the distribution is skewed to the left.  The mass of the distribution is concentrated on the right, so the number of dandelions is slightly more likely to be greater than the mean rather than smaller.  However, because of the unfavorable environmental conditions in Alaska, the number is more likely to be smaller than the mean in that location.  We can draw the same conclusions from comparing the mean and the median as from the skewness.
+			We examine the statistics for dandelion number.  For all locations, the confidence interval of the mean is relatively small, which implies the mean is quite accurate.  The standard deviation and range are large, which shows that the spread of dandelions is easily affected by random factors such as fluctuations in the environment.  For all locations except California, the distribution is platykurtic.  It is flatter and less concentrated than the normal distribution.  
+			
+			For all locations except Alaska, the distribution is skewed to the left.  Its mass is concentrated on the right, so the dandelion number is slightly more likely to be greater than the mean rather than smaller.  However, because of the unfavorable environmental conditions in Alaska, the number is more likely to be smaller than the mean.
 			
 			{
 				\fontsize{10}{14}\selectfont
@@ -307,6 +324,7 @@
 						KS&1066&186.4&1.05&-0.72&1403&1096&11.6\\
 						\bottomrule
 					\end{longtable}
+					
 				}
 			}
 			
@@ -330,7 +348,7 @@
 				}
 			}
 			
-			Out of the 1000 runs, we selected the run that makes the number of dandelions closest to the mean value.  The positions and states of the dandelions at the end of 12 months are drawn in \textbf{Fig.\ref{fig:scatter5loc}}.  For all locations except the District of Columbia, most of the dandelions grow in a semicircular ring that is centered at the origin.  Alaska is apparently unsuitable for dandelions to spread.  In California, Hawaii, Florida, and Kansas, dandelions all spread at a moderate speed.
+			Out of the 1000 runs, we select the run that has a dandelion number closest to the mean value.  The positions and current stages of the dandelions at the end of 12 months are shown in \textbf{Fig.\ref{fig:scatter5loc}}.  For all locations except the District of Columbia, most dandelions grow in a semicircular ring centered at the origin.  Alaska is apparently unsuitable for dandelions to spread.  In California, Hawaii, Florida, and Kansas, dandelions all spread at a moderate speed.
 			
 			\begin{figure}[htbp]
 				\centering
@@ -339,7 +357,7 @@
 				\label{fig:scatter5loc}
 			\end{figure}
 			
-			The positions and states of the dandelions at the end of each of the 12 months are plotted for the District of Columbia (see \textbf{Fig.\ref{fig:spreadDC}}).  The dandelions form a semicircle around the first dandelion.  The closer to the origin, the denser the plants.  Additionally, there is a burgeon every three months, which is caused by the flowering of a new generation of dandelions.
+			The dandelions at the end of each month are plotted for the District of Columbia (see \textbf{Fig.\ref{fig:spreadDC}}).  The dandelions spread much further and they form a semicircle instead of a ring.  The closer to the origin, the denser the plants.  Additionally, there is a burgeon every three months, which is caused by the flowering of a new generation of dandelions.
 			
 			\begin{figure}[htbp]
 				\centering
@@ -348,7 +366,7 @@
 				\label{fig:spreadDC}
 			\end{figure}
 			
-			Finally, we present a graph of the mean distance and natural logarithm of dandelion number in \textbf{Fig.\ref{fig:time}}.  The graph for ln(number) has several jumps and platforms.  The number has a periodic pattern and increases exponentially at the end of each period.  This conclusion coincides with our observation in \textbf{Fig.\ref{fig:spreadDC}}.  Again, Alaska is different because the dandelions are dormant in the first three months of the year.  
+			Finally, we draw a graph of the natural logarithm of dandelion number in \textbf{Fig.\ref{fig:time}}.  The lines have several jumps and platforms.  The dandelion number increases exponentially at the end of each fixed period.  This conclusion coincides with our observation in \textbf{Fig.\ref{fig:spreadDC}}.  Again, Alaska is different.  Dandelions there are dormant in the first three months of the year.  
 			
 			\begin{figure}[htbp]
 				\centering
@@ -363,7 +381,7 @@
 			
 			We conduct a sensitivity analysis on the five factors by varying one of them while keeping the other four fixed.  
 			
-			\textbf{Fig.\ref{fig:saT}} shows the results for temperature.  When $\mu_T$ falls below 7$^\circ$C or rises above 23$^\circ$C, dandelion number decreases sharply.  This is because dandelions are transferred to the dormancy or hold stages at very low or very high temperatures.  Between these two temperatures there is a slow increase in number as $\mu_T$ increases.  The number is very sensitive to extreme temperatures, but only moderately responsive to mild temperatures.  The mean distance increases with $\mu_T$ up to 19$^\circ$C, where the it levels off and begins to fall at 23$^\circ$C.  It has medium sensitivity to $\mu_T$.
+			\textbf{Fig.\ref{fig:saT}} shows the results for temperature.  When $\mu_T$ falls below 7$^\circ$C or rises above 23$^\circ$C, dandelion number decreases sharply.  This is because dandelions are transferred to the dormancy or hold stages at very low or  high temperatures.  The number is very sensitive to extreme temperatures, but only moderately responsive to mild temperatures.  The mean distance increases with $\mu_T$ up to 19$^\circ$C, where the it temporarily levels off and begins to fall at 23$^\circ$C.  It has medium sensitivity to $\mu_T$.
 			
 			Both number and mean distance decreases as $\sigma_T$ increases.  They decrease relatively slowly below $\sigma_T = 5^\circ$C and rapidly above that value.  However, the overall sensitivity is not high for either number or mean distance.
 			
@@ -381,7 +399,7 @@
 				\label{fig:saT}
 			\end{figure}
 			
-			\textbf{Fig.\ref{fig:saW}} shows the results for wind speed.  The number and mean distance have a positive correlation with $\mu_W$ and $\sigma_W$ and change drastically when the two factors vary.  When the mean wind speed increases, seeds are dispersed further apart from each other, so it is less likely for them to land on other plants.  When the standard deviation increases, some seeds land near the mother plant and others far.  
+			\textbf{Fig.\ref{fig:saW}} shows the results for wind speed.  The number and mean distance have a positive correlation with $\mu_W$ and $\sigma_W$ and change drastically when the two factors vary.  When $\mu_W$ increases, seeds are dispersed farther and land further apart from each other.  When $\sigma_W$ increases, some seeds land near the mother plant and others far.  In both cases it is less likely for seeds to land on other plants, making dandelion number rise quickly.
 			
 			\begin{figure}[htbp]
 				\centering
@@ -396,7 +414,7 @@
 				\label{fig:saW}
 			\end{figure}
 			
-			\textbf{Fig.\ref{fig:saH}} shows the results for humidity.  
+			\textbf{Fig.\ref{fig:saH}} shows the results for humidity.  There are three levels of number and mean distance corresponding to different humidity.  This is because of the three ranks for humidity that are used in the calculation of the adaptation factor $k$.
 			
 			\begin{figure}[htbp]
 				\centering
@@ -475,11 +493,11 @@
 				\multicolumn{3}{l}{Category $C$ - Location}  \\
 				\midrule
 				
-				$C_1$ & Soil Adaption & The soil adaption level\\
+				$C_1$ & Soil Adaptation & The soil adaptation level\\
 				&& $c_1=0$ (Low), $0.5$ (Medium), $1$ (High)\\
-				$C_2$ & Temperature Adaption & The temperature adaption level\\
+				$C_2$ & Temperature Adaptation & The temperature adaptation level\\
 				&& $c_2=0$ (Low), $0.5$ (Medium), $1$ (High)\\
-				$C_3$ & Humid Adaption & The humid adaption level\\
+				$C_3$ & Humid Adaptation & The humid adaptation level\\
 				&& $c_3=0$ (Low), $0.5$ (Medium), $1$ (High)\\
 				$C_4$ & Population Density & The level of population density.\\
 				&& $c_4=0$ (High), $0.5$ (Medium), $1$ (Low)\\
