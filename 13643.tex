@@ -117,23 +117,23 @@
 			
 			We suppose that the temperature follows a sinusoidal curve, as shown in \textbf{Fig.\ref{fig:temp}}, as trigonometric functions are convenient for modeling periodical fluctuations.  We only consider locations in the northern hemisphere, so we further assume that the lowest temperature is reached on Jan.1st, or when $t = 0$.  We observe that the period of the function is 360 (for convenience, we suppose each month is 30 days long).  Thus, the equation for the curve is:
 			
-			\begin{equation}
-				T = -A \cos{\frac{2\pi}{360} t} + B. \notag
-			\end{equation}
+			\[
+				T = -A \cos{\frac{2\pi}{360} t} + B.
+			\]
 			
 			The points on this curve should satisfy the two following conditions:
 			
-			\begin{equation}
-				\mu_T = \frac1{360} \int_0^{360} (-A \cos{\frac{2\pi}{360} t} + B) \, \mathrm{d}t, \notag
-			\end{equation}
+			\[
+				\mu_T = \frac1{360} \int_0^{360} (-A \cos{\frac{2\pi}{360} t} + B) \, \mathrm{d}t,
+			\]
 			
-			\begin{equation}
-				\sigma_T^2 = \frac1{360} \int_0^{360} \left[ (-A \cos{\frac{2\pi}{360} t} + B) - \mu_T \right] ^2 	\mathrm{d}t. \notag
-			\end{equation}
+			\[
+				\sigma_T^2 = \frac1{360} \int_0^{360} \left[ (-A \cos{\frac{2\pi}{360} t} + B) - \mu_T \right] ^2 	\mathrm{d}t.
+			\]
 			
 			With the two equations above, we can solve for $A$ and $B$, and get
 			
-			\begin{equation}
+			\begin{equation} \label{eq:temp}
 				T = -\sqrt2 \sigma_T \cos{\frac{2\pi}{360} t} + \mu_T.
 			\end{equation}
 	
@@ -154,7 +154,7 @@
 			\end{figure}
 			
 			In the case of horizontal wind, we have
-			\begin{equation}
+			\begin{equation}\label{eq:hwind}
 				 \frac{s_N}{v_h} = \frac{h}{v_v},
 			\end{equation}
 			where $s_N$ ($N$ for \textit{N}ormal) is the distance that the seed travels, $v_h$ is the speed of the horizontal wind, $h$ is the height of the dandelion, and $v_v$ is the vertical component of the velocity of the seed.  $v_v$ follows a normal distribution with $\mu = \mu_W$ and $\sigma = \sigma_W$.  $h$ is known for any given plant.  $v_v$ is approximately constant, with value 0.4 m/s.  Thus, we can calculate the value of $s_N$.
@@ -168,7 +168,7 @@
 			
 			In the case of updraft, we suppose that the distance $s_L$ ($L$ for \textit{L}ong-distance) follows an exponential distribution, which can be expressed by the cumulative distribution function $\mathrm{P} (s_L < s) = 1 - ae^{-bs}$.  We know that $\mathrm{P} (s_L < 0) = 0$.  We also know that the probability of a seed being blown further than 10m is 0.5\%, i.e., $\mathrm{P} (s_L > 10) = 0.5\%$.  Therefore we can obtain
 			
-			\begin{equation}
+			\begin{equation}\label{eq:updraft}
 				\mathrm{P} (s_L < s) = 1 - e^{-0.53 s}.
 			\end{equation}
 			
@@ -218,7 +218,7 @@
 		\end{figure}
 		
 		The duration of the developing stage, the height of the plant, and the number of seeds per head are determined by the adaption factor $k$.  The three parameters follow normal distributions with
-		\begin{equation}
+		\begin{equation}\label{eq:k}
 			\mu = \left( \mathrm{worst} + \frac{\mathrm{best} - \mathrm{worst}}4 \right) + k \frac{\mathrm{best} - \mathrm{worst}}2, \,
 			\sigma = \frac{\mathrm{best} - \mathrm{worst}}{12}.
 		\end{equation}
