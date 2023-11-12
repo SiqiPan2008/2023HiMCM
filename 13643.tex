@@ -946,7 +946,42 @@ The invasive species are just who they are.  Most of them have a lot of merits t
 
 
 
-
+		{
+	\fontsize{10}{14}\selectfont
+	{
+		\setlength{\parindent}{-1em}
+		
+		{
+			\fontsize{12}{18}\selectfont
+			\begin{longtable}{p{6.65in}}
+				\toprule
+				\textbf{Analytic Hierarchy Process Model for Impact Factor}\\
+				\textbf{INPUT:} All the attributes in table... and invasive leve... \\
+				\bottomrule
+			\end{longtable}
+		}
+		
+		\vspace{-0.5em}
+		\begin{algorithmic}
+			\State \toB{$global\,value\,vector$ } $\gets$ evaluate all the ... per 
+			\State \toB{$local\,value\,vector$ } $\gets$ evaluate all the ... per 
+			\State \toB{$global\,weight\,vector$ } $\gets$ table...
+			\State \toB{$local\,weight\,vector$ } $\gets$ table...
+			\State \toB{$\rho$ } $\gets$ table...
+			\State \toB{$IF_G$ } $\gets$ \toB{$\rho$ } times dot product of \toB{$global\,value\,vector$ } and \toB{$global\,weight\,vector$ }
+			\State \toB{$IF_L$ } $\gets$ \toB{$\rho$ } times dot product of \toB{$local\,value\,vector$ } and \toB{$local\,weight\,vector$ }
+		\end{algorithmic}
+		
+		{
+			\fontsize{12}{18}\selectfont
+			\begin{longtable}{p{6.6in}}
+				\toprule
+				\textbf{OUTPUT:} \toB{$IF_G$ } and \toB{$IF_L$}\\
+				\bottomrule
+			\end{longtable}
+		}
+	}
+}	
 
 
 
