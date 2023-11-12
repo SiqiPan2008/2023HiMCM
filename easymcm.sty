@@ -101,13 +101,11 @@
 \ifpdf%
 \RequirePackage{epstopdf}  % pdftex 不能使用 eps 图片，用该宏包转成 pdf 后使用
 \DeclareGraphicsExtensions{.pdf,.jpg,.jpeg,.png}    % 允许的图片类型
-\RequirePackage[
-    linkcolor=black,  % 消除链接色彩
-    citecolor=black,
-    colorlinks=true,
-    linkcolor=black,
-    citecolor=black,
-    urlcolor=black]{hyperref}
+%\RequirePackage[
+%    linkcolor=blue,  % 消除链接色彩
+%    citecolor=blue,
+%    colorlinks=true,
+%    urlcolor=blue]{hyperref}
 \else\DeclareGraphicsExtensions{.eps,.ps}  % 不需要转换 eps 图片格式
 \ifxetex\RequirePackage[
     xetex,  % 运行 xetex
@@ -116,7 +114,7 @@
     bookmarksopen=true,
     colorlinks=true,
     linkcolor=black,
-    citecolor=black,
+    citecolor=blue,
     urlcolor=black]{hyperref}
 \else\RequirePackage[
     dvipdfm,  % 运行其他编译引擎（如 luatex）

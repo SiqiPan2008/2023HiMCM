@@ -5,7 +5,6 @@
 \usepackage{booktabs}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
-\usepackage{hyperref}
 
 \newcommand{\toB}[1]{\color{blue}#1\color{black}}
 
@@ -581,7 +580,32 @@
 			
 		\subsubsection{Strengths and Weaknesses}
 		
-		
+			\paragraph{Strengths}
+			\vspace{-0.1cm}
+			\begin{itemize}
+				\vspace{-0.3cm}
+				\item Our model is \textbf{realistic}.  We used data for real locations.  And we considered how environmental factors and random variations contribute to dandelion spread.  Besides, we tracked every plant during the entire spread process.  
+				
+				\vspace{-0.3cm}
+				\item Our model is \textbf{easy to understand and implement}.  The simulation method is very intuitive, and the model only requires five input values that are easily acquired from meteorological databases.
+				
+				\vspace{-0.3cm}
+				\item Our model is \textbf{extensible}.  We can easily consider other factors by adding a component to the model.  For example, if we want to consider the effect of rain, we can determine the effects of rain on the different stages of dandelions and add this new component to our current model.
+			\end{itemize}
+			
+			\paragraph{Weaknesses}
+			\vspace{-0.5cm}
+			\begin{itemize}
+				\vspace{-0.3cm}
+				\item Our model is \textbf{time-intensive}.  To get a fairly accurate result, we have to run about 1000 times for each location.  Compared to other possible models, the efficiency of our model is relatively low.
+				
+				\vspace{-0.3cm}
+				\item The \textbf{adaptation factor} may be an over-simplification.  It may not represent the reality very accurately.  If we can acquire the relationship between dandelion parameters and climate conditions, we will be able to substitute the adaptation factor with some more accurate components.
+				
+				\vspace{-0.3cm}
+				\item Our model \textbf{misses certain factors}.  We did not consider rain, which stops flowers from blooming and hinders seed dispersal.  Other missed factors include interactions with other plants and human intervention.  These can be added as new components in the future.
+				
+			\end{itemize}
 
 		
 		
