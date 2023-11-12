@@ -257,11 +257,11 @@
 			We introduce an adaptation factor $k$ which is evaluated by using $T$ and $\mu_H$.  Dandelions prefer temperate climates and relatively high humidity.  We divide temperature into three ranks, which indicate if the temperature is suitable for the dandelion.  We also divide humidity into three ranks, which indicate if the humidity is suitable for the dandelion.  On a given day, we calculate $k$ by computing the arithmetic mean of the rank for temperature and humidity and scaling $k$ so that $0 \leq k \leq 1$.
 			
 			We use $k$ to determine the mean value of some parameters of dandelions, such as the height of the puffball.  To allow for some variation, we let the parameters follow normal distributions with:
-			\begin{equation}\label{eq:mu_p}
-				\mu_{\mathrm{parameter}} = \left( \mathrm{worst} + \frac{\mathrm{best} - \mathrm{worst}}4 \right) + k \frac{\mathrm{best} - \mathrm{worst}}2, 
-			\end{equation}	
-			\begin{equation}\label{eq:sigma_p}
-				\sigma_{\mathrm{parameter}} = \frac{\mathrm{best} - \mathrm{worst}}{12}.
+			\begin{equation}
+				\begin{gathered}
+					\mu_{\mathrm{parameter}} = \left( \mathrm{worst} + \frac{\mathrm{best} - \mathrm{worst}}4 \right) + k \frac{\mathrm{best} - \mathrm{worst}}2, \\
+					\sigma_{\mathrm{parameter}} = \frac{\mathrm{best} - \mathrm{worst}}{12}.
+				\end{gathered}
 			\end{equation}
 			The worst and best values for the relevant parameters will be given in \textbf{Section \ref{sec:life}}.  If the a parameter exceeds the limits, it is set to the limit.
 		
@@ -615,9 +615,60 @@
 
 	\subsection{Assumptions and Justifications}
 	
+		\begin{enumerate}
+			
+			\item \textbf{A plant's impact has a direct correlation with its biological characteristics.}
+			\vspace{-0.125in}
+			\begin{description}
+				\item[Justification:] Study shows that the invasiveness of plant species is closely related to performance-related traits\autocite{van2010meta}.  Thus we can think of biological characteristics as fairly reliable indicators on the invasiveness, which is the plant's ability to cause harm to the environment and to humans.  
+			\end{description}
+			
+			\item \label{assumption:offset} \textbf{A plant's impact on humans and on the environment can be partly offset by its benefits.}
+			\vspace{-0.125in}
+			\begin{description}
+				\item[Justification:] If plants are edible for animals or is beneficial for the environment in some other way, it is likely that the environment will receive less harm overall.  Likewise, if plants can be made into products or utilized in other ways, it can benefit the economy and causes less harm to humans.  
+			\end{description}
+			
+			\item \textbf{At locations with higher population density, the impact of a plant is greater.}
+			\vspace{-0.125in}
+			\begin{description}
+				\item[Justification:] At places with higher population density, it is likely that people try harder to get rid of undesirable plants.  This leads to more expenditure on the control of the species, which means the impact is greater.  At places with low population density, there is less human intervention and introduced plants may reach an equilibrium with native plants more easily, thus causing less impact.  
+			\end{description}
+			
+		\end{enumerate}
+	
 	\subsection{Model Description}
-
-		hello
+		
+		The \textbf{impact factor} is defined as a measure of the level of impact or harm that a plant species makes on both the environment and human beings.  We introduce two types of impact factors, namely global and local impact factors.  Global impact factors is the same regardless the location.  It only considers the characteristics of the plant itself, and its general impacts on human and environment.  The local impact factor also considers the adaptation of the plant to a certain location besides the factors already considered in the global impact factor.  
+		
+		\textbf{Table \ref{tb:syms}} lists all the variables we will use in this model.
+		
+		We obtained a list of invasive plants from \href{https://www.sciencebase.gov/catalog/item/5b911a5ce4b0702d0e808588}{US-RIIS}\autocite{US-RIIS} and chose 226 plants.  We wrote a web crawler to get detailed attributes of the plants from the \href{https://plants.usda.gov/home/}{USDA Plants Database}\autocite{USDA}.  \textbf{Table \ref{tb:attributes}} lists the attributes that we consider.  The attributes in Category $A$ and $B$ are used by both the global and the local impact factors, while the attributes in Category $C$ only concerns the local impact factor.
+		
+		{
+			\fontsize{10}{14}\selectfont
+			{
+				\begin{longtable}{cc}
+					
+					\caption{Variable definition}
+					\label{tb:syms}\\
+					\toprule
+					Symbol&Definition\\
+					\toprule
+					IF$_G$&Global impact factor\\
+					IF$_L$&Local impact factor\\
+					$\rho$&Invasion level coefficient\\
+					$a_i$&The value for attribute $A_i$ for the plant\\
+					$b_i$&The value for attribute $B_i$ for the plant\\
+					$c_i$&The value for attribute $C_i$ for the plant\\
+					$\alpha_i$&The weight for attribute $A_i$ for the plant\\
+					$\beta_i$&The weight for attribute $B_i$ for the plant\\
+					$\gamma_i$&The weight for attribute $C_i$ for the plant\\
+					\bottomrule
+					
+				\end{longtable}
+			}
+		}
 		
 		{
 			\fontsize{10}{14}\selectfont
@@ -638,18 +689,18 @@
 				
 				$A_1$ & Duration & $a_1=0.5$ (Annual), $0.75$ (Biennial), $1$ (Perennial)\\
 				$A_2$ & Growing Habit & $a_2=0$ (Tree), $0.25$ (Shrub), $0.5$ (Vine), $0.75$ (Graminoid), $1$ (Forb/herb)\\ 
-				$A_3$ & Growth Rate & The growth rate after successful establishment\\
+				$A_3$ & Growth Rate & The growth rate after successful establishment.\\
 					&& $a_3=0.5$ (Slow), $0.75$ (Moderate), $1$ (Rapid)\\
 				$A_4$ & Lifespan & $a_4=0.25$ (when $a_1=0.5$ or $0.75$), $0.5$ (Short), $0.75$ (Moderate), $1$ (Long) \\
 				$A_5$ & Fertility Requirement & Relative level of nutrition (N, P, K) required for normal growth and development.\\
 					 && $a_5=0.5$ (Low), $0.75$ (Medium), $1$ (High)\\
 				$A_6$ & Fruit/Seed Abundance & The amount of seed produced.\\
 					&& $a_6=0.25$ (None), $0.5$ (Low), $0.75$ (Medium), $1$ (High)\\
-				$A_7$ & Propagated Methods & The propagetion methods number, $n_7$. The methods can be Propagated by Bare Root, by Bulb, by Container, by Corm, by Cuttings, by Seed, by Sod, by Sprigs, or by Tubers. \\
+				$A_7$ & Propagated Methods & The propagation methods number, $n_7$. The methods can be Propagated by Bare Root, by Bulb, by Container, by Corm, by Cuttings, by Seed, by Sod, by Sprigs, or by Tubers. \\
 					&& $a_7=0.25$ ($n_7=1$), $0.5$ ($n_7=2$), $0.75$ ($n_7=3$), $1$ ($n_7\geq4$)\\
 				$A_8$ & Seed Spread Rate & The capability of the plant to spread through its seed production.\\
 					&& $a_8=0.25$ (None), $0.5$ (Slow), $0.75$ (Moderate), $1$ (Rapid)\\
-				$A_9$ & Seedling Vigor & The expected seedling survival percentage of the plant\\
+				$A_9$ & Seedling Vigor & The expected seedling survival percentage of the plant.\\
 					&& $a_9=0.5$ (Low), $0.75$ (Medium), $1$ (High)\\
 				
 				\midrule
@@ -664,27 +715,33 @@
 					&& $b_3=0$ (High), $0.5$ (Moderate), $0.75$ (Low), $1$ (None)\\
 				$B_4$ & Palatable Human & The plant produce berries, nuts, seeds, or fruits are palatable to humans. \\
 					&& $b_4=0.5$ (Yes), $1$ (No)\\
-				$B_5$ & Commercial Availability & The plant propagules are in the commercial marketplace \\
+				$B_5$ & Commercial Availability & The plant propagules are in the commercial marketplace. \\
 					&& $b_5=0.5$ (Yes), $1$ (No)\\
 			
 				\midrule
 				\multicolumn{3}{l}{Category $C$ - Location}  \\
 				\midrule
 				
-				$C_1$ & Soil Adaptation & The soil adaptation level\\
+				$C_1$ & Soil Adaptation & The soil adaptation level.\\
 				&& $c_1=0$ (Low), $0.5$ (Medium), $1$ (High)\\
-				$C_2$ & Temperature Adaptation & The temperature adaptation level\\
+				$C_2$ & Temperature Adaptation & The temperature adaptation level.\\
 				&& $c_2=0$ (Low), $0.5$ (Medium), $1$ (High)\\
-				$C_3$ & Humid Adaptation & The humid adaptation level\\
+				$C_3$ & Humid Adaptation & The humid adaptation level.\\
 				&& $c_3=0$ (Low), $0.5$ (Medium), $1$ (High)\\
 				$C_4$ & Population Density & The level of population density.\\
-				&& $c_4=0$ (High), $0.5$ (Medium), $1$ (Low)\\
+				&& $c_4=0$ (Low), $0.5$ (Medium), $1$ (High)\\
 			
 				\bottomrule
 			
 			\end{longtable}
 			}
 		}
+		
+		Attributes $B_2$ (Product), $B_3$ (Palatable Animal), $B_4$ (Palatable Human), and $B_5$ (Commercial Availability) are special since they measure benefits rather than harms.  Per \textbf{Assumption \ref{assumption:offset}}, the greater the benefit, the less the impact.  Therefore, when the palatability is higher, or when the plant has more uses in manufacturing, the corresponding values ($b_i$) are set to be smaller.
+		
+		We choose to use the Analytic Hierarchy Process (AHP) to obtain the weights for each attribute.  It is too difficult to construct a weight vector by conferring to research papers.  AHP is suitable for this situation, since it enables us to make pairwise comparisons.  Furthermore, it also provides a method to evaluate our consistency in making those comparisons and can help us reach a reasonable result.
+		
+		We make comparisons between attributes according to Saaty's fundamental scale of absolute numbers\autocite{AHP}.  The resulting comparison matrix is shown in \textbf{Table \ref{tb:mat}}.
 		
 		{
 			\fontsize{10}{18}\selectfont
@@ -722,9 +779,11 @@
 				\end{longtable}
 			}
 		}	
-
-		hello!!! \\
-
+		
+		We can see that attribute $B_1$ (Toxicity) is comparatively very important.  This is because toxic plants can poison the local environment and requires a large expenditure for humans to eliminate.  Attributes $A_3$ (Growth Rate), $A_5$ (Fertility Requirement), $A_8$ (Seed Spread Rate) are also important because they directly determine the spread rate of a plant when it is introduced to a new location.  
+		
+		For the global impact factor, we only take the upper 14 rows and the left 14 columns of the matrix.  For the local impact factor, we use the complete matrix.  We conduct a consistency test on the global matrix and the local one.  The resulting CR is small in both matrices, so they are relatively consistent.
+		
 		{
 			\fontsize{10}{14}\selectfont
 			{
@@ -746,11 +805,8 @@
 				\end{longtable}
 			}
 		}	
-
-	hello!!! \\
-	hello!!! \\
-	hello!!! \\
-	hello!!! \\
+		
+		For each of the two matrices, we scale the columns so that each column adds up to 1.  Then, we calculate the sum of each row to get a sum vector.  We divide it by $n$, the number of considered attributes, to get the final weight vector.  The weight results are shown in \textbf{Table \ref{tb:weights}}.
 	
 		{
 			\fontsize{10}{14}\selectfont
@@ -775,7 +831,13 @@
 			}
 		}	
 	
-		hello!!! \\
+		\begin{equation}
+			\mathrm{IF}_L = \rho \left( \sum_{i = 1}^9 \alpha_ia_i + \sum_{i = 1}^5 \beta_ib_i \right)
+		\end{equation}
+		
+		\begin{equation}
+			\mathrm{IF}_G = \rho \left( \sum_{i = 1}^9 \alpha_ia_i + \sum_{i = 1}^5 \beta_ib_i + \sum_{i = 1}^4 \gamma_ic_i \right)
+		\end{equation}
 		
 		{
 			\fontsize{10}{14}\selectfont
@@ -785,20 +847,20 @@
 					\label{tb:ranks}\\
 					
 					\toprule
-					Rank&Scientific Name&Vernacular Name&Duration&Growing Habit&IF$_g$\\
+					Rank&Scientific Name&Vernacular Name&Duration&Growing Habit&IF$_G$\\
 					\toprule
-					1&Melilotus officinalis&Sweetclover&Perennial&Forb/herb&84.5\\
-					2&Senecio vulgaris&Old-man-in-the-spring&Biennial&Forb/herb&83.3\\
-					3&Ailanthus altissima&Tree of heaven&Perennial&Tree&81.8\\
-					4&Crotalaria spectabilis&Showy rattlebox&Annual&Forb/herb&81.7\\
-					5&Ranunculus repens&Creeping buttercup&Perennial&Forb/herb&80.8\\
-					6&Melilotus indicus&Annual yellow sweetclover&Annual&Forb/herb&80.0\\
-					7&Digitalis purpurea&Purple foxglove&Biennial&Forb/herb&79.9\\
-					8&Sorghum halepense&Johnsongrass&Perennial&Graminoid&78.9\\
-					9&Schedonorus arundinaceus&Tall fescue&Perennial&Graminoid&76.8\\
-					10&Vicia sativa&Garden vetch&Annual&Forb/herb&73.8\\
+					1&\textit{Melilotus officinalis}&Sweetclover&Perennial&Forb/herb&84.5\\
+					2&\textit{Senecio vulgaris}&Old-man-in-the-spring&Biennial&Forb/herb&83.3\\
+					3&\textit{Ailanthus altissima}&Tree of heaven&Perennial&Tree&81.8\\
+					4&\textit{Crotalaria spectabilis}&Showy rattlebox&Annual&Forb/herb&81.7\\
+					5&\textit{Ranunculus repens}&Creeping buttercup&Perennial&Forb/herb&80.8\\
+					6&\textit{Melilotus indicus}&Annual yellow sweetclover&Annual&Forb/herb&80.0\\
+					7&\textit{Digitalis purpurea}&Purple foxglove&Biennial&Forb/herb&79.9\\
+					8&\textit{Sorghum halepense}&Johnsongrass&Perennial&Graminoid&78.9\\
+					9&\textit{Schedonorus arundinaceus}&Tall fescue&Perennial&Graminoid&76.8\\
+					10&\textit{Vicia sativa}&Garden vetch&Annual&Forb/herb&73.8\\
 					$\vdots$\\
-					26&Taraxacum officinale&Common dandelion&Perennial&Forb/herb&66.9\\
+					26&\textit{Taraxacum officinale}&Common dandelion&Perennial&Forb/herb&66.9\\
 					\bottomrule
 				\end{longtable}
 			}
