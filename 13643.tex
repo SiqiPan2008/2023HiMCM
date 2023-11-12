@@ -28,24 +28,26 @@
 
 	\subsection{Background}
 	
-	Dandelion is a very common plant with a scientific name \textit{Taraxacum officinale}, which is stemless, lactiferous and perennial\autocite{stewart2002biology}.  We can find them at the roadside, in the wild field or at some inconspicuous places.  Just imagine that these little herbs with beautiful yellow flowers have been evolving on this planet for about 30 million years\autocite{dandelionhistory} - even longer than we human beings!
+	Dandelion is a very common plant with scientific name \textit{Taraxacum officinale}, which is stemless, lactiferous and perennial\autocite{stewart2002biology}.  We can find them at roadsides, in wild fields or at inconspicuous places.  Just imagine that these little herbs with beautiful yellow flowers have been evolving on this planet for about 30 million years\autocite{dandelionhistory} - even longer than we human beings!
 	
-	But currently they are labeled as invasive plant.  \textbf{Invasive species} is a relative concept, which is defined as the ones that are 1) non-native to the ecosystem under consideration, and 2) whose introduction is likely to cause economic or environmental harm, or harm to human health\autocite{defInvasive}.  Dandelions can adapt different environments.  They have high growth rate and spread fast. They are likely to cuddle together and crowd out desirable plants, particularly in lawns.  Also they have deep taproots that enable them to pull available water out of the soil.  It is also mentioned that dandelions could cause significant economic damage and infestation of other crops worldwide\autocite{stewart2002biology}.
+	But currently they are labeled as an invasive plant.  \textbf{Invasive species} is a relative concept.  It means an alien species whose introduction does or is likely to cause economic or environmental harm or harm to human health.\autocite{defInvasive}.  In some regions, dandelions do have some traits that make them invasive.  They can adapt different environments.  They have high growth rate and spread fast. They are likely to cuddle together and crowd out desirable plants, particularly in lawns.  Also, they have deep taproots that enable them to pull available water out of the soil.  It is also mentioned that dandelions could cause significant economic damage and infestation of other crops worldwide\autocite{stewart2002biology}.
 	
-	To disclose the reason that dandelion becomes invasive, researchers have done a lot of study on how the environment affects dandelion.  Laboratory and field studies has discussed the impact of climatic factors on its growth. Laboratory studies were conducted on the relationship between the germination rate and ambiances, such as light and temperature\autocite{letchamo1996light}.  Field studies have also conducted on the same topic, providing credibility for the theoretical conclusion\autocite{yoneda1991effects}.  Studies provided insights on the drought tolerance of dandelions\autocite{brock2005drought}. In the meanwhile, soil pollution and geographic factors are also being considered\autocite{verhoeven2013geographic}.
+	To disclose the reason that dandelion becomes invasive, researchers have done many studies on how the environment affects dandelion.  Laboratory and field studies have discussed the impact of climatic factors on its growth. Laboratory studies have been conducted on the relationship between germination rate and ambiances, such as light and temperature\autocite{letchamo1996light}.  Field studies have also been conducted on the same topic, providing credibility for the theoretical conclusions\autocite{yoneda1991effects}.  Studies have provided insights on the drought tolerance of dandelions\autocite{brock2005drought}. In the meanwhile, soil pollution and geographic factors are also being considered\autocite{verhoeven2013geographic}.
 	
-	Researchers have also paid great attention to dandelion dispersal, which is a major way for dandelion propagation.  Past papers have analyzed the structure of dandelion seeds and the effects of humidity to the structure, which impacted on the dispersal speed\autocite{greene1989model}. Experiments researched the aerodynamics of the seeds, demonstrated the effects of wind speed and wind directions.  It has also been proved that updraft could not be neglected\autocite{tackenberg2003dandelion}.
+	Researchers have also paid great attention to dandelion dispersal, which is a major way for dandelion propagation.  Past papers have analyzed the structure of dandelion seeds and the effects of humidity on their structure, which affected the dispersal speed\autocite{greene1989model}. Scientists have modeled the aerodynamics of the seeds and demonstrated the effects of wind speed and directions.  It has also been proved that updrafts could not be neglected\autocite{tackenberg2003dandelion}.
 	
-	Besides this single particular species dandelion, researchers have discussed the invasion species topic more generally.  Ecologists have used native to the invaded range as "control species" in attempting to determine the traits associated with invasive plant species\autocite{muth2006traits}.  A protocol has been developed for categorizing non-native plants according to their negative impacts on biodiversity in a large area such as a state, nation, or ecological region\autocite{randall2008invasive}.  Some online tools like \href{https://www.imapinvasives.org/decision-analysis-tool}{PIMDAT}\autocite{PIMDAT} have been provided to help people make strategic decisions about invasive species control projects.  Currently we also have Best Management Practices (BMPs) to prevent the introduction and spread of invasive species\autocite{BMP}.
+	Beside this particular species, researchers have discussed invasive species more generally.  Ecologists have used species native to the invaded range as ``control species'' in attempting to determine the traits associated with invasive plant species\autocite{muth2006traits}.  A protocol has been developed for categorizing non-native plants according to their negative impacts on biodiversity in a large area such as a state, nation, or ecological region\autocite{randall2008invasive}.  Some online tools like \href{https://www.imapinvasives.org/decision-analysis-tool}{PIMDAT}\autocite{PIMDAT} have been provided to help people make strategic decisions about invasive species control projects.  Currently we also have Best Management Practices (BMPs) to prevent the introduction and spread of invasive species\autocite{BMP}.
 	
-	Public database plays an important role in the research of invasive species especially for plants. By conferring to some database, we can find plants data to study biology of the invasive species\autocite{USDA}.  Another database to track introduced species provides a baseline for effective modeling of species trends and interactions, geospatially and temporally\autocite{US-RIIS}.  US Government's Open Data provides a lot of data for current invasive plants\autocite{DATAGOV}.
+	Public databases play an important role in the research of invasive species, especially for plants. By conferring to some database, we can find plant data to study biological attributes of the invasive species\autocite{USDA}.  Another database for tracking introduced species provides a baseline for effective modeling of species trends and interactions, geospatially and temporally\autocite{US-RIIS}.  US Government's Open Data provides a lot of data for current invasive plants\autocite{DATAGOV}.
 	\newpage
 	
 	\subsection{Problem Restatement}
+
+	In this paper, we will solve 2 problems.
 	
-		some random text
-		
-		USDA
+	\textbf{For the first problem}, we will predict the spread of dandelions within a year (360 days).  Suppose that a dandelion in its dispersal period happens to be adjacent to an open one-hectare plot of land.  We need to create a mathematical model to describe how the dandelion will spread its seeds and how its offspring will scatter on the land.  And we will have to consider the effect of various climatic conditions, such as temperate, arid, and tropical climates, on dandelion growth.
+	
+	\textbf{For the second problem}, we will need to devise an ``impact factor'' for invasive species.  We will formulate a mathematical model to determine this factor and apply it to dandelions and some other invasive plants.  We also need to make sure the plants are invasive in the regions we choose.
 
 \section{Dandelion Spread Model}
 
@@ -53,38 +55,51 @@
 	
 		\begin{enumerate}
 			
-			\item \textbf{The dandelion is at the midpoint of a square field's edge, which is 100m long.  Seeds that are blown out of the field are neglected.}
+			\item \textbf{The initial dandelion is at the midpoint of the left edge of a one-hectare square plot of land.  Seeds blown out of the area are neglected.}
 			\vspace{-0.125in}
 			\begin{description}
-				\item[Justification:] According to the problem, the dandelion is adjacent to the field.  It is reasonable that we set the plant on an edge.  Furthermore, we limit our considerations within the field.  We may assume that a river or forest borders the field, so seeds cannot spread outside.
+				\item[Justification:] According to the problem, the initial dandelion is adjacent to an open one-hectare plot of land. In order to acquire maximum spread effect, we set the plant in the middle of the left edge and make the right side our spread area. The seeds drifting to the left of the edge will be neglected. We may imagine a river or a forest is at the left side, so seeds cannot spread back to the area.
 			\end{description}
 			
-			\item \textbf{The field is open and planar.}
+			\item \textbf{The field is planar.}
 			\vspace{-0.125in}
 			\begin{description}
-				\item[Justification:] We only consider the case of flat terrain.  This helps us simplify the spread into two dimensions.  Besides, crop fields and grasslands are usually plains.  Dandelion spread in these terrains are of greatest interest.
+				\item[Justification:] We only consider the case of flat terrain.  This helps us limits the spread to two dimensions.  Flat terrain simplifies the calculation of dispersal distance since the wind can be at a constant height and the seed landing will not be affected by different topography.
 			\end{description}
 			
-			\item \textbf{No other plants hinder the spread of dandelions.}
+			\item \textbf{There are no other plants in the spread area.}
 			\vspace{-0.125in}
 			\begin{description}
-				\item[Justification:] This means \textbf{a.} dandelion seeds are not intercepted by other plants; and \textbf{b.} dandelions do not have to compete with other plants.  To consider other plants, we would have to obtain data about the distribution, morphology, growth habits, etc., of the local plants.  These would make our model too complex.
+				\item[Justification:] Considering other plants would add complicity to our model, for example, we need to collect data of those plants and study the competitive interactions between plants.  So simplification is necessary.
+				
+				More specifically, we assume that no other plants hinder the spread of dandelions, which means:
+				
+				\textbf{a.} Dandelion seeds are not intercepted by other plants;
+				
+				\textbf{b.} Dandelions do not have to compete with other plants.  
+				
 			\end{description}
 			
 			\item \textbf{Wind direction is uniformly distributed from 0$^\circ$ to 360$^\circ$.}
 			\vspace{-0.125in}
 			\begin{description}
-				\item[Justification:] \label{assumption:wind} Wind direction is very variable and local wind directions may be different from those at a weather station.  Therefore, we decided not to use the wind direction data we obtained.
+				\item[Justification:] \label{assumption:wind} Wind speed and direction can be affected by different topography, especially near the land. At the height of dandelions, there could be vortices and updrafts that will greatly affect dispersal.  Though we can obtain wind data from meteorological stations, the data may not be accurate for a  small area. Therefore, we decided not to use the real-time wind direction data.
 				
-				Moreover, we do not know on which edge the dandelion is located.  We cannot determine which wind blows the seeds into the field.  If wind direction is uniformly distributed, all directions are equivalent and we can let the dandelion be located on an arbitrary edge.
+				Moreover, though wind rose maps provide the probabilities for each direction, without knowing the orientation of the edge, we cannot decide the relative wind direction to this area.  So we assume wind direction is uniformly distributed from 0$^\circ$ to 360$^\circ$. In this way, all directions have same odds and we can pin the dandelion on an arbitrary edge.
 			\end{description}
 			
-			\item \textbf{Dandelions do not die.}
+			\item \textbf{Dandelion number always increases.}
 			\vspace{-0.125in}
 			\begin{description}
-				\item[Justification:] Dandelions are resistant to drought and cold temperature.  When they are partly eaten, they can regrow from the taproot.  Therefore, it is relatively difficult for them to die.
+				\item[Justification:] More specifically, we assume that there are none of the followings.
+				 
+				 \textbf{a.} Human intervention;
+				 
+				 \textbf{b.} Natural enemies;
+				 
+				 \textbf{c.} Extreme weather conditions.
 				
-				The death of dandelions can be caused by \textbf{a.} insects or pathogens; \textbf{b.} humans (through herbicides or other means); or \textbf{c.} extreme weather.  It is likely that dandelions do not encounter natural enemies when it is introduced to a new location, so we decide to neglect a.  For b. and c., we can consider a natural environment with no extreme weather conditions.  
+				This assumption simplifies our model.  Without considering above conditions, it will be an carefree place for dandelion growth.  And if we notice that the dandelion is a perennial herb, it is safe to assume the number will always increase .
 			\end{description}
 			
 		\end{enumerate}
@@ -95,7 +110,11 @@
 	
 	\subsection{Model Overview}
 		
-		We consider five environmental factors, as shown in \textbf{Table \ref{tb:vars}}, and we will construct a temperature curve in \textbf{Section \ref{sec:temp}}.  The environment affects dandelion spread in two major ways.  First, wind influences seed dispersal.  We will model this in \textbf{Section \ref{sec:wind}}.  Second, the combined effect of temperature and humidity influences many aspects in dandelion growth.  We will introduce an adaptation factor $k$ for this in \textbf{Section \ref{sec:af}}.  
+		We will use a Monte Carlo simulation model to solve the problem.
+		
+		In reality, we find that sometimes dandelions grow in clusters, and at other times they are very sparse. Actually the spread process is affected by many random factors, including climate condition, wind speed and direction, topographical features and so on.  In order to eliminate this randomness, we need a method to find statistical patterns from repeating the process many times.  Candidates are neural network, deep learning, stochastic process, etc.  Among them, the Monte Carlo method becomes an option due to its simplicity.  Its underlying concept is to introduce randomness to solve problems.   It relies on repeated random sampling to obtain numerical results.  We will simulate dandelion spread process by going through the process many times, observing the results from a statistical perspective and drawing some conclusions.
+		
+		As the input for our model, we consider five environmental factors, as shown in \textbf{Table \ref{tb:vars}}.  
 		
 		{
 			\fontsize{10}{14}\selectfont
@@ -115,12 +134,33 @@
 				\end{longtable}
 			}
 		}
-	
-		Our model simulates the spread of dandelions by tracking every single dandelion.  Every dandelion behaves according to a life cycle pattern, which we will model in \textbf{Section \ref{sec:life}}.  
 		
-		We will introduce several random variables to allow for some natural variation.  These will make it very hard to directly solve or analyze the model.  Therefore, we will use the Monte Carlo method and run the simulation many times.
+		And we will do the following to consider the environment influence to the dandelion spread process.
+		
+		\begin{itemize}
+			\vspace{-0.5cm}
+			\item Construct a temperature curve in \textbf{Section \ref{sec:temp}}.  
+			
+			\vspace{-0.2cm}
+			\item Model dispersal mechanism in \textbf{Section \ref{sec:wind}}.
+			
+			\vspace{-0.2cm}
+			\item Introduce an adaptation factor $k$ in \textbf{Section \ref{sec:af}}.  
+		
+		\end{itemize}
 	
-	
+		\vspace{-0.5cm}
+		Then our model will simulate the spread of dandelions by tracking every single dandelion according to a life cycle pattern, which we will model in \textbf{Section \ref{sec:life}}.  
+		
+		Next, we will choose 6 locations in the US.  For each location, we have one set of 5 input factors. We will run our model in 2 phases.  In the first phase, we will run 1000 times to get the optimal starting date for each location.  In the second phase, we will fix the starting date we get from the first phase and run another 1000 times to get the final ouput.
+		
+		We choose to run 1000 times because we find that the data with 1000 runs will exhibit an approximately normal distribution with a small margin of error for the mean.
+
+		As the output of our model, we get all the dandelion locations for each day within 360 days.  
+		
+		In order to depict the statistical characteristics of dandelion spread, we conclude all the locations into 2 variables -- one is the \textbf{number} of dandelions and the other is the \textbf{mean distance} of dandelions from the initial one.  The first variable reflects spread intensity and the second one reflects spread range.
+
+
 	
 	\subsection{Temperature Curve}
 	\label{sec:temp}
@@ -159,12 +199,12 @@
 
 
 
-	\subsection{Wind and Dispersal}
+	\subsection{Dispersal Mechanisms}
 	\label{sec:wind}
 		
 		For the \textbf{direction} of seed dispersal, we assume that the seed always follows the direction of the wind, which is uniformly distributed from 0$^\circ$ to 360$^\circ$ according to \textbf{Assumption \ref{assumption:wind}}.  
 		
-		For the \textbf{distance} of seed dispersal, we consider two types of wind, horizontal wind and updraft (see \textbf{Fig.\ref{fig:dispersal}}).  The seed travels either a ``normal'' distance $s_N$ due to horizontal wind or a ``long'' distance $s_L$ due to updraft.  We take the $\max\{s_N, s_L\}$ for the distance that the seed travels.
+		For the \textbf{distance} of seed dispersal, we consider two types of wind, horizontal wind and updraft\autocite{tackenberg2003dandelion} (see \textbf{Fig.\ref{fig:dispersal}}).  The seed travels either a normal distance $s_N$ due to horizontal wind or a long distance $s_L$ due to updraft.  We set dispersal \textbf{distance} as the greater one between $s_N$ and  $s_L$.
 		
 		\begin{figure}[htbp]
 			\centering
@@ -173,27 +213,40 @@
 			\label{fig:dispersal}
 		\end{figure}
 		
+		\subsubsection{Normal Distance $s_N$}
+		
 		In the case of horizontal wind, we have
 		\begin{equation}\label{eq:hwind}
 		 \frac{s_N}{v_h} = \frac{h}{v_v},
 		\end{equation}
-		where $v_h$ is the speed of the horizontal wind, $h$ is the height of the dandelion, and $v_v$ is the vertical component of the velocity of the seed.  $v_h$ follows a normal distribution with $\mu_{v_h} = \mu_W$ and $\sigma_{v_h} = \sigma_W$.  $h$ can be determined for any given plant.  $v_v$ is approximately constant, with value 0.4 m/s.  Thus, we can calculate the value of $s_N$.
+		where:
 		
+		$h$ is the height of the puffball, which is evaluated in \textbf{Section \ref{sec:life}};
+		
+		$v_v$ is the vertical component of the velocity of the seed, which is a constant value, 0.4 m/s\autocite{tackenberg2003dandelion}.
+		
+		$v_h$ is the speed of the horizontal wind, which follows a normal distribution with mean equals $\mu_W$ and standard deviation equals $\sigma_W$;
+
+		\subsubsection{Long Distance $s_L$}
+	
 		\begin{wrapfigure}{r}{0.5\textwidth}
-			\vspace{-0.75cm}
+			\vspace{-1.5cm}
 			\centering
 			\includegraphics{fig-wind_curve.pdf}
 			\caption{Cumulative distribution function of\\long-distance dispersal}
 			\label{fig:longDistance}
 		\end{wrapfigure}
 		
-		In the case of updraft, we suppose that $s_L$ follows an exponential distribution with cumulative distribution function $\mathrm{P} (s_L < s) = 1 - ae^{-bs}$.  We know $\mathrm{P} (s_L < 0) = 0$.  We also know that the probability of a seed being blown further than 10m is 0.5\%.  Therefore we can obtain
+		In the case of updraft, we suppose that $s_L$ follows an exponential distribution\autocite{okubo1989theoretical} with cumulative distribution function $\mathrm{P} (s_L < s) = 1 - ae^{-bs}$.  We know $\mathrm{P} (s_L < 0) = 0$.  We also know that the probability of a seed being blown further than 10 meters is 0.5\%\autocite{tackenberg2003dandelion}.  Therefore we can get:
 		
 		\begin{equation}\label{eq:updraft}
 			\mathrm{P} (s_L < s) = 1 - e^{-0.53 s}.
 		\end{equation}
 		
-		Finally, the leafs of dandelions have a radius of around 15cm.  If a seed were to land without falling on the leaf of another dandelion, the dandelion density should be less than $(1/0.15)^2$ = 45 plants/m$^2$.  If a seed arrives at a location whose vicinity has a density greater than this maximum value, the seed fails to land.
+		\vspace{0.5cm}
+		\subsubsection{Dandelion Density}
+		
+		The leafs of dandelions have a radius of around 15cm.  If a seed lands without falling on the leaf of another dandelion, the dandelion density should be less than $(1/0.15)^2$ = 45 plants/m$^2$.  If a seed arrives at a location whose vicinity has a density greater than this maximum value, the seed fails to land, which means it is not counted in our model.
 		
 		
 		
@@ -715,12 +768,13 @@
 	\subsection{Strengths and Weaknesses}
 
 		some random text
-	
+
+\newpage	
 \section*{We Share the Earth}
 \addcontentsline{toc}{section}{We Share the Earth}
 
 
-
+\newpage
 \newrefcontext
 \printbibliography
 
