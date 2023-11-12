@@ -503,25 +503,24 @@
 			}
 			
 			Out of the 1000 runs, we select the run that has a dandelion number closest to the mean value.  The positions and current stages of the dandelions at the end of 12 months are shown in \textbf{Fig.\ref{fig:scatter5loc}}.  For all locations except the District of Columbia, most dandelions grow in a semicircular ring centered at the origin.  Alaska is apparently unsuitable for dandelions to spread.  In California, Hawaii, Florida, and Kansas, dandelions all spread to a moderate range.
-			\newpage
 			
 			\begin{figure}[htbp]
 				\centering
 				\includegraphics{spread_course-location_non_DC.pdf}
 				\caption{The spread at the end of 12 months at different locations}
 				\label{fig:scatter5loc}
-			\end{figure}
-			
-			The dandelions at the end of each month are plotted for the District of Columbia (see \textbf{Fig.\ref{fig:spreadDC}}).  The dandelions spread much further and they form a semicircle instead of a ring.  The closer to the origin, the denser the plants.  Additionally, there is a burgeon every three months, which is caused by the flowering of a new generation of dandelions.
-			
-			\begin{figure}[htbp]
-				\centering
+				
+				\vspace{1cm}
+
 				\includegraphics{spread_course-time.pdf}
 				\caption{The spread during 12 months in the District of Columbia}
 				\label{fig:spreadDC}
 			\end{figure}
+			\newpage
 			
-			Finally, we draw a graph of the natural logarithm of dandelion number in \textbf{Fig.\ref{fig:time}}.  The lines have several jumps and platforms.  The dandelion number increases exponentially at the end of each fixed period.  This conclusion coincides with our observation in \textbf{Fig.\ref{fig:spreadDC}}.  Again, Alaska is different.  Dandelions there are dormant in the first three months of the year.  
+			District of Columbia has the most dandelions at the of 12 months.  We plotted dandelion spread at the end of each month this location (see \textbf{Fig.\ref{fig:spreadDC}}) so that it can be clearly seen how the dandelions spread in the course of time.  Compared to other locations, District of Columnbia has greater wind speed so the dandelions spread much further and they form a semicircle instead of a ring.  The closer to the origin, the denser the plants.  Additionally, there is a sudden increase every three months, which is caused by the flowering of a new generation of dandelions.
+			
+			Finally, we draw a graph of the natural logarithm of dandelion number in \textbf{Fig.\ref{fig:time}}.  The lines have several jumps and platforms.  The dandelion number increases exponentially at the end of each fixed period.  This conclusion coincides with our observation in \textbf{Fig.\ref{fig:spreadDC}}.  Again, Alaska is different.  Dandelions there are dormant in the first three months of the year, and eventually produce fewer offspring than other locations.
 			
 			\begin{figure}[htbp]
 				\centering
@@ -534,9 +533,9 @@
 		
 		\subsubsection{Sensitivity Analysis}
 			
-			We conduct a sensitivity analysis on the five factors by varying one of them while keeping the other four fixed.  
+			We conduct a sensitivity analysis on the five factors from \textbf{Table \ref{tb:vars}} by varying one of them while keeping the other four fixed.  
 			
-			\textbf{Fig.\ref{fig:saT}} shows the results for temperature.  When $\mu_T$ falls below 7$^\circ$C or rises above 23$^\circ$C, dandelion number decreases sharply.  This is because dandelions are transferred to the dormancy or hold stages at very low or  high temperatures.  The number is very sensitive to extreme temperatures, but only moderately responsive to mild temperatures.  The mean distance increases with $\mu_T$ up to 19$^\circ$C, where the it temporarily levels off and begins to fall at 23$^\circ$C.  It has medium sensitivity to $\mu_T$.
+			\textbf{Fig.\ref{fig:saT}} shows the results for temperature.  When $\mu_T$ falls below 7$^\circ$C or rises above 23$^\circ$C, dandelion number decreases sharply.  This is because dandelions are transferred to the dormancy or hold stages at certain temperatures.  The number is very sensitive to extreme temperatures, but only moderately sensitive to mild temperatures.  The mean distance increases with $\mu_T$ up to 19$^\circ$C, where the it temporarily levels off and begins to fall at 23$^\circ$C.  It has medium sensitivity to $\mu_T$.
 			
 			Both number and mean distance decreases as $\sigma_T$ increases.  They decrease relatively slowly below $\sigma_T = 5^\circ$C and rapidly above that value.  However, the overall sensitivity is not high for either number or mean distance.
 			
@@ -554,7 +553,7 @@
 				\label{fig:saT}
 			\end{figure}
 			
-			\textbf{Fig.\ref{fig:saW}} shows the results for wind speed.  The number and mean distance have a positive correlation with $\mu_W$ and $\sigma_W$ and change drastically when the two factors vary.  When $\mu_W$ increases, seeds are dispersed farther and land further apart from each other.  When $\sigma_W$ increases, some seeds land near the mother plant and others far.  In both cases it is less likely for seeds to land on other plants, making dandelion number rise quickly.
+			\textbf{Fig.\ref{fig:saW}} shows the results for wind speed.  The number and mean distance have a positive correlation with $\mu_W$ and $\sigma_W$ and change drastically when the two factors vary.  When $\mu_W$ increases, seeds are dispersed farther and land further apart from each other.  When $\sigma_W$ increases, there is greater variation in dispersal distance.  In both cases it is less likely for seeds to land on other plants, making dandelion number rise quickly.
 			
 			\begin{figure}[htbp]
 				\centering
@@ -569,7 +568,7 @@
 				\label{fig:saW}
 			\end{figure}
 			
-			\textbf{Fig.\ref{fig:saH}} shows the results for humidity.  There are three levels of number and mean distance corresponding to different humidity.  This is because of the three ranks for humidity that are used in the calculation of the adaptation factor $k$.
+			\textbf{Fig.\ref{fig:saH}} shows the results for humidity.  There are three levels of number and mean distance corresponding to different humidity.  This is because of the three ranks for humidity that are used in the calculation of the adaptation factor $k$, see \textbf{Section \ref{sec:af}}.
 			
 			\begin{figure}[htbp]
 				\centering
