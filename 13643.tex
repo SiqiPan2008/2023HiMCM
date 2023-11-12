@@ -3,6 +3,10 @@
 \usepackage[13643]{easymcm}  % Team control number
 \usepackage{longtable}
 \usepackage{booktabs}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\newcommand{\toB}[1]{\color{blue}#1\color{black}}
 
 \problem{A}  % Problem number
 
@@ -586,6 +590,34 @@
 					Mean&Standard Deviation&Kurtosis&Skewness&Range&Median&Confidence Level (95.0\%)\\
 					\toprule
 					57.9&8.65&0.81&0.41&50.51&57.25&1.13\\
+					\bottomrule
+				\end{longtable}
+			}
+		}
+		
+		hello!!! \\
+
+		{
+			\fontsize{10}{14}\selectfont
+			{
+				\begin{longtable}{p{6.5in}}
+					\toprule
+					\fontsize{12}{18}\selectfont{\textbf{Algorithm 1} Monte Carlo simulation algorithm for dandelion spread}\\
+					\toprule
+					\textbf{INPUT:} run times \toB{$n$ } and environment factors \toB{$\mu_T$}, \toB{$\sigma_T$}, \toB{$\mu_W$}, \toB{$\sigma_W$ } and \toB{$\mu_H$}\\
+					\textbf{OUTPUT:} dandelion spread \toB{$numbers$} and mean \toB{$distances$ } over days\\
+					\textbf{Begin Procedure}
+					\begin{algorithmic}
+						\ForAll{\toB{$times$ } in \toB{$n$}}
+						\ForAll{\toB{$days$ } in one year}
+						\ForAll{\toB{$dandelion$ } in current all dandelions}
+						\State \toB{$T$ } $\gets$ current temperature per \ref{}
+						\EndFor
+						\EndFor
+						\EndFor
+						\State \textbf{Return}{ \toB{$numbers$ } and \toB{$distances$}}
+					\end{algorithmic}
+					\textbf{End Procedure}\\
 					\bottomrule
 				\end{longtable}
 			}
