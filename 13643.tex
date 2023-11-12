@@ -639,10 +639,11 @@
 					\textbf{OUTPUT:} dandelion spread \toB{$numbers$} and mean \toB{$distances$ } over days\\
 					\textbf{Begin Procedure}
 					\begin{algorithmic}
-						\ForAll{\toB{$times$ } in \toB{$n$}}
-						\ForAll{\toB{$days$ } in one year}
-						\ForAll{\toB{$dandelion$ } in current all dandelions}
-						\State \toB{$T$ } $\gets$ current temperature per \ref{}
+						\For{1 to \toB{$n$}}
+						\ForAll{\toB{$t$ } in days of one year}
+						\For{\toB{$dandelion$ } in current all dandelions}
+						\State \toB{$T$ } $\gets$ evaluate current temperature per \textbf{Equation} \ref{eq:temp}
+						\State \toB{$T$ } $\gets$ evaluate current temperature per \textbf{Equation} \ref{eq:temp}
 						\EndFor
 						\EndFor
 						\EndFor
