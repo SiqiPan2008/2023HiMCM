@@ -65,6 +65,10 @@
 			
 		\end{enumerate}
 	
+	
+	
+	
+	
 	\subsection{Environmental Factors}
 	
 		\subsubsection{Overview}
@@ -96,6 +100,8 @@
 		
 			We calculate an adaption factor $k$ using $T$ and $\mu_H$.  Dandelions prefer temperate climates and relatively high humidity.  We divide temperature into three ranks, which respectively indicate that the temperature is very suitable, moderately suitable, or unsuitable for dandelions.  A rank for humidity is obtained in the same way.  Thus, on a given day, we calculate $k$ by computing the arithmetic mean of the rank for temperature and humidity, and scale $k$ so that $k \in [0, 1]$.
 		
+		
+		
 		\subsubsection{Temperature}
 		
 			\begin{wrapfigure}{l}{0.5\textwidth}
@@ -105,7 +111,7 @@
 				\label{fig:temp}
 			\end{wrapfigure}
 			
-			We suppose that the temperature follows a sinusoidal curve, as shown in \textbf{Fig.\ref{fig:temp}}, as trigonometric functions are convenient for modeling periodical fluctuations.  We further assume that the lowest temperature is reached on Jan.1st, or when $t = 0$.  We observe that the period of the function is 360 (for convenience, we suppose each month is 30 days long).  Thus, the equation for the curve is:
+			We suppose that the temperature follows a sinusoidal curve, as shown in \textbf{Fig.\ref{fig:temp}}, as trigonometric functions are convenient for modeling periodical fluctuations.  We only consider locations in the northern hemisphere, so we further assume that the lowest temperature is reached on Jan.1st, or when $t = 0$.  We observe that the period of the function is 360 (for convenience, we suppose each month is 30 days long).  Thus, the equation for the curve is:
 			
 			\begin{equation}
 				T = -A \cos{\frac{2\pi}{360} t} + B. \notag
@@ -126,6 +132,8 @@
 			\begin{equation}
 				T = -\sqrt2 \sigma_T \cos{\frac{2\pi}{360} t} + \mu_T.
 			\end{equation}
+	
+	
 	
 		\subsubsection{Wind and Dispersal}
 		\label{subsubsec:wind}
@@ -164,9 +172,11 @@
 			
 			Finally, the leafs of dandelions have a radius of around 15cm.  If a seed were to land without falling on the leaf of another dandelion, the maximum density should be $(1/0.15)^2$ = 45 plants/m$^2$.  If a seed arrives at a location whose vicinity has a density greater than the maximum density, the seed fails to land.
 		
+		
+		
 		\subsubsection{Locations}
 		
-			We chose 6 locations!!! hahahahaha
+			We choose 6 locations in the US so that we have a variety of temperature and wind conditions.  Alaska is cold; California, the District of Columbia, and Kansas are warm; and Florida and Hawaii are relatively hot.  Alaska, the District of Columbia, and Kansas have distinct seasons; California and Florida show moderate temperature variation; and Hawaii has very stable temperature.  The wind conditions also exhibit different patterns.  The District of Columbia has notably large wind speed.
 						
 			{
 				\fontsize{10}{14}\selectfont
@@ -187,6 +197,10 @@
 					\end{longtable}
 				}
 			}
+		
+		
+		
+		
 		
 	\subsection{Dandelion Life Cycle}
 	
@@ -220,6 +234,10 @@
 		
 		Dandelions can only enter the \textbf{dormancy} stage when $T < 0^\circ$C.  During this stage, the temperature is low and it is likely that it snows.  Therefore, all life activities of dandelions are paused.  As soon as $T$ rises above $0^\circ$C, dandelions resume the stage before it entered dormancy.
 		
+		
+		
+		
+		
 	\subsection{Algorithm}
 	
 	\subsection{Dandelion Spread Results}
@@ -228,7 +246,7 @@
 		
 			Our model contains several random variables.  We choose to use the Monte Carlo method to simulate.  We tally the number of dandelions and record the mean distance from (0, 0), the origin, where the first dandelion is located.
 			
-			First, we have to determine the starting time of simulation.  The model was run with the starting date set to Jan.\,1st, Feb.\,1st, \ldots, and Dec.\,1st for all 6 locations.  The results for Florida are shown in \textbf{Fig.\ref{fig:start}}.  We observe that the number varies greatly among the runs, but the mean distance is approximately the same.  For each location, the starting date is chosen such that the number of dandelions at the end of 12 months is maximized.  The number of dandelions corresponding to the chosen dates are marked blue in [TABLE].
+			First, we have to determine the starting time of simulation.  The model was run with the starting date set to Jan.\,1st, Feb.\,1st, \ldots, and Dec.\,1st for all 6 locations.  The results for Florida are shown in \textbf{Fig.\ref{fig:start}}.  We observe that the number varies greatly among the runs, but the mean distance is approximately the same.  For each location, the starting date is chosen such that the number of dandelions at the end of 12 months is maximized.  The number of dandelions corresponding to the chosen dates are marked blue in \textbf{Table \ref{tb:start}}.
 			
 			\begin{figure}[htbp]
 				\centering
@@ -257,7 +275,7 @@
 				}
 			}
 			
-			Next we ran the model 1000 times for each location.  The resulting frequency histogram is shown in \textbf{Fig.\ref{fig:freqDand}}.  We can see that both the number and the mean distance follow a distribution similar to a normal one.  We calculated several statistics for each location, which are displayed in [TABLE FOR NUMBER].
+			Next we ran the model 1000 times for each location.  The resulting frequency histogram is shown in \textbf{Fig.\ref{fig:freqDand}}.  We can see that both the number and the mean distance follow a distribution similar to a normal one.  We calculated several statistics for each location, which are displayed in \textbf{Table \ref{tb:numDistribution}}.
 			
 			\begin{figure}[htbp]
 				\centering
@@ -266,9 +284,7 @@
 				\label{fig:freqDand}
 			\end{figure}
 			
-			We examine the distribution of the number of dandelions.  For all the locations, the confidence interval of the mean is relatively small, which implies the mean is quite accurate.  The standard deviation and range are relatively large, which shows that the spread of dandelions is easily affected by fluctuations in environmental factors and other random factors.  For all locations except California, the distribution is platykurtic, which means it is flatter and less concentrated than the normal distribution.  For all locations except Alaska, the distribution is skewed to the left.  The mass of the distribution is concentrated on the right, so the number of dandelions is more likely to be greater than the mean rather than smaller.  However, because of the unfavorable environmental conditions in Alaska, the number is more likely to be smaller than the mean in that location.  We can draw the same conclusions from comparing the mean and the median as from the skewness.
-			
-			We examine the distribution of the number of dandelions.  For all the locations, the confidence interval of the mean is relatively small, which implies the mean is quite accurate.  The standard deviation and range are relatively large, which shows that the spread of dandelions is easily affected by fluctuations in environmental factors and other random factors.  For all locations except California, the distribution is platykurtic
+			We examine the distribution of the number of dandelions.  For all the locations, the confidence interval of the mean is relatively small, which implies the mean is quite accurate.  The standard deviation and range are relatively large, which shows that the spread of dandelions is easily affected by fluctuations in environmental factors and other random factors.  For all locations except California, the distribution is platykurtic, which means it is flatter and less concentrated than the normal distribution.  For all locations except Alaska, the distribution is skewed to the left.  The mass of the distribution is concentrated on the right, so the number of dandelions is slightly more likely to be greater than the mean rather than smaller.  However, because of the unfavorable environmental conditions in Alaska, the number is more likely to be smaller than the mean in that location.  We can draw the same conclusions from comparing the mean and the median as from the skewness.
 			
 			{
 				\fontsize{10}{14}\selectfont
@@ -289,8 +305,6 @@
 					\end{longtable}
 				}
 			}
-			
-			remember to write the sample quantity and unit \\
 			
 			{
 				\fontsize{10}{14}\selectfont
@@ -321,7 +335,7 @@
 				\label{fig:scatter5loc}
 			\end{figure}
 			
-			The positions and states of the dandelions at the end of each of the 12 months are plotted for the District of Columbia (see \textbf{Fig.\ref{fig:spreadDC}}).  The dandelions form a semicircle around the first dandelion.  The closer to the origin, the denser the plants.
+			The positions and states of the dandelions at the end of each of the 12 months are plotted for the District of Columbia (see \textbf{Fig.\ref{fig:spreadDC}}).  The dandelions form a semicircle around the first dandelion.  The closer to the origin, the denser the plants.  Additionally, there is a burgeon every three months, which is caused by the flowering of a new generation of dandelions.
 			
 			\begin{figure}[htbp]
 				\centering
@@ -329,7 +343,9 @@
 				\caption{The spread during 12 months in the District of Columbia}
 				\label{fig:spreadDC}
 			\end{figure}
-					
+			
+			Finally, we present a graph of the mean distance and natural logarithm of dandelion number in \textbf{Fig.\ref{fig:time}}.  The graph for ln(number) has several jumps and platforms.  The number has a periodic pattern and increases exponentially at the end of each period.  This conclusion coincides with our observation in \textbf{Fig.\ref{fig:spreadDC}}.  Again, Alaska is different because the dandelions are dormant in the first three months of the year.  
+			
 			\begin{figure}[htbp]
 				\centering
 				\includegraphics{number_mean_distance-time.pdf}
@@ -337,8 +353,16 @@
 				\label{fig:time}
 			\end{figure}
 		
-		\subsubsection{Sensitivity Analysis}
 		
+		
+		\subsubsection{Sensitivity Analysis}
+			
+			We conduct a sensitivity analysis on the five factors by varying one of them while keeping the other four fixed.  
+			
+			\textbf{Fig.\ref{fig:saT}} shows the results for temperature.  When $\mu_T$ falls below 7$^\circ$C or rises above 23$^\circ$C, dandelion number decreases sharply.  This is because dandelions are transferred to the dormancy or hold stages at very low or very high temperatures.  Between these two temperatures there is a slow increase in number as $\mu_T$ increases.  The number is very sensitive to extreme temperatures, but only moderately responsive to mild temperatures.  The mean distance increases with $\mu_T$ up to 19$^\circ$C, where the it levels off and begins to fall at 23$^\circ$C.  It has medium sensitivity to $\mu_T$.
+			
+			Both number and mean distance decreases as $\sigma_T$ increases.  They decrease relatively slowly below $\sigma_T = 5^\circ$C and rapidly above that value.  However, the overall sensitivity is not high for either number or mean distance.
+			
 			\begin{figure}[htbp]
 				\centering
 				\begin{minipage}{0.04\textwidth}\end{minipage}
@@ -349,36 +373,39 @@
 					\includegraphics{sa_StdT.pdf}
 				\end{minipage}
 				\begin{minipage}{0.04\textwidth}\end{minipage}
-				
-				\begin{minipage}{0.04\textwidth}\end{minipage}
-				\begin{minipage}{0.46\textwidth}
-					\includegraphics{sa_MuW.pdf}
-				\end{minipage}
-				\begin{minipage}{0.46\textwidth}
-					\includegraphics{sa_MuW.pdf}
-				\end{minipage}
-				\begin{minipage}{0.04\textwidth}\end{minipage}
-				
-				\includegraphics{sa_Hum.pdf}
-				\caption{Sensitivity analysis}
-				\label{fig:sa}
+				\caption{Sensitivity analysis: temperature}
+				\label{fig:saT}
 			\end{figure}
+			
+			\textbf{Fig.\ref{fig:saW}} shows the results for wind speed.  The number and mean distance have a positive correlation with $\mu_W$ and $\sigma_W$ and change drastically when the two factors vary.  When the mean wind speed increases, seeds are dispersed further away, so they are less likely to be
+			
+			\begin{figure}[htbp]
+				\begin{minipage}{0.04\textwidth}\end{minipage}
+				\begin{minipage}{0.46\textwidth}
+					\includegraphics{sa_MuW.pdf}
+				\end{minipage}
+				\begin{minipage}{0.46\textwidth}
+					\includegraphics{sa_StdW.pdf}
+				\end{minipage}
+				\caption{Sensitivity analysis: wind speed}
+				\label{fig:saW}
+			\end{figure}
+			
+			\begin{figure}[htbp]
+				\includegraphics{sa_Hum.pdf}
+				\caption{Sensitivity analysis: humidity}
+				\label{fig:saH}
+			\end{figure}
+			
+			
 			
 		\subsubsection{Strengths and Weaknesses}
 		
-	\subsection{Dandelion Spread Fitting Model}
 		
-		\subsubsection{Data}
+
 		
-		\subsubsection{Algorithm}
 		
-		\subsubsection{Results}
 		
-		\subsubsection{Sensitivity Analysis}
-		
-		\subsubsection{Strengths and Weaknesses}
-	
-			some random text
 		
 \section{Plant Impact Factor Model}
 
