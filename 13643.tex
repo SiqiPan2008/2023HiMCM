@@ -658,12 +658,12 @@
 					IF$_G$&Global impact factor\\
 					IF$_L$&Local impact factor\\
 					$\rho$&Invasion level coefficient\\
-					$a_i$&The value for attribute $A_i$ for the plant\\
-					$b_i$&The value for attribute $B_i$ for the plant\\
-					$c_i$&The value for attribute $C_i$ for the plant\\
-					$\alpha_i$&The weight for attribute $A_i$ for the plant\\
-					$\beta_i$&The weight for attribute $B_i$ for the plant\\
-					$\gamma_i$&The weight for attribute $C_i$ for the plant\\
+					$a_i$&Attribute value for $A_i$\\
+					$b_i$&Attribute value for $B_i$\\
+					$c_i$&Attribute value for $C_i$\\
+					$\alpha_i$&The weight for attribute $A_i$\\
+					$\beta_i$&The weight for attribute $B_i$\\
+					$\gamma_i$&The weight for attribute $C_i$\\
 					\bottomrule
 					
 				\end{longtable}
@@ -793,9 +793,9 @@
 					
 					\toprule
 					Impact Factor&Attribute Number&max eigenvalue 
-					&\multirow{2}{*}{$\mathrm{CI}=\frac{\lambda_{max}-n}{n-1}$}
+					&\multirow{2}{*}{$\mathrm{CI}=\displaystyle \frac{\lambda_{max}-n}{n-1}$}
 					&\multirow{2}{*}{$\mathrm{RI}$}
-					&\multirow{2}{*}{$\mathrm{CR}=\frac{\mathrm{CI}}{\mathrm{RI}}$}
+					&\multirow{2}{*}{$\mathrm{CR}=\displaystyle \frac{\mathrm{CI}}{\mathrm{RI}}$}
 					&\multirow{2}{*}{$\mathrm{CR}<0.1?$}\\
 					Type&$n$&$\lambda_{max}$\\
 					\toprule
@@ -841,7 +841,42 @@
 			\mathrm{IF}_L = 100\rho \left( \sum_{i = 1}^9 \alpha_ia_i + \sum_{i = 1}^5 \beta_ib_i + \sum_{i = 1}^4 \gamma_ic_i \right)
 		\end{equation}
 		
-		[ALGORITHM]
+		{
+			\fontsize{10}{14}\selectfont
+			{
+				\setlength{\parindent}{-1em}
+				
+				{
+					\fontsize{12}{18}\selectfont
+					\begin{longtable}{p{6.65in}}
+						\toprule
+						\textbf{Analytic Hierarchy Process Model for Impact Factor}\\
+						\textbf{INPUT:} All the attributes in table... and invasive leve... \\
+						\bottomrule
+					\end{longtable}
+				}
+				
+				\vspace{-0.5em}
+				\begin{algorithmic}
+					\State \toB{$global\,value\,vector$ } $\gets$ evaluate all the \textbf{Attribute values} per \textbf{Table \ref{tb:attributes}}
+					\State \toB{$local\,value\,vector$ } $\gets$ evaluate all the \textbf{Attribute values} per \textbf{Table \ref{tb:attributes}}
+					\State \toB{$global\,weight\,vector$ } $\gets$ \textbf{Table \ref{tb:mat}}
+					\State \toB{$local\,weight\,vector$ } $\gets$ \textbf{Table \ref{tb:mat}}
+					\State \toB{$\rho$ } $\gets$ 1.0 if widely spread invasive; 0.9 if invasive
+					\State \toB{IF$_G$ } $\gets$ \toB{$100\rho$ } times the dot product of \toB{$global\,value\,vector$ } and \toB{$global\,weight\,vector$ }
+					\State \toB{IF$_L$ } $\gets$ \toB{$100\rho$ } times the dot product of \toB{$local\,value\,vector$ } and \toB{$local\,weight\,vector$ }
+				\end{algorithmic}
+				
+				{
+					\fontsize{12}{18}\selectfont
+					\begin{longtable}{p{6.6in}}
+						\toprule
+						\textbf{OUTPUT:} \toB{IF$_G$ } and \toB{IF$_L$}\\
+						\bottomrule
+					\end{longtable}
+				}
+			}
+		}	
 		
 	\subsection{Results}
 		
@@ -924,7 +959,22 @@
 		
 	\subsection{Strengths and Weaknesses}
 
-		some random text
+		\paragraph{Strengths}
+		\vspace{-0.1cm}
+		\begin{itemize}
+			\vspace{-0.3cm}
+			\item Our model is \textbf{easy to implement}.  We can design a questionnaire that enables us to calculate the impact factors quickly.
+		\end{itemize}
+		
+		\paragraph{Weaknesses}
+		\vspace{-0.5cm}
+		\begin{itemize}
+			\vspace{-0.3cm}
+			\item Our model is \textbf{subjective}.  The weights are subjectively determined.  If experts had designated the weights, our model may be more accurate.
+			
+			\vspace{-0.3cm}
+			\item Our attribute design may be \textbf{uncomprehensive}.  We chose the attributes to consider, so it is possible that we have overlooked some other important attributes.
+		\end{itemize}
 
 \newpage
 \section*{\begin{center} A Vigorous Friend \end{center}}
@@ -943,47 +993,6 @@ We believe the same for our human beings - we will get along well with all the s
 Sometimes it is we human who flap the butterfly's wing.  Brazilian red eared turtle is a hit in the pet market. However, some people purchase them and release them in the wild due to their compassion. Soon the turtles dominate the aquatic ecosystem with their tenacious vitality.  Humans bring species from here to there, and artificially raise them.  Humans intervene some of the species which do not do harm initially but do eventually.  We human break the balance of nature and make the whole ecological system blink.
 
 The invasive species are just who they are.  Most of them have a lot of merits to human beings.  They can provide fodder to our livestock, they can be food or medicine.  They are so lovely when we have learned to get along with them.  Think about dandelion.  They have never been labeled invasive until recently.  But they have been evolving in this planet for about 30 million years! Long enough to prove their innocence.  It is not fair to treat them like enemy.  They are just old friends, sometimes sweet, sometimes petulant, after all they are just very vigorous, and full of vitality.  We are so lucky they are around -- children will definitely agree with us, how about adults?
-
-
-
-		{
-	\fontsize{10}{14}\selectfont
-	{
-		\setlength{\parindent}{-1em}
-		
-		{
-			\fontsize{12}{18}\selectfont
-			\begin{longtable}{p{6.65in}}
-				\toprule
-				\textbf{Analytic Hierarchy Process Model for Impact Factor}\\
-				\textbf{INPUT:} All the attributes in table... and invasive leve... \\
-				\bottomrule
-			\end{longtable}
-		}
-		
-		\vspace{-0.5em}
-		\begin{algorithmic}
-			\State \toB{$global\,value\,vector$ } $\gets$ evaluate all the ... per 
-			\State \toB{$local\,value\,vector$ } $\gets$ evaluate all the ... per 
-			\State \toB{$global\,weight\,vector$ } $\gets$ table...
-			\State \toB{$local\,weight\,vector$ } $\gets$ table...
-			\State \toB{$\rho$ } $\gets$ table...
-			\State \toB{$IF_G$ } $\gets$ \toB{$\rho$ } times dot product of \toB{$global\,value\,vector$ } and \toB{$global\,weight\,vector$ }
-			\State \toB{$IF_L$ } $\gets$ \toB{$\rho$ } times dot product of \toB{$local\,value\,vector$ } and \toB{$local\,weight\,vector$ }
-		\end{algorithmic}
-		
-		{
-			\fontsize{12}{18}\selectfont
-			\begin{longtable}{p{6.6in}}
-				\toprule
-				\textbf{OUTPUT:} \toB{$IF_G$ } and \toB{$IF_L$}\\
-				\bottomrule
-			\end{longtable}
-		}
-	}
-}	
-
-
 
 \newpage
 \newrefcontext
