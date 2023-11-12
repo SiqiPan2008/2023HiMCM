@@ -830,14 +830,22 @@
 				\end{longtable}
 			}
 		}	
-	
+		
+		The list we obtained from US-RIIS contained a field called ``Degree of Establishment'', which labeled the plants as ``invasive'' or ``widely established invasive''.  For those plants that are widely established, it is likely that they have a much larger overall impact on humans and on the environment.  To account for this, we introduce an invasion level coefficient $\rho$ whose value is 0.9 for invasive species and 1.0 for widely established invasive species.  This coefficient is multiplied with a factor calculated from the attribute values and weights.  The formulas for the global and local impact factors are as followings:
+		
 		\begin{equation}
-			\mathrm{IF}_L = \rho \left( \sum_{i = 1}^9 \alpha_ia_i + \sum_{i = 1}^5 \beta_ib_i \right)
+			\mathrm{IF}_G = 100\rho \left( \sum_{i = 1}^9 \alpha_ia_i + \sum_{i = 1}^5 \beta_ib_i \right)
 		\end{equation}
 		
 		\begin{equation}
-			\mathrm{IF}_G = \rho \left( \sum_{i = 1}^9 \alpha_ia_i + \sum_{i = 1}^5 \beta_ib_i + \sum_{i = 1}^4 \gamma_ic_i \right)
+			\mathrm{IF}_L = 100\rho \left( \sum_{i = 1}^9 \alpha_ia_i + \sum_{i = 1}^5 \beta_ib_i + \sum_{i = 1}^4 \gamma_ic_i \right)
 		\end{equation}
+		
+		[ALGORITHM]
+		
+	\subsection{Results}
+		
+		We calculate the global impact factor for the 226 plants species and rank them according to the factor.  \textbf{Table \ref{tb:ranks}} shows some selected plants from the ranking.
 		
 		{
 			\fontsize{10}{14}\selectfont
@@ -866,13 +874,22 @@
 			}
 		}
 		
-		remember to write the sample quantity and unit \\
-
+		Dandelions have a IF$_G$ value that is moderate to high and a relatively high ranking.  We observe that half of the top-10 plants are perennials and 7 of them are forbs/herbs.  Intriguingly, The tree of heaven, which is of course a tree, has made it to the third place.  This is mostly because it is toxic and grows rapidly.  
+	
+		We draw the global impact factors into a histogram (see \textbf{Fig.\ref{fig:freqIF}}), and calculate several statistical characteristics for the distribution of IF$_G$ (see \textbf{Table \ref{tb:IFDistribution}}).  We see that IF$_G$ is roughly concentrated around the mean and the median but does not exactly follow a normal distribution.  The distribution is skewed to the right according to the table, meaning that there is a longer left tail.  However, we can observe a right tail as well on the histogram.  Both tails are not very long.  There are no values below 30 or above 90.
+		
+		\begin{figure}[htbp]
+			\centering
+			\includegraphics{IF-frequency.pdf}
+			\caption{Frequency distribution of global impact factor}
+			\label{fig:freqIF}
+		\end{figure}
+		
 		{
 			\fontsize{10}{14}\selectfont
 			{
 				\begin{longtable}{ccccccc}
-					\caption{Distribution of impact factor}
+					\caption{Descriptive statistics of the global impact factor}
 					\label{tb:IFDistribution}\\
 					
 					\toprule
@@ -884,18 +901,18 @@
 			}
 		}
 		
-		hello!!! \\
+		We chose 3 locations to calculate the local impact factors: Florida (FL), Neveda (NV), and Alaska (AK).  We chose 5 plants that are invasive at some or all of these locations and calculated the corresponding local impact factors.  The results are shown in \textbf{Fig.\ref{fig:IFLocal}}.  We can see that for each plant, their impact would be greater at locations with favorable environments.  We can also compare the impact factors of different plants at different locations.  For instance, the sweetclover has a IF$_G$ that is higher than the tree of heaven.  However, the IF$_L$ for sweetclover at Alaska is lower than that for tree of haven at Florida.  
 		
-		hello!!! \\
+		\begin{figure}[htbp]
+			\centering
+			\includegraphics{IF_local-loc.pdf}
+			\caption{Local impact factor}
+			\label{fig:IFLocal}
+		\end{figure}
 
 	\subsection{Sensitivity Analysis}
 	
-		\begin{figure}[htbp]
-			\centering
-			\includegraphics{IF-frequency.pdf}
-			\caption{Frequency distribution of global impact factor}
-			\label{fig:freqIF}
-		\end{figure}
+		We select 5 attributes for sensitivity analysis.  For each value of each attribute, we find the minimum and maximum global impact factor of the plants and plot them in \textbf{Fig.\ref{fig:IFfactors}}.  The minimum and maximum values all increases as the value of the attribute increases except the maximum for severe toxicity.  This may be due to a lack of data of severely toxic plants.
 	
 		\begin{figure}[htbp]
 			\centering
@@ -904,12 +921,6 @@
 			\label{fig:IFfactors}
 		\end{figure}
 		
-		\begin{figure}[htbp]
-			\centering
-			\includegraphics{IF_local-loc.pdf}
-			\caption{Local impact factor}
-			\label{fig:IFLocal}
-		\end{figure}
 		
 	\subsection{Strengths and Weaknesses}
 
