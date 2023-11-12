@@ -11,7 +11,7 @@
 
 \problem{A}  % Problem number
 
-\title{Paper Name}  % Title
+\title{}  % Title
 
 \begin{document}
 
@@ -243,7 +243,7 @@
 			\mathrm{P} (s_L < s) = 1 - e^{-0.53 s}.
 		\end{equation}
 		
-		\vspace{0.5cm}
+		\newpage
 		\subsubsection{Dandelion Density}
 		
 		The leafs of dandelions have a radius of around 15cm.  If a seed lands without falling on the leaf of another dandelion, the dandelion density should be less than $(1/0.15)^2$ = 45 plants/m$^2$.  If a seed arrives at a location whose vicinity has a density greater than this maximum value, the seed fails to land, which means it is not counted in our model.
@@ -255,14 +255,16 @@
 	\subsection{Adaptation Factor}
 	\label{sec:af}
 		
-			We introduce an adaptation factor $k$ using $T$ and $\mu_H$.  Dandelions prefer temperate climates and relatively high humidity.  We divide temperature into three ranks, which respectively indicate that the temperature is very, moderately, or not very suitable for dandelions.  A rank for humidity is obtained in the same way.  On a given day, we calculate $k$ by computing the arithmetic mean of the rank for temperature and humidity and scaling $k$ so that $0 \leq k \leq 1$.
+			We introduce an adaptation factor $k$ which is evaluated by using $T$ and $\mu_H$.  Dandelions prefer temperate climates and relatively high humidity.  We divide temperature into three ranks, which indicate if the temperature is suitable for the dandelion.  We also divide humidity into three ranks, which indicate if the humidity is suitable for the dandelion.  On a given day, we calculate $k$ by computing the arithmetic mean of the rank for temperature and humidity and scaling $k$ so that $0 \leq k \leq 1$.
 			
-			We use $k$ to determine the mean value of some parameters of dandelions, such as the height of the plant.  To allow for some variation, we let the parameters follow normal distributions with
-			\begin{equation}\label{eq:k}
-				\mu_{\mathrm{parameter}} = \left( \mathrm{worst} + \frac{\mathrm{best} - \mathrm{worst}}4 \right) + k \frac{\mathrm{best} - \mathrm{worst}}2, \,
+			We use $k$ to determine the mean value of some parameters of dandelions, such as the height of the puffball.  To allow for some variation, we let the parameters follow normal distributions with:
+			\begin{equation}\label{eq:mu_p}
+				\mu_{\mathrm{parameter}} = \left( \mathrm{worst} + \frac{\mathrm{best} - \mathrm{worst}}4 \right) + k \frac{\mathrm{best} - \mathrm{worst}}2, 
+			\end{equation}	
+			\begin{equation}\label{eq:sigma_p}
 				\sigma_{\mathrm{parameter}} = \frac{\mathrm{best} - \mathrm{worst}}{12}.
 			\end{equation}
-			The worst and best values for the relevant parameters will be given in \textbf{Section \ref{sec:life}}.  If the a parameter falls exceeds the worst or best values, it is set to that value.
+			The worst and best values for the relevant parameters will be given in \textbf{Section \ref{sec:life}}.  If the a parameter exceeds the limits, it is set to the limit.
 		
 		
 		
@@ -280,31 +282,110 @@
 			\label{fig:lifeCycle}
 		\end{figure}
 		
-		Out of all \textbf{seed}s, only 2\% will successfully germinate.  These seeds will spend 3 days growing into the developing stage.
+		\begin{itemize}
+			
+			\item Out of all \textbf{seed}s, only 2\% will successfully germinate\autocite{honek2005post}.  These seeds will spend 3 days growing into the developing stage\autocite{stewart2002biology}.
+			
+			\item The \textbf{developing} stage is the time from sprouting to seed ripening.  It takes a sprout 60--95 days to grow into a flower, and an additional 9--12 days for the flower to ripen\autocite{gardenorganicNAripen}.  The exact duration of this stage is determined by the adaptation factor $k$ (worst = 107, best = 69) per \textbf{Section \ref{sec:af}}.
+			
+			\item The \textbf{dispersal} stage lasts 10 days.  A dandelion plant can produce around 10 seed heads per year and it usually flowers twice, so it produces 5 heads every time it flowers.  The number of seeds on each head is determined by $k$ (worst = 150, best = 200)\autocite{dukeNAdandelion}.  It takes each head 2 days to disperse its seeds.  The height of the puffball, $h$, is determined by $k$ (worst = 12, best = 40)\autocite{veggiegardenNAstem}.  The seeds are dispersed per the method stated in \textbf{Section \ref{sec:wind}}.
+			
+			\item The \textbf{inter-dispersal} stage is the stage between two dispersal stages of a plant.  In this stage, dandelions regrow their scapes and flowers.  Since most dandelions that flowered in spring usually flower again in fall\autocite{stewart2002biology}, the duration of this stage is set to be half a year, which is 180 days.   
+			
+		\end{itemize}
+		We also consider two additional states, \textbf{hold} and \textbf{dormancy}.		
+		\begin{itemize}
+			
+			\item When $T > 24^\circ$C, only 12.5\% of the flowers bloom and disperse their seeds\autocite{yoshie2020effects}.  We let dandelions enter dispersal by probability 12.5\% and move the rest into the \textbf{hold} stage.  In this stage, flowers are held in buds.  As soon as $T$ falls below $24^\circ$C, flowers can bloom and disperse seeds.  
 		
-		The \textbf{developing} stage is the stage when the flower is grown and the seeds ripen.  It takes a seed 60--95 days to grow into a flower, and it takes an additional 9--12 days for the seeds on the flower to mature.  The exact duration of this stage is determined by the adaptation factor $k$ (worst = 107, best = 69).
+			\item Dandelions enter the \textbf{dormancy} stage when $T < 0^\circ$C.  The temperature is low and it is likely that it snows.  All life activities of dandelions are paused.  As soon as $T$ rises above $0^\circ$C, dandelions resume the previous stage.
 		
-		The height of the flower is determined by $k$ (worst = 12, best = 40) when developing finishes.
-		
-		When $T > 24^\circ$C, only 12.5\% of the flowers bloom and disperse their seeds.  We let dandelions enter dispersal by probability 12.5\% and move the rest into the hold stage.
-		
-		The \textbf{dispersal} stage lasts 10 days.  A dandelion plant can produce around 10 seed heads per year and it usually flowers twice, so it produces 5 heads every time it flowers.  The number of seeds on each head is determined by $k$ (worst = 150, best = 200).  It takes each head 2 days to disperse its seeds.  The seeds are dispersed per the method stated in \textbf{Section \ref{sec:wind}}.
-
-		The \textbf{inter-dispersal} stage is the stage between two dispersal stages of a plant.  In this stage, dandelions regrow their scapes and flowers.  Since most dandelions that flowered in spring usually flower again in fall, the duration of this stage is set to be half a year, which is 180 days.  
-		
-		Dandelions can only enter the \textbf{hold} stage when $T > 24^\circ$C.  Flowers are held in buds and dispersal is diminished.  As soon as $T$ falls below $24^\circ$C, flowers can bloom and disperse seeds.  
-		
-		Dandelions can only enter the \textbf{dormancy} stage when $T < 0^\circ$C.  The temperature is low and it is likely that it snows.  All life activities of dandelions are paused.  As soon as $T$ rises above $0^\circ$C, dandelions resume the stage before it entered dormancy.
+		\end{itemize}
 		
 		
 		
 		
 		
 	\subsection{Algorithm}
+		\vspace{-0.4cm}
+		{
+			\fontsize{10}{14}\selectfont
+			{
+				\setlength{\parindent}{-1em}
+				
+				{
+				\fontsize{12}{18}\selectfont
+				\begin{longtable}{p{6.65in}}
+					\toprule
+					\textbf{Monte Carlo simulation algorithm for dandelion spread}\\
+					\textbf{INPUT:} run times \toB{$n$ } and environment factors \toB{$\mu_T$}, \toB{$\sigma_T$}, \toB{$\mu_W$}, \toB{$\sigma_W$ } and \toB{$\mu_H$}\\
+					\bottomrule
+				\end{longtable}
+				}
+			
+				\vspace{-0.5em}
+				\begin{algorithmic}
+					\For{1 to \toB{$n$}}
+					\ForAll{\toB{$t$ } in days of one year}
+					\State \toB{$T$ } $\gets$ evaluate current temperature per \textbf{Eq.\ref{eq:temp}}
+					\State \toB{$k$ } $\gets$ evaluate adaptation factor per \textbf{Section \ref{sec:af}}
+					\For{\toB{$dandelion$ } in current all dandelions}
+					\State \textbf{if} \toB{$T$ } < 0 \textbf{then} \toB{$previous\,status$ } $\gets$ \toB{$current\,status$}, \toB{$current\,status$ } $\gets$ \textbf{Dormancy}
+					\State \textbf{if} \toB{$current\,status$ } is \textbf{Dormancy} and \toB{$T$ } > 0 \textbf{then} \toB{$current\,status$ } $\gets$ \toB{$previous\,status$}
+					\State \textbf{if} \toB{$current\,status$ } is \textbf{Hold} and \toB{$T$ } < 24 \textbf{then} \toB{$current\,status$ } $\gets$ \toB{$previous\,status$}
+					
+					\If{\toB{$current\,status$ } is \textbf{Developing} or \toB{$current\,status$ } is \textbf{Inter-dispersal}}
+					\If{days of \toB{$current\,status$ } reaches the next stage}
+					\If{\toB{$T$ } > 24}
+					\State \toB{$current\,status$ } $\gets$ \textbf{Dispersal} with probability 0.125
+					\If{\textbf{Dispersal} successfully}
+					\State \toB{$current\,status$ } $\gets$ \textbf{Dispersal}
+					\Else
+					\State \toB{$previous\,status$ } $\gets$ \toB{$current\,status$}
+					\State \toB{$current\,status$ } $\gets$ \textbf{Hold}
+					\EndIf
+					\Else
+					\State \toB{$current\,status$ } $\gets$ \textbf{Dispersal}
+					\EndIf
+					\EndIf
+					\EndIf
+					
+					\If{\toB{$current\,status$ } is \textbf{Seed}}
+					\State \textbf{if} days of \toB{$current\,status$ } reaches the next stage \textbf{then} \toB{$current\,status$ } $\gets$ \textbf{Developing}
+					\EndIf
+					
+					\If{\toB{$current\,status$ } is \textbf{Dispersal}}
+					\State determine the seed count that needs to be dispersed
+					\ForAll{\toB{$seed$ } in dispersing seeds}
+					\State calculate dispersal distance per \textbf{Section \ref{sec:wind}}
+					\State calculate land location and add it to \toB{$locations$ }
+					\State generate a \toB{$new dandelion$ } with state \textbf{Seed}
+					\EndFor
+					\State \textbf{if} days of \toB{$current\,status$ } reaches the next stage \textbf{then} \toB{$current\,status$ } $\gets$ \textbf{Inter-dispersal}
+					\EndIf
+					
+					
+					\EndFor
+					\EndFor
+					\EndFor
+					\State calculate \toB{$numbers$ } and \toB{$distances$ } per \toB{$locations$}
+					\State \textbf{Return}{ \toB{$locations$ }, \toB{$numbers$ } and \toB{$distances$}}
+				\end{algorithmic}
+				
+				{
+				\fontsize{12}{18}\selectfont
+				\begin{longtable}{p{6.6in}}
+					\toprule
+					\textbf{OUTPUT:} dandelion spread \toB{$locations$}, \toB{$numbers$ } and \toB{$mean\,distances$ } over days\\
+					\bottomrule
+				\end{longtable}
+				}
+			}
+		}	
 	
 	\subsection{Dandelion Spread Results}
 	
-		\subsubsection{Simulation Conditions}
+		\subsubsection{Location}
 		
 			We choose 6 locations in the US so that we have a variety of temperature and wind conditions.  AK is cold; CA, DC, and KS are warm; and FL and HI are relatively hot.  AK, DC, and KS have distinct seasons; CA and FL show moderate temperature fluctuations; and HI has very stable temperature.  The wind conditions also exhibit different patterns.  DC has notably large wind speed.  The values of the five environmental factors are listed in \textbf{Table \ref{tb:locs}}.  
 			
@@ -327,8 +408,14 @@
 					\end{longtable}
 				}
 			}
+			\newpage
 			
-			We also have to determine the starting time of simulation.  We run the model with starting dates Jan.\,1st, Feb.\,1st, \ldots, and Dec.\,1st for all 6 locations.  The results for Florida are shown in \textbf{Fig.\ref{fig:start}}.  The dandelion number varies greatly among the runs, but the mean distance is approximately the same.  For each location, the starting date is chosen such that the number of dandelions is maximized.  The number of dandelions corresponding to the chosen dates are marked blue in \textbf{Table \ref{tb:start}}.
+		\subsubsection{First Phase Results}	
+			We run the model for 2 phases.
+			
+			In the first phase, we determine the optimal starting month of simulation.  For all 6 locations, we run the model with 12 cases that start respectively on the first day of each month, and get the number and mean distance for each case and each location.
+			
+			As an example, the results for Florida are shown in \textbf{Fig.\ref{fig:start}}.  The dandelion number varies greatly among the case, but the mean distance is approximately the same.  We can see that for Florida, we get the maximum dandelion number when the starting date is May 1st.  So we will use May as the starting month in the next phase.
 			
 			\begin{figure}[htbp]
 				\centering
@@ -336,6 +423,8 @@
 				\caption{Number and mean distance in Florida when simulation starts at different months}
 				\label{fig:start}
 			\end{figure}
+			
+			\textbf{Table \ref{tb:start}} lists all the data from the run of first phase.  The headers indicate the starting months, and the numbers in the table are the dandelion numbers at the end of 12 months.  The numbers corresponding to the optimal starting months are marked in blue.  In this way, we can determine that the optimal starting month is September for AK, August for CA, September for DC, May for FL, September for HI, and August for KS.
 			
 			{
 				\fontsize{10}{14}\selectfont
@@ -359,9 +448,9 @@
 			
 			
 			
-		\subsubsection{Results}
+		\subsubsection{Second Phase Results}
 		
-			We run the model 1000 times for each location.  The resulting frequency histogram for Florida is shown in \textbf{Fig.\ref{fig:freqDand}}.  We can see that both the number and the mean distance follow an approximately normal distribution.  We calculated several statistics for each location, which are displayed in \textbf{Table \ref{tb:numDistribution}} and \textbf{Table \ref{tb:distDistribution}}.
+			In the second phase, we run the model 1000 times for each location beginning at the optimal starting month from the first phase.  The resulting frequency histogram for Florida is shown in \textbf{Fig.\ref{fig:freqDand}}.  We can see that both the number and the mean distance follow an approximately normal distribution.  
 			
 			\begin{figure}[htbp]
 				\centering
@@ -370,9 +459,7 @@
 				\label{fig:freqDand}
 			\end{figure}
 			
-			We examine the statistics for dandelion number.  For all locations, the confidence interval of the mean is relatively small, which implies the mean is quite accurate.  The standard deviation and range are large, which shows that the spread of dandelions is easily affected by random factors such as fluctuations in the environment.  For all locations except California, the distribution is platykurtic.  It is flatter and less concentrated than the normal distribution.  
-			
-			For all locations except Alaska, the distribution is skewed to the left.  Its mass is concentrated on the right, so the dandelion number is slightly more likely to be greater than the mean rather than smaller.  However, because of the unfavorable environmental conditions in Alaska, the number is more likely to be smaller than the mean.
+			We calculated several statistical characteristics for each location, as shown in \textbf{Table \ref{tb:numDistribution}} and \textbf{Table \ref{tb:distDistribution}}.	 We examine the statistics for dandelion number.  The confidence interval of the mean is relatively small for all locations, which implies the mean is quite accurate.  The standard deviation and range are large, which shows that the spread of dandelions is easily affected by random factors such as fluctuations in the environment.  For all locations except California, the distributions are platykurtic.  For all locations except Alaska, the distribution is skewed to the left.  Its mass is concentrated on the right, so the dandelion number is slightly more likely to be greater than the mean rather than smaller.  However, because of the unfavorable environmental conditions in Alaska, the number is more likely to be smaller than the mean.
 			
 			{
 				\fontsize{10}{14}\selectfont
@@ -415,7 +502,8 @@
 				}
 			}
 			
-			Out of the 1000 runs, we select the run that has a dandelion number closest to the mean value.  The positions and current stages of the dandelions at the end of 12 months are shown in \textbf{Fig.\ref{fig:scatter5loc}}.  For all locations except the District of Columbia, most dandelions grow in a semicircular ring centered at the origin.  Alaska is apparently unsuitable for dandelions to spread.  In California, Hawaii, Florida, and Kansas, dandelions all spread at a moderate speed.
+			Out of the 1000 runs, we select the run that has a dandelion number closest to the mean value.  The positions and current stages of the dandelions at the end of 12 months are shown in \textbf{Fig.\ref{fig:scatter5loc}}.  For all locations except the District of Columbia, most dandelions grow in a semicircular ring centered at the origin.  Alaska is apparently unsuitable for dandelions to spread.  In California, Hawaii, Florida, and Kansas, dandelions all spread to a moderate range.
+			\newpage
 			
 			\begin{figure}[htbp]
 				\centering
@@ -712,33 +800,6 @@
 		}
 		
 		hello!!! \\
-
-		{
-			\fontsize{10}{14}\selectfont
-			{
-				\begin{longtable}{p{6.5in}}
-					\toprule
-					\fontsize{12}{18}\selectfont{\textbf{Algorithm 1} Monte Carlo simulation algorithm for dandelion spread}\\
-					\toprule
-					\textbf{INPUT:} run times \toB{$n$ } and environment factors \toB{$\mu_T$}, \toB{$\sigma_T$}, \toB{$\mu_W$}, \toB{$\sigma_W$ } and \toB{$\mu_H$}\\
-					\textbf{OUTPUT:} dandelion spread \toB{$numbers$} and mean \toB{$distances$ } over days\\
-					\textbf{Begin Procedure}
-					\begin{algorithmic}
-						\For{1 to \toB{$n$}}
-						\ForAll{\toB{$t$ } in days of one year}
-						\For{\toB{$dandelion$ } in current all dandelions}
-						\State \toB{$T$ } $\gets$ evaluate current temperature per \textbf{Equation} \ref{eq:temp}
-						\State \toB{$T$ } $\gets$ evaluate current temperature per \textbf{Equation} \ref{eq:temp}
-						\EndFor
-						\EndFor
-						\EndFor
-						\State \textbf{Return}{ \toB{$numbers$ } and \toB{$distances$}}
-					\end{algorithmic}
-					\textbf{End Procedure}\\
-					\bottomrule
-				\end{longtable}
-			}
-		}
 		
 		hello!!! \\
 
