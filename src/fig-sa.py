@@ -10,8 +10,8 @@ plt.rcParams['font.size'] = 7.5
 
 params = ['MuT', 'StdT', 'MuW', 'StdW', 'Hum']
 param_data = [
-    (r'$\mu_T$ ($℃$)', 300, 100),
-    (r'$\sigma_T$ ($℃$)', 100, 50),
+    (r'$\mu_T$ ($^\circ$C)', 300, 100),
+    (r'$\sigma_T$ ($^\circ$C)', 100, 50),
     (r'$\mu_W$ (m/s)', 150, 50),
     (r'$\sigma_W$ (m/s)', 100, 50),
     (r'$\mu_H$ (%)', 1000, 500)
@@ -30,8 +30,8 @@ for p in range(5):
     ax1.plot(pVal, num, color='black', linewidth = 0.6)
     ax2.plot(pVal, dist, color='black', linewidth = 0.6)
 
-    ax1.set_xlabel(param_data[p][0])
-    ax2.set_xlabel(param_data[p][0])
+    ax1.set_xlabel(param_data[p][0], usetex=True)
+    ax2.set_xlabel(param_data[p][0], usetex=True)
     ax1.set_ylabel('Number')
     ax2.set_ylabel('Mean distance (m)', rotation = -90, labelpad = 12)
 
