@@ -148,7 +148,7 @@
 			}
 		}
 		
-		And we will do the following to consider the environmental influence on the dandelion spread process.
+		And we will do the following steps to consider the environmental influence on the dandelion spread process.
 		
 		\begin{itemize}
 			\vspace{-0.5cm}
@@ -634,30 +634,36 @@
 			\item \textbf{A plant's impact has a direct correlation with its biological characteristics.}
 			\vspace{-0.125in}
 			\begin{description}
-				\item[Justification:] Study shows that the invasiveness of plant species is closely related to performance-related traits\autocite{van2010meta}.  Thus we can think of biological characteristics as fairly reliable indicators on the invasiveness, which is the plant's ability to cause harm to the environment and to humans.  
+				\item[Justification:] Study shows that the invasiveness of plant species is closely related to \\performance-related traits\autocite{van2010meta}.  Thus we can think of biological characteristics as fairly reliable indicators on the invasiveness, which is the plant's ability to cause harm to the environment and to humans.  
 			\end{description}
 			
-			\item \label{assumption:offset} \textbf{A plant's impact on humans and on the environment can be partly offset by its benefits.}
+			\item \label{assumption:offset} \textbf{A plant's impact can be mitigated by its benefits.}
 			\vspace{-0.125in}
 			\begin{description}
-				\item[Justification:] If plants are edible for animals or is beneficial for the environment in some other way, it is likely that the environment will receive less harm overall.  Likewise, if plants can be made into products or utilized in other ways, it can benefit the economy and causes less harm to humans.  
+				\item[Justification:] If plants are edible for animals or beneficial for the environment in some other ways, it is likely that the environment will be subject to less harm overall.  Likewise, if plants can be made into products or utilized in other ways, they can benefit the economy and cause less harm to humans.  
 			\end{description}
 			
 			\item \textbf{At locations with higher population density, the impact of a plant is greater.}
 			\vspace{-0.125in}
 			\begin{description}
-				\item[Justification:] At places with higher population density, it is likely that people try harder to get rid of undesirable plants.  This leads to more expenditure on the control of the species, which means the impact is greater.  At places with low population density, there is less human intervention and introduced plants may reach an equilibrium with native plants more easily, thus causing less impact.  
+				\item[Justification:] At places with higher population density, it is likely that people try harder to get rid of undesirable species.  This leads to more expenditure on the control of the species, which means the impact is greater.  At places with low population density, there is less human intervention. Non-native plants may reach an equilibrium with native ones, thus causing less impact.  
 			\end{description}
 			
 		\end{enumerate}
 	
 	\subsection{Model Description}
+	
+	\subsubsection{Model Overview}
 		
-		The \textbf{impact factor} is defined as a measure of the level of impact or harm that a plant species makes on both the environment and human beings.  We introduce two types of impact factors, namely global and local impact factors.  Global impact factors is the same regardless the location.  It only considers the characteristics of the plant itself, and its general impacts on human and environment.  The local impact factor also considers the adaptation of the plant to a certain location besides the factors already considered in the global impact factor.  
+		The \textbf{impact factor} is a measure of adverse impact that an invasive plant can make on the environment and human beings.  
+		
+		We define two types of impact factors, namely \textbf{global impact factor} and \textbf{local impact factor}.  We also break down all the impact attributes into 3 categories.  \textbf{Category \textit{A}} is related to plant characteristics, \textbf{Category \textit{B}} is related to human and environment and \textbf{Category \textit{C}} is related to plant's local adaptation.  Global impact factor considers attributes from both \textbf{Category \textit{A}} and \textbf{Category \textit{B}}.  Local impact factor considers attributes from all 3 categories.
+		
+		With global impact factor, we can compare the invasiveness between species in general perspective.  For example, by using global impact factor, we can tell which one has more invasiveness between dandelion and clover, by and large.
+		
+		Local impact factor does more refined work.  By introducing more local adaptation attributes, we can tell the difference of invasiveness between locations for one species .  We can also compare the invasiveness for different species in different places.
 		
 		\textbf{Table \ref{tb:syms}} lists all the variables we will use in this model.
-		
-		We obtained a list of invasive plants from \href{https://www.sciencebase.gov/catalog/item/5b911a5ce4b0702d0e808588}{US-RIIS}\autocite{US-RIIS} and chose 226 plants.  We wrote a web crawler to get detailed attributes of the plants from the \href{https://plants.usda.gov/home/}{USDA Plants Database}\autocite{USDA}.  \textbf{Table \ref{tb:attributes}} lists the attributes that we consider.  The attributes in Category $A$ and $B$ are used by both the global and the local impact factors, while the attributes in Category $C$ only concerns the local impact factor.
 		
 		{
 			\fontsize{10}{14}\selectfont
@@ -673,23 +679,47 @@
 					IF$_L$&Local impact factor\\
 					$\rho$&Invasion level coefficient\\
 					$a_i$&Attribute value for $A_i$\\
-					$b_i$&Attribute value for $B_i$\\
-					$c_i$&Attribute value for $C_i$\\
+					$b_j$&Attribute value for $B_j$\\
+					$c_k$&Attribute value for $C_k$\\
 					$\alpha_i$&The weight for attribute $A_i$\\
-					$\beta_i$&The weight for attribute $B_i$\\
-					$\gamma_i$&The weight for attribute $C_i$\\
+					$\beta_j$&The weight for attribute $B_j$\\
+					$\gamma_k$&The weight for attribute $C_k$\\
 					\bottomrule
 					
 				\end{longtable}
 			}
 		}
+		The formulas for calculating global impact factor and local impact factor are as follows:
+		\begin{equation} \label{eq:ifg}
+			\mathrm{IF}_G = 100\rho \left( \sum_{} \alpha_ia_i + \sum_{} \beta_jb_j \right)
+		\end{equation} 
+		\begin{equation} \label{eq:ifl}
+			\mathrm{IF}_L = 100\rho \left( \sum_{} \alpha_ia_i + \sum_{} \beta_jb_j + \sum_{} \gamma_kc_k \right)
+		\end{equation}
 		
+		{
+		
+		\begin{itemize}
+		\vspace{-0.2cm}
+		\item \textbf{Invasion level coefficient $\rho$} is 0.9 if a plant is less widespread invasive, otherwise 1.0.
+		\vspace{-0.2cm}
+		\item \textbf{Attribute values} $a_i$, $b_j$ and $c_k$ are determined per \textbf{Section \ref{sec:attr_value}}.
+		\vspace{-0.2cm}
+		\item \textbf{Attribute weights} $\alpha_i$, $\beta_j$ and $\gamma_k$ are determined per \textbf{Section \ref{sec:attr_weight}}.
+		\end{itemize}
+		}
+	
+		\subsubsection{Attribute values}
+		\label{sec:attr_value}
+		
+		Every attribute contains a list of options described in words than in numbers.  In order to leverage \textbf{Eq.\ref{eq:ifg}} and \textbf{Eq.\ref{eq:ifl}}, we need to map the options from words to numbers per \textbf{Table \ref{tb:attributes}}.
+		\newpage
 		{
 			\fontsize{10}{14}\selectfont
 			{
 			\begin{longtable}{p{0.2in}p{1.5in}p{4.3in}}
 				
-				\caption{Attributes}
+				\caption{Attributes values}
 				\label{tb:attributes}\\
 				
 				\toprule
@@ -698,7 +728,7 @@
 					& \multicolumn{1}{c}{\textbf{$a_i$, $b_i$ and $c_i$ Evaluation}} \\
 			
 				\toprule
-				\multicolumn{3}{l}{Category $A$ - Plant Characteristics}\\
+				\multicolumn{3}{l}{Category \textit{A} - Plant Characteristics}\\
 				\midrule
 				
 				$A_1$ & Duration & $a_1=0.5$ (Annual), $0.75$ (Biennial), $1$ (Perennial)\\
@@ -718,7 +748,7 @@
 					&& $a_9=0.5$ (Low), $0.75$ (Medium), $1$ (High)\\
 				
 				\midrule
-				\multicolumn{3}{l}{Category $B$ - Human and Environment}  \\
+				\multicolumn{3}{l}{Category \textit{B} - Human and Environment}  \\
 				\midrule
 				
 				$B_1$ & Toxicity & The relative toxicity of the plant to either humans or livestock.\\
@@ -733,7 +763,7 @@
 					&& $b_5=0.5$ (Yes), $1$ (No)\\
 			
 				\midrule
-				\multicolumn{3}{l}{Category $C$ - Location}  \\
+				\multicolumn{3}{l}{Category \textit{C} - Location}  \\
 				\midrule
 				
 				$C_1$ & Soil Adaptation & The soil adaptation level.\\
@@ -750,12 +780,18 @@
 			\end{longtable}
 			}
 		}
+		\newpage
 		
-		Attributes $B_2$ (Product), $B_3$ (Palatable Animal), $B_4$ (Palatable Human), and $B_5$ (Commercial Availability) are special since they measure benefits rather than harms.  Per \textbf{Assumption \ref{assumption:offset}}, the greater the benefit, the less the impact.  Therefore, when the palatability is higher, or when the plant has more uses in manufacturing, the corresponding values ($b_i$) are set to be smaller.
+		Attributes $B_2$ (Product), $B_3$ (Palatable Animal), $B_4$ (Palatable Human), and $B_5$ (Commercial Availability) are special since they measure benefits rather than harms.  Per \textbf{Assumption \ref{assumption:offset}}, the greater the benefit, the less the impact.  Therefore, when the palatability is higher, or when the plant has more uses, the corresponding values are smaller.
 		
-		We choose to use the Analytic Hierarchy Process (AHP) to obtain the weights for each attribute.  It is too difficult to construct a weight vector by conferring to research papers.  AHP is suitable for this situation, since it enables us to make pairwise comparisons.  Furthermore, it also provides a method to evaluate our consistency in making those comparisons and can help us reach a reasonable result.
+		\subsubsection{Attribute weights}
+		\label{sec:attr_weight}
 		
-		We make comparisons between attributes according to Saaty's fundamental scale of absolute numbers\autocite{AHP}.  The resulting comparison matrix is shown in \textbf{Table \ref{tb:mat}}.
+		We use the Analytic Hierarchy Process (AHP) to obtain the weight vector.  When it is not easy to construct a weight vector by conferring to research papers, AHP is an option.  Since it makes pairwise comparisons and has a method to evaluate the rationality for those comparisons, it can reach a relatively reasonable result.
+		
+		We make comparisons between attributes according to Saaty's fundamental scale of absolute numbers\autocite{AHP}.  When two attributes are equally important, we get 1; when one attribute is moderately more important than the other, we get 3; when one attribute is strongly more important than the other, we get 5; when one attribute is much strongly more important than the other, we get 7; when one attribute is extremely more important than the other, we get 9.  Number 2, 4, 6 and 8 are used to express intermediate values.  
+		
+		The resulting comparison matrix is shown in \textbf{Table \ref{tb:mat}}.
 		
 		{
 			\fontsize{10}{18}\selectfont
@@ -794,9 +830,11 @@
 			}
 		}	
 		
-		We can see that attribute $B_1$ (Toxicity) is comparatively very important.  This is because toxic plants can poison the local environment and requires a large expenditure for humans to eliminate.  Attributes $A_3$ (Growth Rate), $A_5$ (Fertility Requirement), $A_8$ (Seed Spread Rate) are also important because they directly determine the spread rate of a plant when it is introduced to a new location.  
+		Note that attribute $B_1$ (Toxicity) is a predominant attribute in our model.  Toxic plants can poison the local environment and lead to a large expenditure for humans to control them.  Attributes $A_3$ (Growth Rate), $A_6$ (Fruit/Seed Abundance), $A_8$ (Seed Spread Rate) are also important because they  determine the spread rate of a plant when it is introduced to a new place.
 		
-		For the global impact factor, we only take the upper 14 rows and the left 14 columns of the matrix.  For the local impact factor, we use the complete matrix.  We conduct a consistency test on the global matrix and the local one.  The resulting CR is small in both matrices, so they are relatively consistent.
+		For the global impact factor, the comparison matrix is comprised of the numbers from first 14 rows and first 14 columns.  For the local impact factor, the comparison matrix is comprised of all the numbers in the table.  
+		
+		We conduct a consistency test on the global matrix and the local one.  The resulting CR is small enough for both matrices, so both matrices pass the test.
 		
 		{
 			\fontsize{10}{14}\selectfont
@@ -806,7 +844,7 @@
 					\label{tb:consistency}\\
 					
 					\toprule
-					Impact Factor&Attribute Number&max eigenvalue 
+					Impact Factor&Attribute Number&Max Eigenvalue 
 					&\multirow{2}{*}{$\mathrm{CI}=\displaystyle \frac{\lambda_{max}-n}{n-1}$}
 					&\multirow{2}{*}{$\mathrm{RI}$}
 					&\multirow{2}{*}{$\mathrm{CR}=\displaystyle \frac{\mathrm{CI}}{\mathrm{RI}}$}
@@ -820,7 +858,9 @@
 			}
 		}	
 		
-		For each of the two matrices, we scale the columns so that each column adds up to 1.  Then, we calculate the sum of each row to get a sum vector.  We divide it by $n$, the number of considered attributes, to get the final weight vector.  The weight results are shown in \textbf{Table \ref{tb:weights}}.
+		For each matrix, we normalize the columns so that each column adds up to 1.  Then, we calculate the sum of each row to get a sum vector.  Last, we divide the sum vector by $n$ (the attribute number in \textbf{Table \ref{tb:consistency}}) to get the final weight vector.  
+		
+		The weight results are shown in \textbf{Table \ref{tb:weights}}.
 	
 		{
 			\fontsize{10}{14}\selectfont
@@ -844,17 +884,9 @@
 				\end{longtable}
 			}
 		}	
-		
-		The list we obtained from US-RIIS contained a field called ``Degree of Establishment'', which labeled the plants as ``invasive'' or ``widely established invasive''.  For those plants that are widely established, it is likely that they have a much larger overall impact on humans and on the environment.  To account for this, we introduce an invasion level coefficient $\rho$ whose value is 0.9 for invasive species and 1.0 for widely established invasive species.  This coefficient is multiplied with a factor calculated from the attribute values and weights.  The formulas for the global and local impact factors are as followings:
-		
-		\begin{equation}
-			\mathrm{IF}_G = 100\rho \left( \sum_{i = 1}^9 \alpha_ia_i + \sum_{i = 1}^5 \beta_ib_i \right)
-		\end{equation}
-		
-		\begin{equation}
-			\mathrm{IF}_L = 100\rho \left( \sum_{i = 1}^9 \alpha_ia_i + \sum_{i = 1}^5 \beta_ib_i + \sum_{i = 1}^4 \gamma_ic_i \right)
-		\end{equation}
-		
+	
+		\subsubsection{Algorithm}	
+		\vspace{-0.4cm}
 		{
 			\fontsize{10}{14}\selectfont
 			{
@@ -865,18 +897,17 @@
 					\begin{longtable}{p{6.65in}}
 						\toprule
 						\textbf{Analytic Hierarchy Process Model for Impact Factor}\\
-						\textbf{INPUT:} All the attributes in table... and invasive leve... \\
+						\textbf{INPUT:} All the attribute options and \textbf{Invasive level coefficient $\rho$} \\
 						\bottomrule
 					\end{longtable}
 				}
 				
 				\vspace{-0.5em}
 				\begin{algorithmic}
-					\State \toB{$global\,value\,vector$ } $\gets$ evaluate all the \textbf{Attribute values} per \textbf{Table \ref{tb:attributes}}
-					\State \toB{$local\,value\,vector$ } $\gets$ evaluate all the \textbf{Attribute values} per \textbf{Table \ref{tb:attributes}}
-					\State \toB{$global\,weight\,vector$ } $\gets$ \textbf{Table \ref{tb:mat}}
-					\State \toB{$local\,weight\,vector$ } $\gets$ \textbf{Table \ref{tb:mat}}
-					\State \toB{$\rho$ } $\gets$ 1.0 if widely spread invasive; 0.9 if invasive
+					\State \toB{$global\,value\,vector$ } $\gets$ evaluate all the \textbf{Attribute values} from inputted attribute options per \textbf{Table \ref{tb:attributes}}
+					\State \toB{$local\,value\,vector$ } $\gets$ evaluate all the \textbf{Attribute values} from inputted attribute options  per \textbf{Table \ref{tb:attributes}}
+					\State \toB{$global\,weight\,vector$ } $\gets$ \textbf{Table \ref{tb:weights}}
+					\State \toB{$local\,weight\,vector$ } $\gets$ \textbf{Table \ref{tb:weights}}
 					\State \toB{IF$_G$ } $\gets$ \toB{$100\rho$ } times the dot product of \toB{$global\,value\,vector$ } and \toB{$global\,weight\,vector$ }
 					\State \toB{IF$_L$ } $\gets$ \toB{$100\rho$ } times the dot product of \toB{$local\,value\,vector$ } and \toB{$local\,weight\,vector$ }
 				\end{algorithmic}
@@ -893,8 +924,13 @@
 		}	
 		
 	\subsection{Results}
+	\subsubsection{Global Impact Factor Results}
 		
-		We calculate the global impact factor for the 226 plants species and rank them according to the factor.  \textbf{Table \ref{tb:ranks}} shows some selected plants from the ranking.
+		We downloaded a database containing a list of invasive plants from \href{https://www.sciencebase.gov/catalog/item/5b911a5ce4b0702d0e808588}{US-RIIS}\autocite{US-RIIS} and chose 226 plants from it.  These plants belong to 3 classes, 26 orders and 53 families.
+		
+		In order to get all the plant attributes, we developed a web crawler to grab data from \href{https://plants.usda.gov/home/}{USDA Plants Database}\autocite{USDA}.  Thus, we have all the attribute options ready for each plant.
+		
+		Then we implement this model to calculate the global impact factors for all 226 plants and rank them according to the factor.  \textbf{Table \ref{tb:ranks}} shows some results.
 		
 		{
 			\fontsize{10}{14}\selectfont
@@ -923,17 +959,17 @@
 			}
 		}
 		
-		Dandelions have a IF$_G$ value that is moderate to high and a relatively high ranking.  We observe that half of the top-10 plants are perennials and 7 of them are forbs/herbs.  Intriguingly, The tree of heaven, which is of course a tree, has made it to the third place.  This is mostly because it is toxic and grows rapidly.  
+		We observe that half of the top-10 plants are perennials and 7 of them are forbs/herbs.  Intriguingly, the tree of heaven, which is a tree, has made it to the third place.  This is mostly because it is toxic and grows rapidly. 
+		
+		Dandelions have a relatively high ranking but are not among the top species.  This is because dandelions are edible and have medicinal and culinary use, which lowers the global impact factor.
 	
-		We draw the global impact factors into a histogram (see \textbf{Fig.\ref{fig:freqIF}}), and calculate several statistical characteristics for the distribution of IF$_G$ (see \textbf{Table \ref{tb:IFDistribution}}).  We see that IF$_G$ is roughly concentrated around the mean and the median but does not exactly follow a normal distribution.  The distribution is skewed to the right according to the table, meaning that there is a longer left tail.  However, we can observe a right tail as well on the histogram.  Both tails are not very long.  There are no values below 30 or above 90.
-		
 		\begin{figure}[htbp]
-			\centering
-			\includegraphics{IF-frequency.pdf}
-			\caption{Frequency distribution of global impact factor}
-			\label{fig:freqIF}
+		\centering
+		\includegraphics{IF-frequency.pdf}
+		\caption{Frequency distribution of global impact factor}
+		\label{fig:freqIF}
 		\end{figure}
-		
+	
 		{
 			\fontsize{10}{14}\selectfont
 			{
@@ -950,7 +986,27 @@
 			}
 		}
 		
-		We chose 3 locations to calculate the local impact factors: Florida (FL), Neveda (NV), and Alaska (AK).  We chose 5 plants that are invasive at some or all of these locations and calculated the corresponding local impact factors.  The results are shown in \textbf{Fig.\ref{fig:IFLocal}}.  We can see that for each plant, their impact would be greater at locations with favorable environments.  We can also compare the impact factors of different plants at different locations.  For instance, the sweetclover has a IF$_G$ that is higher than the tree of heaven.  However, the IF$_L$ for sweetclover at Alaska is lower than that for tree of haven at Florida.  
+		We draw a histogram by using 226 global factors IF$_G$ (see \textbf{Fig.\ref{fig:freqIF}}), and calculate several statistical characteristics for the distribution (see \textbf{Table \ref{tb:IFDistribution}}).  
+		
+		IF$_G$ is roughly concentrated around the mean and the median but does not exactly follow a normal distribution.  The distribution is skewed to the right according to the table, meaning that there is a longer left tail.  However, we can observe a right tail as well on the histogram.  Neither tail is very long.  There are no values below 30 or above 90.
+		
+	\subsubsection{Local Impact Factor Results}
+		
+		For calculating local impact factor IF$_L$:
+		\vspace{-0.2cm}
+		\begin{itemize}
+		\item First. we chose 3 locations Florida (FL), Neveda (NV), and Alaska (AK), where Florida is warm and humid, Neveda is hot and dry, and Alaska is extremely cold;
+		\vspace{-0.2cm}
+		\item Then, we chose 5 plants that are invasive at these locations.  Sweetclover ranks the first in global impact factor; the tree of heaven is the highest ranking tree in terms of global impact factor; yellow salsify has the highest global impact factor among nontoxic plants; mugo pine is in the last place in the global impact table; also, dandelion is not left out.
+		\vspace{-0.2cm}
+		\item Last, we prepare all the attributes options with regards to \textbf{Category \textit{C}} and implement the model to get local impact factor IF$_L$.
+		\end{itemize} 	
+		
+		The results are shown in \textbf{Fig.\ref{fig:IFLocal}}.  
+		
+		For each plant, their impact would be greater at locations with more favorable environments, and vice versa.
+		
+		For different plants, their local impact factor ranking roughly conforms to the global one, but there are exceptions.  For example, though sweetclover has a IF$_G$ higher than that of the tree of heaven, the IF$_L$ for sweetclover in Alaska is lower than that for the tree of heaven in Florida.
 		
 		\begin{figure}[htbp]
 			\centering
@@ -959,16 +1015,37 @@
 			\label{fig:IFLocal}
 		\end{figure}
 
+	\newpage
+	
 	\subsection{Sensitivity Analysis}
 	
-		We select 5 attributes for sensitivity analysis.  For each value of each attribute, we find the minimum and maximum global impact factor of the plants and plot them in \textbf{Fig.\ref{fig:IFfactors}}.  The minimum and maximum values all increases as the value of the attribute increases except the maximum for severe toxicity.  This may be due to a lack of data of severely toxic plants.
-	
-		\begin{figure}[htbp]
-			\centering
-			\includegraphics{categories-IF.pdf}
-			\caption{Sensitivity analysis}
-			\label{fig:IFfactors}
-		\end{figure}
+		In \textbf{Eq.\ref{eq:ifg}} and \textbf{Eq.\ref{eq:ifl}}, the impact factors are evaluated as 100$\rho$ multiplied by a linear combination of attribute values.  We discuss the model's sensitivity as follows.
+		\vspace{-0.2cm}
+		\begin{itemize}
+			\item For variable $\rho$, when other variables do not change, changing $\rho$ from 1.0 to 0.9 will lead to a 90\% discount to current \textbf{IF} value;
+			\vspace{-0.2cm}
+			\item For one certain attribute value, when other variables do not change, the change of impact factor is in proportion with the change of the attribute value.  The formula is as follows.
+			\[
+				\Delta\mathrm{IF} = 100\rho\cdot w\Delta v
+			\]
+			
+			Where:
+			
+			{
+			\setlength{\parindent}{2em}
+			$\Delta\mathrm{IF}$ is the change of impact factor value;
+			
+			\vspace{-0.15cm}
+			$\Delta v$ is the change of the attribute value;
+			
+			\vspace{-0.15cm}
+			$w$ is the attribute weight corresponding to the attribute.
+			}
+			
+			\vspace{0.15cm}
+			For example, if only attribute $B_1$ (Toxicity) change from ``None'' to ``Severe'', the change of attribute value $\Delta v$ equals 1 (Table \ref{tb:mat}).  Considering the weight of $B_1$ for global impact factor is $\beta_1$ = 0.227 and for local impact factor is $\beta_1$ = 0.192 (Table \ref{tb:weights}), we will conclude that global impact factor will increase 22.7$\rho$ and local impact factor will increase 19.2$\rho$.
+			
+		\end{itemize} 
 		
 		
 	\subsection{Strengths and Weaknesses}
@@ -977,22 +1054,22 @@
 		\vspace{-0.1cm}
 		\begin{itemize}
 			\vspace{-0.3cm}
-			\item Our model is \textbf{easy to implement}.  We can design a questionnaire that enables us to calculate the impact factors quickly.
+			\item Our model is \textbf{easy to implement}.  For one plant, we can design a questionnaire to collect its attribute options and use our model to calculate the impact factors quickly.
 		\end{itemize}
 		
 		\paragraph{Weaknesses}
 		\vspace{-0.5cm}
 		\begin{itemize}
 			\vspace{-0.3cm}
-			\item Our model is \textbf{subjective}.  The weights are subjectively determined.  If experts had designated the weights, our model may be more accurate.
+			\item Our model is \textbf{subjective}.  The weights are subjectively determined.  If we could involve experts or research results in determining the attribute weights, our model could be more accurate.
 			
-			\vspace{-0.3cm}
-			\item Our attribute design may be \textbf{uncomprehensive}.  We chose the attributes to consider, so it is possible that we have overlooked some other important attributes.
+			\vspace{-0.2cm}
+			\item Our attribute design may be \textbf{uncomprehensive}.  It is possible that we have overlooked some other important attributes.
 		\end{itemize}
 
 \newpage
-\section*{\begin{center} A Vigorous Friend \end{center}}
-\addcontentsline{toc}{section}{A Vigorous Friend}
+\section*{\begin{center} Our Vigorous Friend \end{center}}
+\addcontentsline{toc}{section}{Our Vigorous Friend}
 \vspace{-1cm}
 It is always a dreamlike scene to see the dandelion fly in the summer day.  All those little parachutes drift in the air, slowly and gently, through a beam of light, like angels from the sky.
 
@@ -1010,9 +1087,11 @@ The invasive species are just who they are.  Most of them have a lot of merits t
 
 \newpage
 
+\begin{spacing}{0.9}
 \phantomsection
 \addcontentsline{toc}{section}{References}
 \newrefcontext
 \printbibliography
-
+\end{spacing}
+	
 \end{document}
