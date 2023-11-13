@@ -96,7 +96,7 @@
 			\item \textbf{Dandelion number always increases.}
 			\vspace{-0.125in}
 			\begin{description}
-				\item[Justification:] More specifically, we assume that there are none of the followings.
+				\item[Justification:] More specifically, we assume that there are none of the followings:
 				 
 				 \textbf{a.} Human intervention;
 				 
@@ -119,7 +119,7 @@
 		
 		In reality, we find that sometimes dandelions grow in clusters, and at other times they are very sparse. Actually the spread process is affected by many random factors, including climate condition, wind speed and direction, topographical features and so on.  In order to eliminate this randomness, we need a method to find statistical patterns from repeating the process many times.  Candidates are neural network, deep learning, stochastic process, etc.  Among them, the Monte Carlo method becomes an option due to its simplicity.  Its underlying concept is to introduce randomness to solve problems.   It relies on repeated random sampling to obtain numerical results.  We will simulate dandelion spread process by going through the process many times, observing the results from a statistical perspective and drawing some conclusions.
 		
-		As the input for our model, we consider five environmental factors, as shown in \textbf{Table \ref{tb:vars}}.  
+		As the input for our model, we consider five environmental factors, as shown in Table \ref{tb:vars}.  
 		
 		{
 			\fontsize{10}{14}\selectfont
@@ -140,22 +140,22 @@
 			}
 		}
 		
-		And we will do the following steps to consider the environmental influence on the dandelion spread process.
+		And we will do the following steps to consider the environmental influence on the dandelion spread process:
 		
 		\begin{itemize}
 			\vspace{-0.5cm}
-			\item Construct a temperature curve in \textbf{Section \ref{sec:temp}}.  
+			\item Construct a temperature curve in Section \ref{sec:temp}.  
 			
 			\vspace{-0.2cm}
-			\item Model dispersal mechanisms in \textbf{Section \ref{sec:wind}}.
+			\item Model dispersal mechanisms in Section \ref{sec:wind}.
 			
 			\vspace{-0.2cm}
-			\item Introduce an adaptation factor $k$ in \textbf{Section \ref{sec:af}}.  
+			\item Introduce an adaptation factor $k$ in Section \ref{sec:af}.  
 		
 		\end{itemize}
 	
 		\vspace{-0.5cm}
-		Then our model will simulate the spread of dandelions by tracking every single dandelion according to a life cycle pattern, which we will model in \textbf{Section \ref{sec:life}}.  
+		Then our model will simulate the spread of dandelions by tracking every single dandelion according to a life cycle pattern, which we will model in Section \ref{sec:life}.  
 		
 		Next, we will choose 6 locations in the US.  For each location, we have one set of 5 input factors. We will run our model in 2 phases.  In the first phase, we will run 1000 times to get the optimal starting date for each location.  In the second phase, we will fix the starting date we get from the first phase and run another 1000 times to get the final ouput.
 		
@@ -178,7 +178,7 @@
 			\label{fig:temp}
 		\end{wrapfigure}
 		
-		We assume that the temperature follows a sinusoidal curve, as shown in \textbf{Fig.\ref{fig:temp}}.  We only consider locations in the northern hemisphere, so we further assume that the lowest temperature is reached on Jan.1st, when time $t = 0$.  We observe that the period of the curve is 360 (for convenience, we set each month to 30 days).  Thus, we write the equation as:
+		We assume that the temperature follows a sinusoidal curve, as shown in Fig.\ref{fig:temp}.  We only consider locations in the northern hemisphere, so we further assume that the lowest temperature is reached on Jan.1st, when time $t = 0$.  We observe that the period of the curve is 360 (for convenience, we set each month to 30 days).  Thus, we write the equation as
 		
 		\[
 			T = -A \cos{\frac{2\pi}{360} t} + B.
@@ -207,9 +207,9 @@
 	\subsection{Dispersal Mechanisms}
 	\label{sec:wind}
 		
-		For the \textbf{direction} of seed dispersal, we assume that the seed always follows the direction of the wind, which is uniformly distributed from 0$^\circ$ to 360$^\circ$ according to \textbf{Assumption \ref{assumption:wind}}.  
+		For the \textbf{direction} of seed dispersal, we assume that the seed always follows the direction of the wind, which is uniformly distributed from 0$^\circ$ to 360$^\circ$ according to Assumption \ref{assumption:wind}.  
 		
-		For the \textbf{distance} of seed dispersal, we consider two types of wind, horizontal wind and updraft\autocite{tackenberg2003dandelion} (see \textbf{Fig.\ref{fig:dispersal}}).  The seed travels either a normal distance $s_N$ due to horizontal wind or a long distance $s_L$ due to updraft.  We set dispersal \textbf{distance} as the greater one between $s_N$ and  $s_L$.
+		For the \textbf{distance} of seed dispersal, we consider two types of wind, horizontal wind and updraft\autocite{tackenberg2003dandelion} (see Fig.\ref{fig:dispersal}).  The seed travels either a normal distance $s_N$ due to horizontal wind or a long distance $s_L$ due to updraft.  We set dispersal \textbf{distance} as the greater one between $s_N$ and  $s_L$.
 		
 		\begin{figure}[htbp]
 			\centering
@@ -226,7 +226,7 @@
 		\end{equation}
 		where:
 		
-		$h$ is the height of the puffball, which is evaluated in \textbf{Section \ref{sec:life}};
+		$h$ is the height of the puffball, which is evaluated in Section \ref{sec:life};
 		
 		$v_v$ is the vertical component of the velocity of the seed, which is a constant value, 0.4 m/s\autocite{tackenberg2003dandelion}.
 		
@@ -242,7 +242,7 @@
 			\label{fig:longDistance}
 		\end{wrapfigure}
 		
-		In the case of updraft, we suppose that $s_L$ follows an exponential distribution\autocite{okubo1989theoretical} with cumulative distribution function $\mathrm{P} (s_L < s) = 1 - ae^{-bs}$.  We know $\mathrm{P} (s_L < 0) = 0$.  We also know that the probability of a seed being blown further than 10 meters is 0.5\%\autocite{tackenberg2003dandelion}.  Therefore we can get:
+		In the case of updraft, we suppose that $s_L$ follows an exponential distribution\autocite{okubo1989theoretical} with cumulative distribution function $\mathrm{P} (s_L < s) = 1 - ae^{-bs}$.  We know $\mathrm{P} (s_L < 0) = 0$.  We also know that the probability of a seed being blown further than 10 meters is 0.5\%\autocite{tackenberg2003dandelion}.  Therefore we can get
 		
 		\begin{equation}\label{eq:updraft}
 			\mathrm{P} (s_L < s) = 1 - e^{-0.53 s}.
@@ -262,14 +262,14 @@
 		
 			We introduce an adaptation factor $k$ which is evaluated by using $T$ and $\mu_H$.  Dandelions prefer temperate climates and relatively high humidity.  We divide temperature into three ranks, which indicate if the temperature is suitable for the dandelion.  We also divide humidity into three ranks, which indicate if the humidity is suitable for the dandelion.  On a given day, we calculate $k$ by computing the arithmetic mean of the rank for temperature and humidity and scaling $k$ so that $0 \leq k \leq 1$.
 			
-			We use $k$ to determine the mean value of some parameters of dandelions, such as the height of the puffball.  To allow for some variation, we let the parameters follow normal distributions with:
+			We use $k$ to determine the mean value of some parameters of dandelions, such as the height of the puffball.  To allow for some variation, we let the parameters follow normal distributions with
 			\begin{equation}
 				\begin{gathered}
 					\mu_{\mathrm{parameter}} = \left( \mathrm{worst} + \frac{\mathrm{best} - \mathrm{worst}}4 \right) + k \frac{\mathrm{best} - \mathrm{worst}}2, \\
 					\sigma_{\mathrm{parameter}} = \frac{\mathrm{best} - \mathrm{worst}}{12}.
 				\end{gathered}
 			\end{equation}
-			The worst and best values for the relevant parameters will be given in \textbf{Section \ref{sec:life}}.  If the a parameter exceeds the limits, it is set to the limit.
+			The worst and best values for the relevant parameters will be given in Section \ref{sec:life}.  If the a parameter exceeds the limits, it is set to the limit.
 		
 		
 		
@@ -291,9 +291,9 @@
 			
 			\item Out of all \textbf{seed}s, only 2\% will successfully germinate\autocite{honek2005post}.  These seeds will spend 3 days growing into the developing stage\autocite{stewart2002biology}.
 			
-			\item The \textbf{developing} stage is the time from sprouting to seed ripening.  It takes a sprout 60--95 days to grow into a flower, and an additional 9--12 days for the flower to ripen\autocite{gardenorganicNAripen}.  The exact duration of this stage is determined by the adaptation factor $k$ (worst = 107, best = 69) per \textbf{Section \ref{sec:af}}.
+			\item The \textbf{developing} stage is the time from sprouting to seed ripening.  It takes a sprout 60--95 days to grow into a flower, and an additional 9--12 days for the flower to ripen\autocite{gardenorganicNAripen}.  The exact duration of this stage is determined by the adaptation factor $k$ (worst = 107, best = 69) per Section \ref{sec:af}.
 			
-			\item The \textbf{dispersal} stage lasts 10 days.  A dandelion plant can produce around 10 seed heads per year and it usually flowers twice, so it produces 5 heads every time it flowers.  The number of seeds on each head is determined by $k$ (worst = 150, best = 200)\autocite{dukeNAdandelion}.  It takes each head 2 days to disperse its seeds.  The height of the puffball, $h$, is determined by $k$ (worst = 12, best = 40)\autocite{veggiegardenNAstem}.  The seeds are dispersed per the method stated in \textbf{Section \ref{sec:wind}}.
+			\item The \textbf{dispersal} stage lasts 10 days.  A dandelion plant can produce around 10 seed heads per year and it usually flowers twice, so it produces 5 heads every time it flowers.  The number of seeds on each head is determined by $k$ (worst = 150, best = 200)\autocite{dukeNAdandelion}.  It takes each head 2 days to disperse its seeds.  The height of the puffball, $h$, is determined by $k$ (worst = 12, best = 40)\autocite{veggiegardenNAstem}.  The seeds are dispersed per the method stated in Section \ref{sec:wind}.
 			
 			\item The \textbf{inter-dispersal} stage is the stage between two dispersal stages of a plant.  In this stage, dandelions regrow their scapes and flowers.  Since most dandelions that flowered in spring usually flower again in fall\autocite{stewart2002biology}, the duration of this stage is set to be half a year, which is 180 days.   
 			
@@ -332,8 +332,8 @@
 				\begin{algorithmic}
 					\For{1 to \toB{$n$}}
 					\ForAll{\toB{$t$ } in days of one year}
-					\State \toB{$T$ } $\gets$ evaluate current temperature per \textbf{Eq.\ref{eq:temp}}
-					\State \toB{$k$ } $\gets$ evaluate adaptation factor per \textbf{Section \ref{sec:af}}
+					\State \toB{$T$ } $\gets$ evaluate current temperature per Eq.\ref{eq:temp}
+					\State \toB{$k$ } $\gets$ evaluate adaptation factor per Section \ref{sec:af}
 					\For{\toB{$dandelion$ } in current all dandelions}
 					\State \textbf{if} \toB{$T$ } < 0 \textbf{then} \toB{$previous\,status$ } $\gets$ \toB{$current\,status$}, \toB{$current\,status$ } $\gets$ \textbf{Dormancy}
 					\State \textbf{if} \toB{$current\,status$ } is \textbf{Dormancy} and \toB{$T$ } > 0 \textbf{then} \toB{$current\,status$ } $\gets$ \toB{$previous\,status$}
@@ -362,7 +362,7 @@
 					\If{\toB{$current\,status$ } is \textbf{Dispersal}}
 					\State determine the seed count that needs to be dispersed
 					\ForAll{\toB{$seed$ } in dispersing seeds}
-					\State calculate dispersal distance per \textbf{Section \ref{sec:wind}}
+					\State calculate dispersal distance per Section \ref{sec:wind}
 					\State calculate land location and add it to \toB{$locations$ }
 					\State generate a \toB{$new dandelion$ } with state \textbf{Seed}
 					\EndFor
@@ -392,7 +392,7 @@
 	
 		\subsubsection{Location}
 		
-			We choose 6 locations in the US so that we have a variety of temperature and wind conditions.  AK is cold; CA, DC, and KS are warm; and FL and HI are relatively hot.  AK, DC, and KS have distinct seasons; CA and FL show moderate temperature fluctuations; and HI has very stable temperature.  The wind conditions also exhibit different patterns.  DC has notably large wind speed.  The values of the five environmental factors are listed in \textbf{Table \ref{tb:locs}}.  
+			We choose 6 locations in the US so that we have a variety of temperature and wind conditions.  AK is cold; CA, DC, and KS are warm; and FL and HI are relatively hot.  AK, DC, and KS have distinct seasons; CA and FL show moderate temperature fluctuations; and HI has very stable temperature.  The wind conditions also exhibit different patterns.  DC has notably large wind speed.  The values of the five environmental factors are listed in Table \ref{tb:locs}.  
 			
 			{
 				\fontsize{10}{14}\selectfont
@@ -420,7 +420,7 @@
 			
 			In the first phase, we determine the optimal starting month of simulation.  For all 6 locations, we run the model with 12 cases that start respectively on the first day of each month, and get the number and mean distance for each case and each location.
 			
-			As an example, the results for Florida are shown in \textbf{Fig.\ref{fig:start}}.  The dandelion number varies greatly among the case, but the mean distance is approximately the same.  We can see that for Florida, we get the maximum dandelion number when the starting date is May 1st.  So we will use May as the starting month in the next phase.
+			As an example, the results for Florida are shown in Fig.\ref{fig:start}.  The dandelion number varies greatly among the case, but the mean distance is approximately the same.  We can see that for Florida, we get the maximum dandelion number when the starting date is May 1st.  So we will use May as the starting month in the next phase.
 			
 			\begin{figure}[htbp]
 				\centering
@@ -429,7 +429,7 @@
 				\label{fig:start}
 			\end{figure}
 			
-			\textbf{Table \ref{tb:start}} lists all the data from the run of first phase.  The headers indicate the starting months, and the numbers in the table are the dandelion numbers at the end of 12 months.  The numbers corresponding to the optimal starting months are marked in blue.  In this way, we can determine that the optimal starting month is September for AK, August for CA, September for DC, May for FL, September for HI, and August for KS.
+			Table \ref{tb:start} lists all the data from the run of first phase.  The headers indicate the starting months, and the numbers in the table are the dandelion numbers at the end of 12 months.  The numbers corresponding to the optimal starting months are marked in blue.  In this way, we can determine that the optimal starting month is September for AK, August for CA, September for DC, May for FL, September for HI, and August for KS.
 			
 			{
 				\fontsize{10}{14}\selectfont
@@ -455,7 +455,7 @@
 			
 		\subsubsection{Second Phase Results}
 		
-			In the second phase, we run the model 1000 times for each location beginning at the optimal starting month from the first phase.  The resulting frequency histogram for Florida is shown in \textbf{Fig.\ref{fig:freqDand}}.  We can see that both the number and the mean distance follow an approximately normal distribution.  
+			In the second phase, we run the model 1000 times for each location beginning at the optimal starting month from the first phase.  The resulting frequency histogram for Florida is shown in Fig.\ref{fig:freqDand}.  We can see that both the number and the mean distance follow an approximately normal distribution.  
 			
 			\begin{figure}[htbp]
 				\centering
@@ -464,7 +464,7 @@
 				\label{fig:freqDand}
 			\end{figure}
 			
-			We calculated several statistical characteristics for each location, as shown in \textbf{Table \ref{tb:numDistribution}} and \textbf{Table \ref{tb:distDistribution}}.	 We examine the statistics for dandelion number.  The confidence interval of the mean is relatively small for all locations, which implies the mean is quite accurate.  The standard deviation and range are large, which shows that the spread of dandelions is easily affected by random factors such as fluctuations in the environment.  For all locations except California, the distributions are platykurtic.  For all locations except Alaska, the distribution is skewed to the left.  Its mass is concentrated on the right, so the dandelion number is slightly more likely to be greater than the mean rather than smaller.  However, because of the unfavorable environmental conditions in Alaska, the number is more likely to be smaller than the mean.
+			We calculated several statistical characteristics for each location, as shown in Table \ref{tb:numDistribution} and Table \ref{tb:distDistribution}.	 We examine the statistics for dandelion number.  The confidence interval of the mean is relatively small for all locations, which implies the mean is quite accurate.  The standard deviation and range are large, which shows that the spread of dandelions is easily affected by random factors such as fluctuations in the environment.  For all locations except California, the distributions are platykurtic.  For all locations except Alaska, the distribution is skewed to the left.  Its mass is concentrated on the right, so the dandelion number is slightly more likely to be greater than the mean rather than smaller.  However, because of the unfavorable environmental conditions in Alaska, the number is more likely to be smaller than the mean.
 			
 			{
 				\fontsize{10}{14}\selectfont
@@ -507,7 +507,7 @@
 				}
 			}
 			
-			Out of the 1000 runs, we select the run that has a dandelion number closest to the mean value.  The positions and current stages of the dandelions at the end of 12 months are shown in \textbf{Fig.\ref{fig:scatter5loc}}.  For all locations except the District of Columbia, most dandelions grow in a semicircular ring centered at the origin.  Alaska is apparently unsuitable for dandelions to spread.  In California, Hawaii, Florida, and Kansas, dandelions all spread to a moderate range.
+			Out of the 1000 runs, we select the run that has a dandelion number closest to the mean value.  The positions and current stages of the dandelions at the end of 12 months are shown in Fig.\ref{fig:scatter5loc}.  For all locations except the District of Columbia, most dandelions grow in a semicircular ring centered at the origin.  Alaska is apparently unsuitable for dandelions to spread.  In California, Hawaii, Florida, and Kansas, dandelions all spread to a moderate range.
 			
 			\begin{figure}[htbp]
 				\centering
@@ -523,9 +523,9 @@
 			\end{figure}
 			\newpage
 			
-			District of Columbia has the most dandelions at the of 12 months.  We plotted dandelion spread at the end of each month this location (see \textbf{Fig.\ref{fig:spreadDC}}) so that it can be clearly seen how the dandelions spread in the course of time.  Compared to other locations, District of Columnbia has greater wind speed so the dandelions spread much further and they form a semicircle instead of a ring.  The closer to the origin, the denser the plants.  Additionally, there is a sudden increase every three months, which is caused by the flowering of a new generation of dandelions.
+			District of Columbia has the most dandelions at the of 12 months.  We plotted dandelion spread at the end of each month this location (see Fig.\ref{fig:spreadDC}) so that it can be clearly seen how the dandelions spread in the course of time.  Compared to other locations, District of Columnbia has greater wind speed so the dandelions spread much further and they form a semicircle instead of a ring.  The closer to the origin, the denser the plants.  Additionally, there is a sudden increase every three months, which is caused by the flowering of a new generation of dandelions.
 			
-			Finally, we draw a graph of the natural logarithm of dandelion number in \textbf{Fig.\ref{fig:time}}.  The lines have several jumps and platforms.  The dandelion number increases exponentially at the end of each fixed period.  This conclusion coincides with our observation in \textbf{Fig.\ref{fig:spreadDC}}.  Again, Alaska is different.  Dandelions there are dormant in the first three months of the year, and eventually produce fewer offspring than other locations.
+			Finally, we draw a graph of the natural logarithm of dandelion number in Fig.\ref{fig:time}.  The lines have several jumps and platforms.  The dandelion number increases exponentially at the end of each fixed period.  This conclusion coincides with our observation in Fig.\ref{fig:spreadDC}.  Again, Alaska is different.  Dandelions there are dormant in the first three months of the year, and eventually produce fewer offspring than other locations.
 			
 			\begin{figure}[htbp]
 				\centering
@@ -538,9 +538,9 @@
 		
 		\subsubsection{Sensitivity Analysis}
 			
-			We conduct a sensitivity analysis on the five factors from \textbf{Table \ref{tb:vars}} by varying one of them while keeping the other four fixed.  
+			We conduct a sensitivity analysis on the five factors from Table \ref{tb:vars} by varying one of them while keeping the other four fixed.  
 			
-			\textbf{Fig.\ref{fig:saT}} shows the results for temperature.  When $\mu_T$ falls below 7$^\circ$C or rises above 23$^\circ$C, dandelion number decreases sharply.  This is because dandelions are transferred to the dormancy or hold stages at certain temperatures.  The number is very sensitive to extreme temperatures, but only moderately sensitive to mild temperatures.  The mean distance increases with $\mu_T$ up to 19$^\circ$C, where the it temporarily levels off and begins to fall at 23$^\circ$C.  It has medium sensitivity to $\mu_T$.
+			Fig.\ref{fig:saT} shows the results for temperature.  When $\mu_T$ falls below 7$^\circ$C or rises above 23$^\circ$C, dandelion number decreases sharply.  This is because dandelions are transferred to the dormancy or hold stages at certain temperatures.  The number is very sensitive to extreme temperatures, but only moderately sensitive to mild temperatures.  The mean distance increases with $\mu_T$ up to 19$^\circ$C, where the it temporarily levels off and begins to fall at 23$^\circ$C.  It has medium sensitivity to $\mu_T$.
 			
 			Both number and mean distance decreases as $\sigma_T$ increases.  They decrease relatively slowly below $\sigma_T = 5^\circ$C and rapidly above that value.  However, the overall sensitivity is not high for either number or mean distance.
 			
@@ -558,7 +558,7 @@
 				\label{fig:saT}
 			\end{figure}
 			
-			\textbf{Fig.\ref{fig:saW}} shows the results for wind speed.  The number and mean distance have a positive correlation with $\mu_W$ and $\sigma_W$ and change drastically when the two factors vary.  When $\mu_W$ increases, seeds are dispersed farther and land further apart from each other.  When $\sigma_W$ increases, there is greater variation in dispersal distance.  In both cases it is less likely for seeds to land on other plants, making dandelion number rise quickly.
+			Fig.\ref{fig:saW} shows the results for wind speed.  The number and mean distance have a positive correlation with $\mu_W$ and $\sigma_W$ and change drastically when the two factors vary.  When $\mu_W$ increases, seeds are dispersed farther and land further apart from each other.  When $\sigma_W$ increases, there is greater variation in dispersal distance.  In both cases it is less likely for seeds to land on other plants, making dandelion number rise quickly.
 			
 			\begin{figure}[htbp]
 				\centering
@@ -573,7 +573,7 @@
 				\label{fig:saW}
 			\end{figure}
 			
-			\textbf{Fig.\ref{fig:saH}} shows the results for humidity.  There are three levels of number and mean distance corresponding to different humidity.  This is because of the three ranks for humidity that are used in the calculation of the adaptation factor $k$, see \textbf{Section \ref{sec:af}}.
+			Fig.\ref{fig:saH} shows the results for humidity.  There are three levels of number and mean distance corresponding to different humidity.  This is because of the three ranks for humidity that are used in the calculation of the adaptation factor $k$, see Section \ref{sec:af}.
 			
 			\begin{figure}[htbp]
 				\centering
@@ -655,7 +655,7 @@
 		
 		Local impact factor does more refined work.  By introducing more local adaptation attributes, we can tell the difference of invasiveness between locations for one species .  We can also compare the invasiveness for different species in different places.
 		
-		\textbf{Table \ref{tb:syms}} lists all the variables we will use in this model.
+		Table \ref{tb:syms} lists all the variables we will use in this model.
 		
 		{
 			\fontsize{10}{14}\selectfont
@@ -683,10 +683,10 @@
 		}
 		The formulas for calculating global impact factor and local impact factor are as follows:
 		\begin{equation} \label{eq:ifg}
-			\mathrm{IF}_G = 100\rho \left( \sum_{} \alpha_ia_i + \sum_{} \beta_jb_j \right)
+			\mathrm{IF}_G = 100\rho \left( \sum_{} \alpha_ia_i + \sum_{} \beta_jb_j \right),
 		\end{equation} 
 		\begin{equation} \label{eq:ifl}
-			\mathrm{IF}_L = 100\rho \left( \sum_{} \alpha_ia_i + \sum_{} \beta_jb_j + \sum_{} \gamma_kc_k \right)
+			\mathrm{IF}_L = 100\rho \left( \sum_{} \alpha_ia_i + \sum_{} \beta_jb_j + \sum_{} \gamma_kc_k \right).
 		\end{equation}
 		
 		{
@@ -695,16 +695,16 @@
 		\vspace{-0.2cm}
 		\item \textbf{Invasion level coefficient $\rho$} is 0.9 if a plant is less widespread invasive, otherwise 1.0.
 		\vspace{-0.2cm}
-		\item \textbf{Attribute values} $a_i$, $b_j$ and $c_k$ are determined per \textbf{Section \ref{sec:attr_value}}.
+		\item \textbf{Attribute values} $a_i$, $b_j$ and $c_k$ are determined per Section \ref{sec:attr_value}.
 		\vspace{-0.2cm}
-		\item \textbf{Attribute weights} $\alpha_i$, $\beta_j$ and $\gamma_k$ are determined per \textbf{Section \ref{sec:attr_weight}}.
+		\item \textbf{Attribute weights} $\alpha_i$, $\beta_j$ and $\gamma_k$ are determined per Section \ref{sec:attr_weight}.
 		\end{itemize}
 		}
 	
 		\subsubsection{Attribute values}
 		\label{sec:attr_value}
 		
-		Every attribute contains a list of options described in words than in numbers.  In order to leverage \textbf{Eq.\ref{eq:ifg}} and \textbf{Eq.\ref{eq:ifl}}, we need to map the options from words to numbers per \textbf{Table \ref{tb:attributes}}.
+		Every attribute contains a list of options described in words than in numbers.  In order to leverage Eq.\ref{eq:ifg} and Eq.\ref{eq:ifl}, we need to map the options from words to numbers per Table \ref{tb:attributes}.
 		\newpage
 		{
 			\fontsize{10}{14}\selectfont
@@ -774,7 +774,7 @@
 		}
 		\newpage
 		
-		Attributes $B_2$ (Product), $B_3$ (Palatable Animal), $B_4$ (Palatable Human), and $B_5$ (Commercial Availability) are special since they measure benefits rather than harms.  Per \textbf{Assumption \ref{assumption:offset}}, the greater the benefit, the less the impact.  Therefore, when the palatability is higher, or when the plant has more uses, the corresponding values are smaller.
+		Attributes $B_2$ (Product), $B_3$ (Palatable Animal), $B_4$ (Palatable Human), and $B_5$ (Commercial Availability) are special since they measure benefits rather than harms.  Per Assumption \ref{assumption:offset}, the greater the benefit, the less the impact.  Therefore, when the palatability is higher, or when the plant has more uses, the corresponding values are smaller.
 		
 		\subsubsection{Attribute weights}
 		\label{sec:attr_weight}
@@ -783,7 +783,7 @@
 		
 		We make comparisons between attributes according to Saaty's fundamental scale of absolute numbers\autocite{AHP}.  When two attributes are equally important, we get 1; when one attribute is moderately more important than the other, we get 3; when one attribute is strongly more important than the other, we get 5; when one attribute is much strongly more important than the other, we get 7; when one attribute is extremely more important than the other, we get 9.  Number 2, 4, 6 and 8 are used to express intermediate values.  
 		
-		The resulting comparison matrix is shown in \textbf{Table \ref{tb:mat}}.
+		The resulting comparison matrix is shown in Table \ref{tb:mat}.
 		
 		{
 			\fontsize{10}{18}\selectfont
@@ -850,9 +850,9 @@
 			}
 		}	
 		
-		For each matrix, we normalize the columns so that each column adds up to 1.  Then, we calculate the sum of each row to get a sum vector.  Last, we divide the sum vector by $n$ (the attribute number in \textbf{Table \ref{tb:consistency}}) to get the final weight vector.  
+		For each matrix, we normalize the columns so that each column adds up to 1.  Then, we calculate the sum of each row to get a sum vector.  Last, we divide the sum vector by $n$ (the attribute number in Table \ref{tb:consistency}) to get the final weight vector.  
 		
-		The weight results are shown in \textbf{Table \ref{tb:weights}}.
+		The weight results are shown in Table \ref{tb:weights}.
 	
 		{
 			\fontsize{10}{14}\selectfont
@@ -896,10 +896,10 @@
 				
 				\vspace{-0.5em}
 				\begin{algorithmic}
-					\State \toB{$global\,value\,vector$ } $\gets$ evaluate all the \textbf{Attribute values} from inputted attribute options per \textbf{Table \ref{tb:attributes}}
-					\State \toB{$local\,value\,vector$ } $\gets$ evaluate all the \textbf{Attribute values} from inputted attribute options  per \textbf{Table \ref{tb:attributes}}
-					\State \toB{$global\,weight\,vector$ } $\gets$ \textbf{Table \ref{tb:weights}}
-					\State \toB{$local\,weight\,vector$ } $\gets$ \textbf{Table \ref{tb:weights}}
+					\State \toB{$global\,value\,vector$ } $\gets$ evaluate all the \textbf{Attribute values} from inputted attribute options per Table \ref{tb:attributes}
+					\State \toB{$local\,value\,vector$ } $\gets$ evaluate all the \textbf{Attribute values} from inputted attribute options  per Table \ref{tb:attributes}
+					\State \toB{$global\,weight\,vector$ } $\gets$ Table \ref{tb:weights}
+					\State \toB{$local\,weight\,vector$ } $\gets$ Table \ref{tb:weights}
 					\State \toB{IF$_G$ } $\gets$ \toB{$100\rho$ } times the dot product of \toB{$global\,value\,vector$ } and \toB{$global\,weight\,vector$ }
 					\State \toB{IF$_L$ } $\gets$ \toB{$100\rho$ } times the dot product of \toB{$local\,value\,vector$ } and \toB{$local\,weight\,vector$ }
 				\end{algorithmic}
@@ -922,7 +922,7 @@
 		
 		In order to get all the plant attributes, we developed a web crawler to grab data from \href{https://plants.usda.gov/home/}{USDA Plants Database}\autocite{USDA}.  Thus, we have all the attribute options ready for each plant.
 		
-		Then we implement this model to calculate the global impact factors for all 226 plants and rank them according to the factor.  \textbf{Table \ref{tb:ranks}} shows some results.
+		Then we implement this model to calculate the global impact factors for all 226 plants and rank them according to the factor.  Table \ref{tb:ranks} shows some results.
 		
 		{
 			\fontsize{10}{14}\selectfont
@@ -978,7 +978,7 @@
 			}
 		}
 		
-		We draw a histogram by using 226 global factors IF$_G$ (see \textbf{Fig.\ref{fig:freqIF}}), and calculate several statistical characteristics for the distribution (see \textbf{Table \ref{tb:IFDistribution}}).  
+		We draw a histogram by using 226 global factors IF$_G$ (see Fig.\ref{fig:freqIF}), and calculate several statistical characteristics for the distribution (see Table \ref{tb:IFDistribution}).  
 		
 		IF$_G$ is roughly concentrated around the mean and the median but does not exactly follow a normal distribution.  The distribution is skewed to the right according to the table, meaning that there is a longer left tail.  However, we can observe a right tail as well on the histogram.  Neither tail is very long.  There are no values below 30 or above 90.
 		
@@ -987,14 +987,14 @@
 		For calculating local impact factor IF$_L$:
 		\vspace{-0.2cm}
 		\begin{itemize}
-		\item First. we chose 3 locations Florida (FL), Neveda (NV), and Alaska (AK), where Florida is warm and humid, Neveda is hot and dry, and Alaska is extremely cold;
+		\item First, we chose 3 locations Florida (FL), Neveda (NV), and Alaska (AK), where Florida is warm and humid, Neveda is hot and dry, and Alaska is extremely cold;
 		\vspace{-0.2cm}
 		\item Then, we chose 5 plants that are invasive at these locations.  Sweetclover ranks the first in global impact factor; the tree of heaven is the highest ranking tree in terms of global impact factor; yellow salsify has the highest global impact factor among nontoxic plants; mugo pine is in the last place in the global impact table; also, dandelion is not left out.
 		\vspace{-0.2cm}
 		\item Last, we prepare all the attributes options with regards to \textbf{Category \textit{C}} and implement the model to get local impact factor IF$_L$.
 		\end{itemize} 	
 		
-		The results are shown in \textbf{Fig.\ref{fig:IFLocal}}.  
+		The results are shown in Fig.\ref{fig:IFLocal}.  
 		
 		For each plant, their impact would be greater at locations with more favorable environments, and vice versa.
 		
@@ -1011,12 +1011,12 @@
 	
 	\subsection{Sensitivity Analysis}
 	
-		In \textbf{Eq.\ref{eq:ifg}} and \textbf{Eq.\ref{eq:ifl}}, the impact factors are evaluated as 100$\rho$ multiplied by a linear combination of attribute values.  We discuss the model's sensitivity as follows.
+		In \textbf{Eq.\ref{eq:ifg}} and Eq.\ref{eq:ifl}, the impact factors are evaluated as 100$\rho$ multiplied by a linear combination of attribute values.  We discuss the model's sensitivity as follows:
 		\vspace{-0.2cm}
 		\begin{itemize}
 			\item For variable $\rho$, when other variables do not change, changing $\rho$ from 1.0 to 0.9 will lead to a 90\% discount to current \textbf{IF} value;
 			\vspace{-0.2cm}
-			\item For one certain attribute value, when other variables do not change, the change of impact factor is in proportion with the change of the attribute value.  The formula is as follows.
+			\item For one certain attribute value, when other variables do not change, the change of impact factor is in proportion with the change of the attribute value.  The formula is as follows:
 			\[
 				\Delta\mathrm{IF} = 100\rho\cdot w\Delta v
 			\]
@@ -1036,7 +1036,7 @@
 			
 			\vspace{0.15cm}
 			
-			For example, if only attribute $B_1$ (Toxicity) changes from ``None'' to ``Severe'', the change of attribute value $\Delta v$ equals 1 (\textbf{Table \ref{tb:mat}}).  Considering that the weight of $B_1$ for global impact factor is $\beta_1$ = 0.227 and for local impact factor is $\beta_1$ = 0.192 (\textbf{Table \ref{tb:weights}}), we will conclude that global impact factor will increase 22.7$\rho$ and local impact factor will increase 19.2$\rho$.
+			For example, if only attribute $B_1$ (Toxicity) changes from ``None'' to ``Severe'', the change of attribute value $\Delta v$ equals 1 (Table \ref{tb:mat}).  Considering that the weight of $B_1$ for global impact factor is $\beta_1$ = 0.227 and for local impact factor is $\beta_1$ = 0.192 (Table \ref{tb:weights}), we will conclude that global impact factor will increase 22.7$\rho$ and local impact factor will increase 19.2$\rho$.
 			
 		\end{itemize} 
 		
