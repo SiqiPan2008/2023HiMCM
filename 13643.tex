@@ -16,21 +16,13 @@
 
 \begin{abstract}
 
-	Common dandelion (scientific name: \textit{Taraxacum officinale}) is a common plant that can be found around the globe.  It is best known for its puffball-shaped seed head, which is fun to blow at.  However, dandelions are often considered invasive plants because of its ability to adapt to different environments and to spread very quickly among crops.  How do dandelions spread?  To what extent does this ``invasive species'' influence humans and the environment?  This paper sets out to answer these questions.  
+	\textit{Taraxacum officinale}, more commonly known as the dandelion, is a fond childhood memory for many of us.  Seeing its seeds floating in the wind always brings joy to our heart.  However, there is another side to this species.  The name ``dandelion'' actually means ``lion's teeth'', and the plant can be as fierce as its name suggests -- it spreads very quickly and is often labeled as an invasive species.
 	
-	We design a \textbf{Dandelion Spread Model} to study the spread of dandelions.  We consider five environmental input factors.  To model the environmental influence on dandelion spread, we construct a temperature curve, model the mechanisms for seed dispersal, and introduce an adaptation factor $k$.  Then we simulate the spread of dandelions by tracking every single dandelion according to a life cycle pattern.  Since the spread of dandelions concerns many random factors, we choose to use the Monte Carlo method.  We run the model many times to get credible results.
+	We design a \textbf{Dandelion Spread Model} to study the spread of dandelions.  We simulate the spread of dandelions by tracking every single dandelion, starting from a single initial dandelion.  In this process, we consider the influence of environmental factors, which include temperature, wind, and humidity.  Since the spread of dandelions concerns many random factors, we choose to use the Monte Carlo method.  We run the model 1000 times for each of the 6 locations we choose.  Thus, we are able to observe the spread of dandelions over time, and analyze its patterns using 2  variables: the number of dandelions and their mean distance from the initial dandelion.  Finally, we conduct a sensitivity analysis on the environmental factors.
 	
-	Next, we choose 6 locations in the US and determine the optimal starting dates for simulation.  For each location, we run the models for 1000 times to get the dandelions locations.  We calculate the number of dandelions and the 
+	We also devise a \textbf{Plant Impact Factor Model} to measure the impact of invasive plants on humans and the environment.  We define a a global impact factor and a local one.  We consider many attributes, including the plant's characteristics, its effects on humans and the environment, and its adaptation to the local climate, and use the Analytic Hierarchy Process to get the weights for each attribute.  We compiled relevant data for 226 invasive species and calculated their global impact factors.  We also select 5 plants and calculate their local impact factor for 3 locations.  
 	
-	results description??
-	
-	sensitivity?
-	
-	second model
-	
-	second model conclusions
-	
-	write article
+	Dandelions may be harmful to humans, but after all, we share this planet with them, and with other invasive species.  At the end of the paper, we discuss the true meaning of invasiveness and what we should do to get along with them.
 	
 \end{abstract}
 
@@ -1043,7 +1035,8 @@
 			}
 			
 			\vspace{0.15cm}
-			For example, if only attribute $B_1$ (Toxicity) change from ``None'' to ``Severe'', the change of attribute value $\Delta v$ equals 1 (Table \ref{tb:mat}).  Considering the weight of $B_1$ for global impact factor is $\beta_1$ = 0.227 and for local impact factor is $\beta_1$ = 0.192 (Table \ref{tb:weights}), we will conclude that global impact factor will increase 22.7$\rho$ and local impact factor will increase 19.2$\rho$.
+			
+			For example, if only attribute $B_1$ (Toxicity) changes from ``None'' to ``Severe'', the change of attribute value $\Delta v$ equals 1 (\textbf{Table \ref{tb:mat}}).  Considering that the weight of $B_1$ for global impact factor is $\beta_1$ = 0.227 and for local impact factor is $\beta_1$ = 0.192 (\textbf{Table \ref{tb:weights}}), we will conclude that global impact factor will increase 22.7$\rho$ and local impact factor will increase 19.2$\rho$.
 			
 		\end{itemize} 
 		
