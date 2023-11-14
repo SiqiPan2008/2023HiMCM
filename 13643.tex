@@ -21,7 +21,7 @@
 	The dandelion, officially named \textit{Taraxacum officinale}, is known as an invasive species, which is likely to cause economic or environmental harm or harm to human health.
 	
 	\vspace{0.5cm}	
-	In this paper, we design a \textbf{Dandelion Spread Model} by using Monte Carlo method.  
+	In this paper, we design a \textbf{Dandelion Spread Model} by using the Monte Carlo method.  
 	
 	Provided there is one dandelion at the edge of an open one-hectare plot of land, we need to predict the spread of dandelions over time.
 	
@@ -51,15 +51,15 @@
 
 	\subsection{Background}
 	
-	Dandelion is a very common plant with scientific name \textit{Taraxacum officinale}, which is stemless, lactiferous and perennial\autocite{stewart2002biology}.  We can find them at roadsides, in wild fields or at inconspicuous locations.  Just imagine that these little herbs with beautiful yellow flowers have been evolving on this planet for about 30 million years\autocite{dandelionhistory} - even longer than we human beings!
+	The dandelion is a very common plant with scientific name \textit{Taraxacum officinale}, which is stemless, lactiferous and perennial\autocite{stewart2002biology}.  We can find them at roadsides, in wild fields or at inconspicuous locations.  Just imagine that these little herbs with beautiful yellow flowers have been evolving on this planet for about 30 million years\autocite{dandelionhistory} - even longer than we human beings!
 	
-	But currently they are labeled as an invasive plant.  \textbf{Invasive species} is a relative concept.  It means an alien species whose introduction does or is likely to cause economic or environmental harm or harm to human health\autocite{defInvasive}.  In some regions, dandelions do have some traits that make them invasive.  They can adapt different environments.  They have high growth rate and spread fast. They are likely to cuddle together and crowd out desirable plants, particularly in lawns.  Also, they have deep taproots that enable them to pull available water out of the soil.  It is also mentioned that dandelions could cause significant economic damage and infestation of other crops worldwide\autocite{stewart2002biology}.
+	But currently they are labeled as an invasive plant.  \textbf{Invasive species} is a relative concept.  It means a non-native species whose introduction does or is likely to cause economic or environmental harm or harm to human health\autocite{defInvasive}.  In some regions, dandelions do have some traits that make them invasive.  They can adapt to different environments.  They have high growth rate and spread fast. They are likely to cuddle together and crowd out desirable plants, particularly in lawns.  Also, they have deep taproots that enable them to pull available water out of the soil.  It is also mentioned that dandelions could cause significant economic damage and infestation of other crops worldwide\autocite{stewart2002biology}.
 	
-	To disclose the reason that dandelion becomes invasive, researchers have done many studies on how the environment affects dandelion.  Laboratory and field studies have discussed the impact of climatic factors on its growth. Laboratory studies have been conducted on the relationship between germination rate and ambiances, such as light and temperature\autocite{letchamo1996light}.  Field studies have also been conducted on the same topic, providing credibility for the theoretical conclusions\autocite{yoneda1991effects}.  Studies have provided insights on the drought tolerance of dandelions\autocite{brock2005drought}. In the meanwhile, soil pollution and geographic factors are also being considered\autocite{verhoeven2013geographic}.
+	To disclose the reason that dandelions become invasive, researchers have done many studies on how the environment affects dandelions.  Laboratory and field studies have discussed the impact of climatic factors on its growth. Laboratory studies have been conducted on the relationship between germination rate and ambiances, such as light and temperature\autocite{letchamo1996light}.  Field studies have also been conducted on the same topic, providing credibility for the theoretical conclusions\autocite{yoneda1991effects}.  Studies have provided insights on the drought tolerance of dandelions\autocite{brock2005drought}. In the meanwhile, soil pollution and geographic factors are also being considered\autocite{verhoeven2013geographic}.
 	
-	Researchers have also paid great attention to dandelion dispersal, which is a major way for dandelion propagation.  Past papers have analyzed the structure of dandelion seeds and the effects of humidity on their structure, which affected the dispersal speed\autocite{greene1989model}. Scientists have modeled the aerodynamics of the seeds and demonstrated the effects of wind speed and directions.  It has also been proved that updrafts could not be neglected\autocite{tackenberg2003dandelion}.
+	Researchers have also paid great attention to dandelion dispersal, which is a major way for dandelion propagation.  Past papers have analyzed the structure of dandelion seeds and the effects of humidity on their structure, which affect the dispersal speed\autocite{greene1989model}. Scientists have modeled the aerodynamics of the seeds and demonstrated the effects of wind speed and directions.  It has also been proved that updrafts could not be neglected\autocite{tackenberg2003dandelion}.
 	
-	Beside this particular species, researchers have discussed invasive species more generally.  Ecologists have used species native to the invaded range as ``control species'' in attempting to determine the traits associated with invasive plant species\autocite{muth2006traits}.  A protocol has been developed for categorizing non-native plants according to their negative impacts on biodiversity in a large area such as a state, nation, or ecological region\autocite{randall2008invasive}.  Some online tools like \href{https://www.imapinvasives.org/decision-analysis-tool}{PIMDAT}\autocite{PIMDAT} have been provided to help people make strategic decisions about invasive species control projects.  Currently we also have Best Management Practices (BMPs) to prevent the introduction and spread of invasive species\autocite{BMP}.
+	Beside this particular species, researchers have discussed invasive species more generally.  Ecologists have used species native to the invaded range as ``control species'' in attempting to determine the traits associated with invasive plant species\autocite{muth2006traits}.  A protocol has been developed for categorizing non-native plants according to their negative impacts on biodiversity in a large area such as a state, nation, or ecological region\autocite{randall2008invasive}.  Some online tools like \href{https://www.imapinvasives.org/decision-analysis-tool}{PIMDAT}\autocite{PIMDAT} have been provided to help people make strategic decisions about invasive species control projects.  Currently we also have Best Management Practices to prevent the introduction and spread of invasive species\autocite{BMP}.
 	
 	Public databases play an important role in the research of invasive species, especially for plants. By conferring to some database, we can find plant data to study biological attributes of the invasive species\autocite{USDA}.  Another database for tracking introduced species provides a baseline for effective modeling of species trends and interactions, geospatially and temporally\autocite{US-RIIS}.  US Government's Open Data provides a lot of data for current invasive plants\autocite{DATAGOV}.
 	\newpage
@@ -68,7 +68,7 @@
 
 	In this paper, we will solve 2 problems.
 	
-	\textbf{For the first problem}, we will predict the spread of dandelions within a year (360 days).  Suppose that a dandelion in its dispersal period happens to be adjacent to an open one-hectare plot of land.  We need to create a mathematical model to describe how the dandelion will spread its seeds and how its offspring will scatter on the land.  And we will have to consider the effect of various climatic conditions, such as temperate, arid, and tropical climates, on dandelion growth.
+	\textbf{For the first problem}, we will predict the spread of dandelions within a year (360 days).  Suppose that a dandelion in its dispersal period happens to be adjacent to an open one-hectare plot of land.  We need to create a mathematical model to describe how the dandelion will spread its seeds and how its offspring will scatter on the land.  And we will have to consider the effects of various climatic conditions, such as temperate, arid, and tropical climates, on dandelion growth.
 	
 	\textbf{For the second problem}, we will need to devise an ``impact factor'' for invasive species.  We will formulate a mathematical model to determine this factor and apply it to dandelions and some other invasive plants.  We also need to make sure the plants are invasive in the regions we choose.
 
@@ -87,15 +87,15 @@
 			\item \textbf{The field is planar.}
 			\vspace{-0.125in}
 			\begin{description}
-				\item[Justification:] We only consider the case of flat terrain.  This helps us limits the spread to two dimensions.  Flat terrain simplifies the calculation of dispersal distance since the wind can be at a constant height and the seed landing will not be affected by different topography.
+				\item[Justification:] We only consider the case of flat terrain.  This helps us limit the spread to two dimensions.  Flat terrain simplifies the calculation of dispersal distance since the wind can be at a constant height and the seed landing will not be affected by different topography.
 			\end{description}
 			
 			\item \textbf{There are no other plants in the spread area.}
 			\vspace{-0.125in}
 			\begin{description}
-				\item[Justification:] Considering other plants would add complicity to our model, for example, we need to collect data of those plants and study the competitive interactions between plants.  So simplification is necessary.
+				\item[Justification:] Considering other plants would add complicity to our model, for example, we need to collect data of those plants and study the competitive interactions between plants.  So, simplification is necessary.
 				
-				More specifically, we assume that no other plants hinder the spread of dandelions, which means:
+				More specifically, we assume that no other plants hinder the spread of dandelions, which means
 				
 				\textbf{a.} Dandelion seeds are not intercepted by other plants;
 				
@@ -108,7 +108,7 @@
 			\begin{description}
 				\item[Justification:] \label{assumption:wind} Wind speed and direction can be affected by different topography, especially near the ground. At the height of dandelions, there could be vortices and updrafts that would greatly affect dispersal.  Though we can obtain wind data from meteorological stations, the data may not be accurate for a  small area. Therefore, we decided not to use the real-time wind direction data.
 				
-				Moreover, though wind rose maps provide the probabilities for each direction, without knowing the edge orientation of our spread area, we cannot decide the relative wind direction to the area.  So we assume wind direction is uniformly distributed from 0$^\circ$ to 360$^\circ$. In this way, all directions have same odds and we can pin the dandelion on an arbitrary edge.
+				Moreover, though wind rose maps provide the probabilities for each direction, we cannot decide the relative wind direction to the area without knowing the edge orientation of our spread area.  So we assume wind direction is uniformly distributed from 0$^\circ$ to 360$^\circ$. In this way, all directions have same odds and we can pin the dandelion on an arbitrary edge.
 			\end{description}
 			
 			\item \textbf{Dandelion number always increases.}
@@ -122,7 +122,7 @@
 				 
 				 \textbf{c.} Extreme weather conditions.
 				
-				This assumption simplifies our model.  Without considering above conditions, it will be an carefree place for dandelion growth.  And if we notice that the dandelion is a perennial herb, it is safe to assume the number will always increase .
+				This assumption simplifies our model.  Without considering above conditions, it will be an carefree place for dandelion growth.  And if we notice that the dandelion is a perennial herb, it is safe to assume the number will always increase.
 			\end{description}
 			
 		\end{enumerate}
@@ -135,7 +135,7 @@
 		
 		We will use a Monte Carlo simulation model to solve the problem.
 		
-		In reality, we find that sometimes dandelions grow in clusters, and at other times they are very sparse. Actually the spread process is affected by many random factors, including climate condition, wind speed and direction, topographical features and so on.  In order to eliminate this randomness, we need a method to find statistical patterns from repeating the process many times.  Candidates are neural network, deep learning, stochastic process, etc.  Among them, the Monte Carlo method becomes an option due to its simplicity.  Its underlying concept is to introduce randomness to solve problems.   It relies on repeated random sampling to obtain numerical results.  We will simulate dandelion spread process by going through the process many times, observing the results from a statistical perspective and drawing some conclusions.
+		In reality, we find that sometimes dandelions grow in clusters, and at other times they are very sparse. Actually, the spread process is affected by many random factors, including climate conditions, wind speed and direction, topographical features and so on.  In order to eliminate this randomness, we need a method to find statistical patterns from repeating the process many times.  Candidates are neural networks, deep learning, stochastic processes, etc.  Among them, the Monte Carlo method becomes an option due to its simplicity.  Its underlying concept is to introduce randomness to solve problems.   It relies on repeated random sampling to obtain numerical results.  We will simulate dandelion spread process by going through the process many times, observing the results from a statistical perspective and drawing some conclusions.
 		
 		We consider five environmental factors as input parameters, as shown in Table \ref{tb:vars}.  
 		
@@ -162,10 +162,10 @@
 		
 		\begin{itemize}
 			\vspace{-0.5cm}
-			\item Construct a temperature curve in Section \ref{sec:temp}.  
+			\item Construct a temperature curve in Section \ref{sec:temp};
 			
 			\vspace{-0.2cm}
-			\item Model dispersal mechanisms in Section \ref{sec:wind}.
+			\item Model dispersal mechanisms in Section \ref{sec:wind};
 			
 			\vspace{-0.2cm}
 			\item Introduce an adaptation factor $k$ in Section \ref{sec:af}.  
@@ -212,7 +212,7 @@
 			\sigma_T^2 = \frac1{360} \int_0^{360} \left[ (-A \cos{\frac{2\pi}{360} t} + B) - \mu_T \right] ^2 	\mathrm{d}t.
 		\]
 		
-		Solving $A$ and $B$, we get
+		Solving for $A$ and $B$, we get
 		
 		\begin{equation} \label{eq:temp}
 			T = -\sqrt2 \sigma_T \cos{\frac{2\pi}{360} t} + \mu_T.
@@ -227,7 +227,7 @@
 		
 		For the \textbf{direction} of seed dispersal, we assume that the seed always follows the direction of the wind, which is uniformly distributed from 0$^\circ$ to 360$^\circ$ according to Assumption \ref{assumption:wind}.  
 		
-		For the \textbf{distance} of seed dispersal, we consider two types of wind, horizontal wind and updraft\autocite{tackenberg2003dandelion} (see Fig.\ref{fig:dispersal}).  The seed travels either a normal distance $s_N$ due to horizontal wind or a long distance $s_L$ due to updraft.  We set dispersal \textbf{distance} as the greater one between $s_N$ and  $s_L$.
+		For the \textbf{distance} of seed dispersal, we consider two types of wind, horizontal winds and updrafts\autocite{tackenberg2003dandelion} (see Fig.\ref{fig:dispersal}).  The seed travels either a normal distance $s_N$ due to horizontal winds or a long distance $s_L$ due to updrafts.  We set dispersal distance as the greater one between $s_N$ and  $s_L$.
 		
 		\begin{figure}[htbp]
 			\centering
@@ -238,7 +238,7 @@
 		
 		\subsubsection{Normal Distance $s_N$}
 		
-		In the case of horizontal wind, due to large air drag on the pappus, we assume the pappus moves at a constant velocity in a statistical sense\autocite{tackenberg2003dandelion}. we have
+		In the case of horizontal wind, due to large air drag on the seed's pappus, we assume the seed moves at a constant velocity in a statistical sense\autocite{tackenberg2003dandelion}. we have
 		\begin{equation}\label{eq:hwind}
 		 \frac{s_N}{v_h} = \frac{h}{v_v},
 		\end{equation}
@@ -260,7 +260,7 @@
 			\label{fig:longDistance}
 		\end{wrapfigure}
 		
-		In the case of updraft, we suppose that $s_L$ follows an exponential distribution\autocite{okubo1989theoretical} with cumulative distribution function $\mathrm{P} (s_L < s) = 1 - ae^{-bs}$.  We know $\mathrm{P} (s_L < 0) = 0$.  We also know that the probability of a seed being blown further than 10 meters is 0.5\%\autocite{tackenberg2003dandelion}.  Therefore we can get
+		In the case of updraft, we suppose that $s_L$ follows an exponential distribution\autocite{okubo1989theoretical} with cumulative distribution function $\mathrm{P} (s_L < s) = 1 - ae^{-bs}$.  We know $\mathrm{P} (s_L < 0) = 0$.  We also know that the probability of a seed being blown further than 10 meters is 0.5\%\autocite{tackenberg2003dandelion}.  Solving for $a$ and $b$, we get
 		
 		\begin{equation}\label{eq:updraft}
 			\mathrm{P} (s_L < s) = 1 - e^{-0.53 s}.
@@ -269,7 +269,7 @@
 		\newpage
 		\subsubsection{Dandelion Density}
 		
-		The leafs of dandelions have a radius of around 15cm.  If a seed lands without falling on the leaf of another dandelion, the dandelion density should be less than $(1/0.15)^2$ = 45 plants/m$^2$.  If a seed arrives at a location whose vicinity has a density greater than this maximum value, the seed fails to land, which means it is not counted in our model.
+		The leafs of dandelions have a radius of around 15cm.  If a seed lands without falling on the leaf of another dandelion, the dandelion density should be less than $(1/0.15)^2 \approx 45$ plants/m$^2$.  If a seed arrives at a location whose vicinity has a density greater than this maximum value, the seed fails to land, which means it is not counted in our model.
 		
 		
 		
@@ -278,16 +278,16 @@
 	\subsection{Adaptation Factor}
 	\label{sec:af}
 		
-			We introduce an adaptation factor $k$ which is evaluated by using temperature $T$ and mean humidity $\mu_H$.  Dandelions prefer temperate climates and relatively high humidity.  We divide temperature into three ranks, which indicate if the temperature is suitable for the dandelion.  We also divide humidity into three ranks, which indicate if the humidity is suitable for the dandelion.  On a given day, we calculate $k$ by computing the arithmetic mean of the rank for temperature and humidity and scaling $k$ so that $0 \leq k \leq 1$.
+			We introduce an adaptation factor $k$ which is evaluated using temperature $T$ and mean humidity $\mu_H$.  Dandelions prefer temperate climates and relatively high humidity.  We divide temperature into three ranks, which indicate if the temperature is suitable for the dandelion.  We also divide humidity into three ranks, which indicate if the humidity is suitable for the dandelion.  On a given day, we calculate $k$ by computing the arithmetic mean of the rank for temperature and humidity and scaling $k$ so that $0 \leq k \leq 1$.
 			
-			We use $k$ to determine the mean value of some parameters of dandelions, such as the height of the puffball.  To allow for some variation, we let the parameters follow normal distributions with:
+			We use $k$ to determine the mean value of some parameters of dandelions, such as the height of the puffball.  To allow for some variation, we let the parameters follow normal distributions whose
 			\begin{equation}
 				\begin{gathered}
 					\mu_{\mathrm{parameter}} = \left( \mathrm{worst} + \frac{\mathrm{best} - \mathrm{worst}}4 \right) + k \frac{\mathrm{best} - \mathrm{worst}}2, \\
 					\sigma_{\mathrm{parameter}} = \frac{\mathrm{best} - \mathrm{worst}}{12}.
 				\end{gathered}
 			\end{equation}
-			The worst and best values for relevant parameters will be given in Section \ref{sec:life}.  If the a parameter exceeds the limits, it is set to the limit.
+			The worst and best values for relevant parameters will be given in Section \ref{sec:life}.  If the parameter exceeds the limits, it is set to the limit.
 		
 		
 		
@@ -307,7 +307,7 @@
 		
 		\begin{itemize}
 			
-			\item Out of all \textbf{seed}s, only 2\% will  germinate successfully\autocite{honek2005post}.  These seeds will spend 3 days growing into the developing stage\autocite{stewart2002biology}.
+			\item Out of all \textbf{seed}s, only 2\% germinate successfully\autocite{honek2005post}.  These seeds spend 3 days growing into the developing stage\autocite{stewart2002biology}.
 			
 			\item The \textbf{developing} stage is the time from sprouting to seed ripening.  It takes a sprout 60--95 days to grow into a flower, and additional 9--12 days for the flower to ripen\autocite{gardenorganicNAripen}.  The exact duration of this stage is determined by the adaptation factor $k$ (worst = 107 days, best = 69 days) per Section \ref{sec:af}.
 			
@@ -319,9 +319,9 @@
 		We also consider two additional stages, \textbf{hold} and \textbf{dormancy}.		
 		\begin{itemize}
 			
-			\item When temperature $T > 24^\circ$C, only 12.5\% of the flowers bloom and disperse their seeds\autocite{yoshie2020effects}.  We let dandelions enter dispersal by probability 12.5\% and move the rest into the \textbf{hold} stage.  In this stage, flowers are held in buds.  As soon as $T$ falls below $24^\circ$C, flowers can 100\% bloom and disperse seeds.  
+			\item When the temperature $T$ is greater than $24^\circ$C, only 12.5\% of the flowers bloom and disperse their seeds\autocite{yoshie2020effects}.  We let dandelions enter dispersal by probability 12.5\% and move the rest into the \textbf{hold} stage.  In this stage, flowers are held in buds.  As soon as $T$ falls below $24^\circ$C, flowers can bloom and disperse seeds by 100\%.  
 		
-			\item Dandelions enter the \textbf{dormancy} stage when temperature $T < 0^\circ$C.  When the temperature is low, it is likely to snow and all life activities of dandelions are paused.  As soon as $T$ rises above $0^\circ$C, dandelions resume its previous stage.
+			\item Dandelions enter the \textbf{dormancy} stage when the temperature $T$ falls below $0^\circ$C.  When the temperature is low, it is likely to snow and all life activities of dandelions are paused.  As soon as $T$ rises above $0^\circ$C, dandelions resume its previous stage.
 		
 		\end{itemize}
 		
@@ -438,7 +438,7 @@
 			
 			In the first phase, we determine the optimal starting month of simulation.  For all 6 locations, we run the model with 12 cases that start respectively on the first day of each month, and get the number and mean distance for each case and each location.
 			
-			As an example, the results for Florida are shown in Fig.\ref{fig:start}.  The dandelion number varies greatly among the case, but the mean distance is approximately the same.  We can see that for Florida, we get the maximum dandelion number when the starting date is May 1st.  So we will use May as the starting month in the next phase.
+			As an example, the results for Florida are shown in Fig.\ref{fig:start}.  The dandelion numbers vary greatly among the case, but the mean distances are approximately the same.  We can see that for Florida, we get the maximum dandelion number when the starting date is May 1st.  So we will use May as the starting month in the next phase.
 			
 			\begin{figure}[htbp]
 				\centering
@@ -447,7 +447,7 @@
 				\label{fig:start}
 			\end{figure}
 			
-			Table \ref{tb:start} lists all the data from the run of first phase.  The headers indicate the starting months, and the numbers in the table are the dandelion numbers at the end of 12 months.  The numbers corresponding to the optimal starting months are marked in blue.  In this way, we can determine that the optimal starting month is September for AK, August for CA, September for DC, May for FL, September for HI, and August for KS.
+			Table \ref{tb:start} lists all the data from the run of the first phase.  The headers indicate the starting months, and the numbers in the table are the dandelion numbers at the end of 12 months.  The numbers corresponding to the optimal starting months are marked in blue.  In this way, we can determine that the optimal starting month is September for AK, August for CA, September for DC, May for FL, September for HI, and August for KS.
 			
 			{
 				\fontsize{10}{14}\selectfont
@@ -591,7 +591,7 @@
 				\label{fig:saW}
 			\end{figure}
 			
-			Fig.\ref{fig:saH} shows the results for humidity.  There are three levels of number and mean distance corresponding to different humidity.  This is because of the three ranks for humidity that are used in the calculation of the adaptation factor $k$, see Section \ref{sec:af}.
+			Fig.\ref{fig:saH} shows the results for humidity.  There are three levels of number and mean distance corresponding to different humidity.  This is because of the three ranks for humidity that are used in the calculation of the adaptation factor $k$ (see Section \ref{sec:af}).
 			
 			\begin{figure}[htbp]
 				\centering
@@ -621,7 +621,7 @@
 			\vspace{-0.5cm}
 			\begin{itemize}
 				\vspace{-0.3cm}
-				\item Our model is \textbf{time-intensive}.  To get a fairly accurate result, we have to run about 1000 times for each location.  Compared to other possible models, the efficiency of our model is relatively low.
+				\item Our model is \textbf{time-intensive}.  To get a fairly accurate result, we have to run 1000 times for every location.  Compared to other possible models, the efficiency of our model is relatively low.
 				
 				\vspace{-0.3cm}
 				\item The \textbf{adaptation factor} may be an over-simplification.  It may not represent the reality very accurately.  If we can acquire the relationship between dandelion parameters and climate conditions, we will be able to substitute the adaptation factor with some more accurate components.
@@ -644,7 +644,7 @@
 			\item \textbf{A plant's impact has a positive correlation with its biological characteristics.}
 			\vspace{-0.125in}
 			\begin{description}
-				\item[Justification:] Study shows that the invasiveness of plant species is closely related to \\performance-related traits\autocite{van2010meta}.  Thus we can think of biological characteristics as fairly reliable indicators on the invasiveness, which is the plant's ability to cause harm to the environment and to humans.  
+				\item[Justification:] Study shows that the invasiveness of a plant species is closely related to its performance-related traits\autocite{van2010meta}.  Thus we can think of biological characteristics as fairly reliable indicators on the invasiveness, which is the plant's ability to cause harm to the environment and to humans.  
 			\end{description}
 			
 			\item \label{assumption:offset} \textbf{A plant's impact can be lessened by its benefits.}
@@ -673,7 +673,7 @@
 		
 		Local impact factor does more refined work.  By introducing more local adaptation attributes, we can tell the difference of invasiveness between locations for one species .  We can also compare the invasiveness for different species in different places.
 		
-		Impact factor is determined by a group of impact attributes.  We break down all the attributes into 3 categories.  \textbf{Category \textit{A}} is related to plant characteristics, \textbf{Category \textit{B}} is related to human and environment and \textbf{Category \textit{C}} is related to plant's local adaptation.  Global impact factor considers attributes from both \textbf{Category \textit{A}} and \textbf{Category \textit{B}}.  Local impact factor considers attributes from all 3 categories.
+		The impact factor is determined by a group of impact attributes.  We break down all the attributes into 3 categories.  \textbf{Category \textit{A}} is related to plant characteristics, \textbf{Category \textit{B}} is related to human and environment and \textbf{Category \textit{C}} is related to plant's local adaptation.  Global impact factor considers attributes from both Category \textit{A} and Category \textit{B}.  Local impact factor considers attributes from all 3 categories.
 		
 		Table \ref{tb:syms} lists all the variables we will use in this model.
 		
@@ -693,9 +693,9 @@
 					$a_i$&Attribute value for $A_i$\\
 					$b_j$&Attribute value for $B_j$\\
 					$c_k$&Attribute value for $C_k$\\
-					$\alpha_i$&The weight for attribute $A_i$\\
-					$\beta_j$&The weight for attribute $B_j$\\
-					$\gamma_k$&The weight for attribute $C_k$\\
+					$\alpha_i$&Weight for attribute $A_i$\\
+					$\beta_j$&Weight for attribute $B_j$\\
+					$\gamma_k$&Weight for attribute $C_k$\\
 					\bottomrule
 					
 				\end{longtable}
@@ -713,8 +713,8 @@
 		
 		\begin{itemize}
 		\vspace{-0.2cm}
-		\item \textbf{Invasion level coefficient $\rho$} is 0.9 if a plant is less widespread invasive, otherwise 1.0.
-		\vspace{-0.2cm}
+		\item \textbf{Invasion level coefficient $\rho$} is 0.9 if a plant is less widespread invasive; otherwise, it is 1.0.
+		\vspace{-0.73cm}
 		\item \textbf{Attribute values} $a_i$, $b_j$ and $c_k$ are determined per Section \ref{sec:attr_value}.
 		\vspace{-0.2cm}
 		\item \textbf{Attribute weights} $\alpha_i$, $\beta_j$ and $\gamma_k$ are determined per Section \ref{sec:attr_weight}.
@@ -750,9 +750,9 @@
 				$A_4$ & Lifespan & $a_4=0.25$ (when $a_1=0.5$ or $0.75$), $0.5$ (Short), $0.75$ (Moderate), $1$ (Long) \\
 				$A_5$ & Fertility Requirement & Relative level of nutrition (N, P, K) required for normal growth and development.\\
 					 && $a_5=0.5$ (Low), $0.75$ (Medium), $1$ (High)\\
-				$A_6$ & Fruit/Seed Abundance & The amount of seed produced.\\
+				$A_6$ & Fruit/Seed Abundance & The number of seeds produced.\\
 					&& $a_6=0.25$ (None), $0.5$ (Low), $0.75$ (Medium), $1$ (High)\\
-				$A_7$ & Propagated Methods & The propagation methods number, $n_7$. The methods can be Propagated by Bare Root, by Bulb, by Container, by Corm, by Cuttings, by Seed, by Sod, by Sprigs, or by Tubers. \\
+				$A_7$ & Propagated Methods & The number of propagation methods is $n_7$. The methods can be Propagated by Bare Root, by Bulb, by Container, by Corm, by Cuttings, by Seed, by Sod, by Sprigs, or by Tubers. \\
 					&& $a_7=0.25$ ($n_7=1$), $0.5$ ($n_7=2$), $0.75$ ($n_7=3$), $1$ ($n_7\geq4$)\\
 				$A_8$ & Seed Spread Rate & The capability of the plant to spread through its seed production.\\
 					&& $a_8=0.25$ (None), $0.5$ (Slow), $0.75$ (Moderate), $1$ (Rapid)\\
@@ -846,7 +846,7 @@
 		
 		For the global impact factor, the comparison matrix is comprised of the numbers from first 14 rows and first 14 columns.  For the local impact factor, the comparison matrix is comprised of all the numbers in the table.  
 		
-		We conduct a consistency test on the global matrix and the local one.  The resulting CR is small enough for both matrices, so both matrices pass the test.
+		We conduct a consistency test on the global matrix and the local one.  The resulting CRs are small enough for both matrices, so both matrices pass the test.
 		
 		{
 			\fontsize{10}{14}\selectfont
@@ -920,8 +920,8 @@
 					\State \toB{$local\,value\,vector$ } $\gets$ evaluate all the \textbf{Attribute values} from inputted attribute options  per Table \ref{tb:attributes}
 					\State \toB{$global\,weight\,vector$ } $\gets$ Table \ref{tb:weights}
 					\State \toB{$local\,weight\,vector$ } $\gets$ Table \ref{tb:weights}
-					\State \toB{IF$_G$ } $\gets$ \toB{$100\rho$ } times the dot product of \toB{$global\,value\,vector$ } and \toB{$global\,weight\,vector$ }
-					\State \toB{IF$_L$ } $\gets$ \toB{$100\rho$ } times the dot product of \toB{$local\,value\,vector$ } and \toB{$local\,weight\,vector$ }
+					\State \toB{IF$_G$ } $\gets$ \toB{$100\rho$ } times the dot product of \toB{$global\,weight\,vector$ } and \toB{$global\,value\,vector$ }
+					\State \toB{IF$_L$ } $\gets$ \toB{$100\rho$ } times the dot product of \toB{$local\,weight\,vector$ } and \toB{$local\,value\,vector$ }
 				\end{algorithmic}
 				
 				{
@@ -966,6 +966,7 @@
 					10&\textit{Vicia sativa}&Garden vetch&Annual&Forb/herb&73.8\\
 					$\vdots$\\
 					26&\textit{Taraxacum officinale}&Common dandelion&Perennial&Forb/herb&66.9\\
+					$\vdots$\\
 					\bottomrule
 				\end{longtable}
 			}
@@ -1004,12 +1005,12 @@
 		
 	\subsubsection{Local Impact Factor Results}
 		
-		For calculating local impact factor IF$_L$:
+		For calculating local impact factor IF$_L$,
 		\vspace{-0.2cm}
 		\begin{itemize}
-		\item First, we choose 3 locations Alaska (AK), Florida (FL), and Nevada (NV), where Florida is warm and humid, Nevada is hot and dry, and Alaska is extremely cold;
+		\item First, we choose 3 locations Alaska (AK), Florida (FL), and Nevada (NV).  Alaska is extremely cold, Florida is warm and humid, and Nevada is hot and dry;
 		\vspace{-0.2cm}
-		\item Then, we choose 4 plants that are invasive at these locations (the exceptions are: no trees of heaven in Alaska and no yellow salsifies in Nevada).  Sweetclover ranks the first in global impact factor; the tree of heaven is the highest ranking tree in terms of global impact factor (rank 3); yellow salsify has the highest global impact factor among nontoxic plants (rank 21); also, dandelion is not left out (rank 26).
+		\item Then, we choose 4 plants that are invasive at these locations (there are two exceptions: no trees of heaven in Alaska and no yellow salsifies in Nevada).  Sweetclover ranks the first in global impact factor; the tree of heaven is the highest ranking tree in terms of global impact factor (rank 3); yellow salsify has the highest global impact factor among nontoxic plants (rank 21); also, the dandelion is not left out (rank 26);
 		\vspace{-0.2cm}
 		\item Last, we prepare all the attributes options with regards to \textbf{Category \textit{C}} and implement the model to get local impact factor IF$_L$.
 		\end{itemize} 	
@@ -1034,7 +1035,7 @@
 		In Eq.\ref{eq:ifg} and Eq.\ref{eq:ifl}, the impact factors are evaluated as 100$\rho$ multiplied by a linear combination of attribute values.  We discuss the model's sensitivity as follows:
 		\vspace{-0.2cm}
 		\begin{itemize}
-			\item For variable $\rho$, when other variables do not change, changing $\rho$ from 1.0 to 0.9 will lead to a 90\% discount to current \textbf{IF} value;
+			\item For variable $\rho$, when other variables do not change, changing $\rho$ from 1.0 to 0.9 will lead to a 90\% discount to current IF value;
 			\vspace{-0.2cm}
 			\item For one certain attribute value, when other variables do not change, the change of impact factor is in proportion with the change of the attribute value.  The formula is as follows:
 			\[
@@ -1084,19 +1085,19 @@
 \section*{\begin{center} Our Vigorous Friend \end{center}}
 \addcontentsline{toc}{section}{Our Vigorous Friend}
 \vspace{-1cm}
-It is always a dreamlike scene to see the dandelion flying on a summer day.  All those little parachutes drift in the air, slowly and gently, through a beam of light, like angels from the sky.
+It is always a dreamlike scene to see dandelion seeds flying on a summer day.  All those little parachutes drift in the air, slowly and gently, through a beam of light, like angels from the sky.
 
 We know how children love dandelions.  They never tire of blowing puffballs and running after the parachutes.  But we also know how adults dislike them.  The dandelions cause allergy, grow with our crops, and spread like mad.  Most of the time, we label them as invasive herbs that need great effort to take care of.
 
 Whether we like them or not, dandelions spread all over the world.  They can adapt to almost all kinds of environments, regardless of what the soil quality, humidity and temperature are.  They grow fast, have abundant seeds and propagate without relying on other creatures.  They never tire of dispersing, germinating and flowering.  Looking at them, we have to admit they are so vigorous and full of vitality.
 
-That is why they cannot stop ``invading''.  But we need to be aware that ``invasion'' should be a neutral word than a derogatory one for nature species.  When we talk about species invading, it should be no difference from talking about emergence, prosperity, mutation or even extinction of species.  These are all natural processes.  Study has proved that without human intervention, even invasive species can get to an equilibrium with other species.  At some points, the invasive species could develop very fast and occupy a lot of resources, but gradually, when other species go into competition sufficiently, all the species will get along in harmony and share our planet peacefully.
+That is why they cannot stop ``invading''.  But we need to be aware that ``invasion'' should be a neutral word than a derogatory one for nature species.  When we talk about species invading, it should be no difference from talking about the emergence, prosperity, mutation or even extinction of species.  These are all natural processes.  Study has proved that without human intervention, even invasive species can reach an equilibrium with others.  At some points, the invasive species could develop very fast and occupy a lot of resources, but gradually, when other species go into competition sufficiently, all the species will get along in harmony and share our planet peacefully.
 
-We believe it is the same for our human beings - we will get along well with all the species including invasive ones.
+We believe it is the same for our human beings -- we will get along well with all the species, including invasive ones.
 
-Sometimes it is we humans who flap the butterfly's wing.  The Brazilian red eared turtle was a hit in the pet market. However, some people purchased them and released them in the wild due to their compassion. Soon the turtles dominated the aquatic ecosystem with their tenacious vitality.  Humans bring species from here to there and artificially raise them.  Humans sometimes introduce species which do not bring harm initially but do eventually.  We humans break the balance of nature and make the whole ecological system blink.
+Sometimes it is we humans who flap the butterfly's wing.  Brazilian red eared turtles were a hit in the pet market. However, some people purchased them and released them in the wild due to their compassion. Soon the turtles dominated the aquatic ecosystem with their tenacious vitality.  Humans bring species from here to there and artificially raise them.  Humans sometimes introduce species which do not bring harm initially but do eventually.  We humans break the balance of nature and make the whole ecological system blink.
 
-The invasive species are just who they are.  Most of them have a lot of merits to human beings.  They can provide fodder for our livestock, or they can be food or medicine.  They are so lovely when we learn to get along with them.  Think about dandelions.  They have never been labeled invasive until recently.  But they have been evolving in this planet for about 30 million years! Long enough to prove their innocence.  It is not fair to treat them like an enemy.  They are just old friends, sometimes sweet, sometimes petulant, and after all they just very vigorous and full of vitality.  We are so lucky that they are around -- children will definitely agree with us, and how about adults?
+The invasive species are just who they are.  Most of them have a lot of merits to human beings.  They can provide fodder for our livestock, or they can be food or medicine.  They are so lovely when we learn to get along with them.  Think about dandelions.  They have never been labeled invasive until recently.  But they have been evolving in this planet for about 30 million years! Long enough to prove their innocence.  It is not fair to treat them like an enemy.  They are just old friends, sometimes sweet, sometimes petulant, and after all they are just very vigorous and full of vitality.  We are so lucky that they are around -- children will definitely agree with us, and how about adults?
 
 \newpage
 

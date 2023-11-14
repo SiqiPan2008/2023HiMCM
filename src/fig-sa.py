@@ -27,11 +27,11 @@ for p in range(5):
     num = df['number'].to_numpy()
     dist = df['mean_distance'].to_numpy()
 
-    ax1.plot(pVal, num, color='black', linewidth = 0.6)
-    ax2.plot(pVal, dist, color='black', linewidth = 0.6)
+    ax1.plot(pVal, num, color='#4477AA', linewidth = 0.6)
+    ax2.plot(pVal, dist, color='#4477AA', linewidth = 0.6)
 
-    ax1.set_xlabel(param_data[p][0], usetex=True)
-    ax2.set_xlabel(param_data[p][0], usetex=True)
+    ax1.set_xlabel(param_data[p][0])
+    ax2.set_xlabel(param_data[p][0])
     ax1.set_ylabel('Number')
     ax2.set_ylabel('Mean distance (m)', rotation = -90, labelpad = 12)
 
