@@ -8,20 +8,18 @@ plt.rcParams['font.serif'] = ['cmr10']
 #plt.rcParams['text.latex.preamble'] = r'\usepackage{amsmath}'
 plt.rcParams['font.size'] = 7.5
 
-x = np.arange(1, 16, 1)
-plants = ['Sweetclover', 'Tree of heaven', 'Yellow salsify', 'Dandelion', 'Mugo pine']
-nlabel = [2, 3, 2, 2, 2]
-slabel = [0, 2, 5, 7, 9]
-colors = ['#4444CC', '#888888', '#FFFFFF', 
-          '#4444CC', '#CCCC44', '#888888', '#FFFFFF', 
-          '#4444CC', '#888888', '#FFFFFF', 
+x = np.arange(1, 14, 1)
+plants = ['Sweetclover', 'Tree of heaven', 'Yellow salsify', 'Dandelion']
+nlabel = [3, 2, 2, 3]
+slabel = [0, 3, 5, 7]
+colors = ['#888888', '#4444CC', '#CCCC44', '#FFFFFF', 
           '#4444CC', '#CCCC44', '#FFFFFF', 
-          '#4444CC', '#888888']
-labels = ['FL', 'AK', '',
-          'FL', 'NV', 'AK', '',
-          'FL', 'AK', '',
+          '#888888', '#CCCC44', '#FFFFFF', 
+          '#888888', '#4444CC', '#CCCC44']
+labels = ['AK', 'FL', 'NV', '',
           'FL', 'NV', '',
-          'FL', 'AK']
+          'AK', 'NV', '',
+          'AK', 'FL', 'NV']
 
 w = 0.4
 plt.figure(figsize=(5, 2))
@@ -45,23 +43,18 @@ plt.xticks(x, labels)
 ax = plt.gca()
 ax.set_axisbelow(True)
 xticks = ax.xaxis.get_major_ticks()
-xticks[2].set_visible(False)
+xticks[3].set_visible(False)
 xticks[6].set_visible(False)
 xticks[9].set_visible(False)
-xticks[12].set_visible(False)
 h = 89
 rot = 0
-plt.text(1.5, h, plants[0], ha='center', rotation = rot)
-plt.text(5, h, plants[1], ha='center', rotation = rot)
+plt.text(2, h, plants[0], ha='center', rotation = rot)
+plt.text(5.5, h, plants[1], ha='center', rotation = rot)
 plt.text(8.5, h, plants[2], ha='center', rotation = rot)
-plt.text(11.5, h, plants[3], ha='center', rotation = rot)
-plt.text(14.5, h, plants[4], ha='center', rotation = rot)
-plt.axvline(x=3, linestyle='--', color='grey', linewidth=0.3)
+plt.text(12, h, plants[3], ha='center', rotation = rot)
+plt.axvline(x=4, linestyle='--', color='grey', linewidth=0.3)
 plt.axvline(x=7, linestyle='--', color='grey', linewidth=0.3)
 plt.axvline(x=10, linestyle='--', color='grey', linewidth=0.3)
-plt.axvline(x=13, linestyle='--', color='grey', linewidth=0.3)
-
-
 
 plt.subplots_adjust(wspace=0.04, hspace=0)
 plt.savefig('..\\figures\\IF_local-loc.pdf', bbox_inches = 'tight')

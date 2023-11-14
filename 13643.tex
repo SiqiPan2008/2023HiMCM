@@ -18,7 +18,7 @@
 
 	\vspace{0.4cm}
 	
-	Dandelions, officially named \textit{Taraxacum officinale}, is know as an invasive species, which is likely to cause economic or environmental harm or harm to human health.
+	The dandelion, officially named \textit{Taraxacum officinale}, is known as an invasive species, which is likely to cause economic or environmental harm or harm to human health.
 	
 	\vspace{0.5cm}	
 	In this paper, we design a \textbf{Dandelion Spread Model} by using Monte Carlo method.  
@@ -27,7 +27,7 @@
 	
 	We input 3 groups of random variables to our model, i.e., temperature, wind and humidity.  Some details like equivalent temperature curve, dispersal distances under horizontal wind and updrafts, and random biological characteristics/behaviors are also taken into account.
 	
-	We output all the locations of dandelions that spread on the land over time.  In order to get stable results, we run the model with 2 phases and for each phase we run 1000 times.  In the first phase, we determine the optimal starting time and in the second phase, we fix the starting time and get the most probable outcome.
+	We output all the locations of dandelions spreading on the land over time.  In order to get stable results, we run the model with 2 phases.  For each phase we run 1000 times.  In the first phase, we determine optimal starting time.  In the second phase, we fix the starting time and get the most probable outcome.
 	
 	We apply our model to 6 locations and conclude the statistic characteristics.  We also conduct a sensitivity analysis and discuss the strengths and weaknesses.
 	
@@ -37,12 +37,10 @@
 	
 	We consider many attributes, including the plant's characteristics, its effects on humans and the environment, and its local adaptation, and use the Analytic Hierarchy Process to get the weights for each attribute.
 	
-	We apply our model to 226 invasive species and calculate their global impact factors.  We also choose 5 plants and calculate their local impact factors at 3 locations.
-	
-	We conduct a sensitivity analysis and discuss the strengths and weaknesses.
+	We apply our model to 226 invasive plants and calculate their global impact factors.  We also choose 4 plants and calculate their local impact factors at 3 locations.  Likewise, we conduct a sensitivity analysis and discuss the strengths and weaknesses.
 	
 	\vspace{0.5cm}
-	At the end of this paper, we write an article to elaborate on our viewpoint on invasive species.  Rather than think they are enemies, we need to learn how to get along with them.  To we human beings, they are just vigorous friends.
+	At the end of this paper, we write an article to elaborate on our viewpoint regarding invasive species.  Rather than think they are enemies, we need to learn how to get along with them.  To us human beings, they are just vigorous friends.
 	
 \end{abstract}
 
@@ -53,7 +51,7 @@
 
 	\subsection{Background}
 	
-	Dandelion is a very common plant with scientific name \textit{Taraxacum officinale}, which is stemless, lactiferous and perennial\autocite{stewart2002biology}.  We can find them at roadsides, in wild fields or at inconspicuous places.  Just imagine that these little herbs with beautiful yellow flowers have been evolving on this planet for about 30 million years\autocite{dandelionhistory} - even longer than we human beings!
+	Dandelion is a very common plant with scientific name \textit{Taraxacum officinale}, which is stemless, lactiferous and perennial\autocite{stewart2002biology}.  We can find them at roadsides, in wild fields or at inconspicuous locations.  Just imagine that these little herbs with beautiful yellow flowers have been evolving on this planet for about 30 million years\autocite{dandelionhistory} - even longer than we human beings!
 	
 	But currently they are labeled as an invasive plant.  \textbf{Invasive species} is a relative concept.  It means an alien species whose introduction does or is likely to cause economic or environmental harm or harm to human health\autocite{defInvasive}.  In some regions, dandelions do have some traits that make them invasive.  They can adapt different environments.  They have high growth rate and spread fast. They are likely to cuddle together and crowd out desirable plants, particularly in lawns.  Also, they have deep taproots that enable them to pull available water out of the soil.  It is also mentioned that dandelions could cause significant economic damage and infestation of other crops worldwide\autocite{stewart2002biology}.
 	
@@ -83,7 +81,7 @@
 			\item \textbf{The initial dandelion is at the midpoint of the left edge of a one-hectare square plot of land.  Seeds blown out of the area are neglected.}
 			\vspace{-0.125in}
 			\begin{description}
-				\item[Justification:] According to the problem, the initial dandelion is adjacent to an open one-hectare plot of land. In order to acquire maximum spread effect, we set the plant in the middle of the left edge and make the right side our spread area. The seeds drifting to the left of the edge will be neglected. We may imagine a river or a forest is at the left side, so seeds cannot spread back to the area.
+				\item[Justification:] According to the problem, the initial dandelion is adjacent to an open one-hectare plot of land. In order to acquire maximum spread effect, we set the plant in the middle of the left edge and make the right side our spread area. The seeds drifting to the left of the edge will be neglected. We may imagine a river or a forest is at the left side, so seeds cannot spread back to our spread area.
 			\end{description}
 			
 			\item \textbf{The field is planar.}
@@ -108,9 +106,9 @@
 			\item \textbf{Wind direction is uniformly distributed from 0$^\circ$ to 360$^\circ$.}
 			\vspace{-0.125in}
 			\begin{description}
-				\item[Justification:] \label{assumption:wind} Wind speed and direction can be affected by different topography, especially near the land. At the height of dandelions, there could be vortices and updrafts that will greatly affect dispersal.  Though we can obtain wind data from meteorological stations, the data may not be accurate for a  small area. Therefore, we decided not to use the real-time wind direction data.
+				\item[Justification:] \label{assumption:wind} Wind speed and direction can be affected by different topography, especially near the ground. At the height of dandelions, there could be vortices and updrafts that would greatly affect dispersal.  Though we can obtain wind data from meteorological stations, the data may not be accurate for a  small area. Therefore, we decided not to use the real-time wind direction data.
 				
-				Moreover, though wind rose maps provide the probabilities for each direction, without knowing the orientation of the edge, we cannot decide the relative wind direction to this area.  So we assume wind direction is uniformly distributed from 0$^\circ$ to 360$^\circ$. In this way, all directions have same odds and we can pin the dandelion on an arbitrary edge.
+				Moreover, though wind rose maps provide the probabilities for each direction, without knowing the edge orientation of our spread area, we cannot decide the relative wind direction to the area.  So we assume wind direction is uniformly distributed from 0$^\circ$ to 360$^\circ$. In this way, all directions have same odds and we can pin the dandelion on an arbitrary edge.
 			\end{description}
 			
 			\item \textbf{Dandelion number always increases.}
@@ -139,7 +137,7 @@
 		
 		In reality, we find that sometimes dandelions grow in clusters, and at other times they are very sparse. Actually the spread process is affected by many random factors, including climate condition, wind speed and direction, topographical features and so on.  In order to eliminate this randomness, we need a method to find statistical patterns from repeating the process many times.  Candidates are neural network, deep learning, stochastic process, etc.  Among them, the Monte Carlo method becomes an option due to its simplicity.  Its underlying concept is to introduce randomness to solve problems.   It relies on repeated random sampling to obtain numerical results.  We will simulate dandelion spread process by going through the process many times, observing the results from a statistical perspective and drawing some conclusions.
 		
-		As the input for our model, we consider five environmental factors, as shown in Table \ref{tb:vars}.  
+		We consider five environmental factors as input parameters, as shown in Table \ref{tb:vars}.  
 		
 		{
 			\fontsize{10}{14}\selectfont
@@ -177,7 +175,7 @@
 		\vspace{-0.5cm}
 		Then our model will simulate the spread of dandelions by tracking every single dandelion according to a life cycle pattern, which we will model in Section \ref{sec:life}.  
 		
-		Next, we will choose 6 locations in the US.  For each location, we have one set of 5 input factors. We will run our model in 2 phases.  In the first phase, we will run 1000 times to get the optimal starting date for each location.  In the second phase, we will fix the starting date we get from the first phase and run another 1000 times to get the final ouput.
+		We will choose 6 locations in the US.  For each location, we have one set of 5 input environmental factors. We will run our model in 2 phases.  In the first phase, we will run 1000 times to get the optimal starting date for each location.  In the second phase, we will fix the starting date we get from the first phase and run another 1000 times to get the final outcome.
 		
 		We choose to run 1000 times because we find that the data with 1000 runs will exhibit an approximately normal distribution with a small margin of error for the mean.
 
@@ -204,7 +202,7 @@
 			T = -A \cos{\frac{2\pi}{360} t} + B.
 		\]
 		
-		These conditions should be satisfied:
+		The following conditions should be satisfied:
 		
 		\[
 			\mu_T = \frac1{360} \int_0^{360} (-A \cos{\frac{2\pi}{360} t} + B) \, \mathrm{d}t,
@@ -214,7 +212,7 @@
 			\sigma_T^2 = \frac1{360} \int_0^{360} \left[ (-A \cos{\frac{2\pi}{360} t} + B) - \mu_T \right] ^2 	\mathrm{d}t.
 		\]
 		
-		Solving for $A$ and $B$, we get
+		Solving $A$ and $B$, we get
 		
 		\begin{equation} \label{eq:temp}
 			T = -\sqrt2 \sigma_T \cos{\frac{2\pi}{360} t} + \mu_T.
@@ -240,7 +238,7 @@
 		
 		\subsubsection{Normal Distance $s_N$}
 		
-		In the case of horizontal wind, we have
+		In the case of horizontal wind, due to large air drag on the pappus, we assume the pappus moves at a constant velocity in a statistical sense\autocite{tackenberg2003dandelion}. we have
 		\begin{equation}\label{eq:hwind}
 		 \frac{s_N}{v_h} = \frac{h}{v_v},
 		\end{equation}
@@ -250,7 +248,7 @@
 		
 		$v_v$ is the vertical component of the velocity of the seed, which is a constant value, 0.4 m/s\autocite{tackenberg2003dandelion}.
 		
-		$v_h$ is the speed of the horizontal wind, which follows a normal distribution with mean equals $\mu_W$ and standard deviation equals $\sigma_W$;
+		$v_h$ is the speed of the horizontal wind, which follows a normal distribution whose mean equals $\mu_W$ and standard deviation equals $\sigma_W$;
 
 		\subsubsection{Long Distance $s_L$}
 	
@@ -280,16 +278,16 @@
 	\subsection{Adaptation Factor}
 	\label{sec:af}
 		
-			We introduce an adaptation factor $k$ which is evaluated by using $T$ and $\mu_H$.  Dandelions prefer temperate climates and relatively high humidity.  We divide temperature into three ranks, which indicate if the temperature is suitable for the dandelion.  We also divide humidity into three ranks, which indicate if the humidity is suitable for the dandelion.  On a given day, we calculate $k$ by computing the arithmetic mean of the rank for temperature and humidity and scaling $k$ so that $0 \leq k \leq 1$.
+			We introduce an adaptation factor $k$ which is evaluated by using temperature $T$ and mean humidity $\mu_H$.  Dandelions prefer temperate climates and relatively high humidity.  We divide temperature into three ranks, which indicate if the temperature is suitable for the dandelion.  We also divide humidity into three ranks, which indicate if the humidity is suitable for the dandelion.  On a given day, we calculate $k$ by computing the arithmetic mean of the rank for temperature and humidity and scaling $k$ so that $0 \leq k \leq 1$.
 			
-			We use $k$ to determine the mean value of some parameters of dandelions, such as the height of the puffball.  To allow for some variation, we let the parameters follow normal distributions with
+			We use $k$ to determine the mean value of some parameters of dandelions, such as the height of the puffball.  To allow for some variation, we let the parameters follow normal distributions with:
 			\begin{equation}
 				\begin{gathered}
 					\mu_{\mathrm{parameter}} = \left( \mathrm{worst} + \frac{\mathrm{best} - \mathrm{worst}}4 \right) + k \frac{\mathrm{best} - \mathrm{worst}}2, \\
 					\sigma_{\mathrm{parameter}} = \frac{\mathrm{best} - \mathrm{worst}}{12}.
 				\end{gathered}
 			\end{equation}
-			The worst and best values for the relevant parameters will be given in Section \ref{sec:life}.  If the a parameter exceeds the limits, it is set to the limit.
+			The worst and best values for relevant parameters will be given in Section \ref{sec:life}.  If the a parameter exceeds the limits, it is set to the limit.
 		
 		
 		
@@ -298,7 +296,7 @@
 	\subsection{Dandelion Life Cycle}
 	\label{sec:life}
 		
-		A dandelion can transfer between 6 states: \textbf{seed}, \textbf{developing}, \textbf{dispersal}, \textbf{inter-dispersal}, \textbf{hold}, and \textbf{dormancy}.
+		A dandelion can transfer between 6 stages: \textbf{seed}, \textbf{developing}, \textbf{dispersal}, \textbf{inter-dispersal}, \textbf{hold}, and \textbf{dormancy}.
 		
 		\begin{figure}[htbp]
 			\centering
@@ -309,21 +307,21 @@
 		
 		\begin{itemize}
 			
-			\item Out of all \textbf{seed}s, only 2\% will successfully germinate\autocite{honek2005post}.  These seeds will spend 3 days growing into the developing stage\autocite{stewart2002biology}.
+			\item Out of all \textbf{seed}s, only 2\% will  germinate successfully\autocite{honek2005post}.  These seeds will spend 3 days growing into the developing stage\autocite{stewart2002biology}.
 			
-			\item The \textbf{developing} stage is the time from sprouting to seed ripening.  It takes a sprout 60--95 days to grow into a flower, and an additional 9--12 days for the flower to ripen\autocite{gardenorganicNAripen}.  The exact duration of this stage is determined by the adaptation factor $k$ (worst = 107, best = 69) per Section \ref{sec:af}.
+			\item The \textbf{developing} stage is the time from sprouting to seed ripening.  It takes a sprout 60--95 days to grow into a flower, and additional 9--12 days for the flower to ripen\autocite{gardenorganicNAripen}.  The exact duration of this stage is determined by the adaptation factor $k$ (worst = 107 days, best = 69 days) per Section \ref{sec:af}.
 			
-			\item The \textbf{dispersal} stage lasts 10 days.  A dandelion plant can produce around 10 seed heads per year and it usually flowers twice, so it produces 5 heads every time it flowers.  The number of seeds on each head is determined by $k$ (worst = 150, best = 200)\autocite{dukeNAdandelion}.  It takes each head 2 days to disperse its seeds.  The height of the puffball, $h$, is determined by $k$ (worst = 12, best = 40)\autocite{veggiegardenNAstem}.  The seeds are dispersed per the method stated in Section \ref{sec:wind}.
+			\item The \textbf{dispersal} stage lasts 10 days.  A dandelion plant can produce around 10 seed heads per year and it usually flowers twice, so it produces 5 heads every time it flowers.  The number of seeds on each head is determined by $k$ (worst = 150, best = 200)\autocite{dukeNAdandelion}.  It takes each head 2 days to disperse its seeds.  The height of the puffball, $h$, is determined by $k$ (worst = 12cm, best = 40cm)\autocite{veggiegardenNAstem}.  The seeds are dispersed per the method stated in Section \ref{sec:wind}.
 			
 			\item The \textbf{inter-dispersal} stage is the stage between two dispersal stages of a plant.  In this stage, dandelions regrow their scapes and flowers.  Since most dandelions that flowered in spring usually flower again in fall\autocite{stewart2002biology}, the duration of this stage is set to be half a year, which is 180 days.   
 			
 		\end{itemize}
-		We also consider two additional states, \textbf{hold} and \textbf{dormancy}.		
+		We also consider two additional stages, \textbf{hold} and \textbf{dormancy}.		
 		\begin{itemize}
 			
-			\item When $T > 24^\circ$C, only 12.5\% of the flowers bloom and disperse their seeds\autocite{yoshie2020effects}.  We let dandelions enter dispersal by probability 12.5\% and move the rest into the \textbf{hold} stage.  In this stage, flowers are held in buds.  As soon as $T$ falls below $24^\circ$C, flowers can bloom and disperse seeds.  
+			\item When temperature $T > 24^\circ$C, only 12.5\% of the flowers bloom and disperse their seeds\autocite{yoshie2020effects}.  We let dandelions enter dispersal by probability 12.5\% and move the rest into the \textbf{hold} stage.  In this stage, flowers are held in buds.  As soon as $T$ falls below $24^\circ$C, flowers can 100\% bloom and disperse seeds.  
 		
-			\item Dandelions enter the \textbf{dormancy} stage when $T < 0^\circ$C.  The temperature is low and it is likely that it snows.  All life activities of dandelions are paused.  As soon as $T$ rises above $0^\circ$C, dandelions resume the previous stage.
+			\item Dandelions enter the \textbf{dormancy} stage when temperature $T < 0^\circ$C.  When the temperature is low, it is likely to snow and all life activities of dandelions are paused.  As soon as $T$ rises above $0^\circ$C, dandelions resume its previous stage.
 		
 		\end{itemize}
 		
@@ -351,50 +349,50 @@
 				\vspace{-0.5em}
 				\begin{algorithmic}
 					\For{1 to \toB{$n$}}
-					\ForAll{\toB{$t$ } in days of one year}
+					\ForAll{\toB{$t$ } in days of one year (360)}
 					\State \toB{$T$ } $\gets$ evaluate current temperature per Eq.\ref{eq:temp}
 					\State \toB{$k$ } $\gets$ evaluate adaptation factor per Section \ref{sec:af}
 					\For{\toB{$dandelion$ } in current all dandelions}
-					\State \textbf{if} \toB{$T$ } < 0 \textbf{then} \toB{$previous\,status$ } $\gets$ \toB{$current\,status$}, \toB{$current\,status$ } $\gets$ \textbf{Dormancy}
-					\State \textbf{if} \toB{$current\,status$ } is \textbf{Dormancy} and \toB{$T$ } > 0 \textbf{then} \toB{$current\,status$ } $\gets$ \toB{$previous\,status$}
-					\State \textbf{if} \toB{$current\,status$ } is \textbf{Hold} and \toB{$T$ } < 24 \textbf{then} \toB{$current\,status$ } $\gets$ \toB{$previous\,status$}
+					\State \textbf{if} \toB{$T$ } < 0 \textbf{then} \toB{$previous\,stage$ } $\gets$ \toB{$current\,stage$}, \toB{$current\,stage$ } $\gets$ \textbf{Dormancy}
+					\State \textbf{if} \toB{$current\,stage$ } is \textbf{Dormancy} and \toB{$T$ } > 0 \textbf{then} \toB{$current\,stage$ } $\gets$ \toB{$previous\,stage$}
+					\State \textbf{if} \toB{$current\,stage$ } is \textbf{Hold} and \toB{$T$ } < 24 \textbf{then} \toB{$current\,stage$ } $\gets$ \toB{$previous\,stage$}
 					
-					\If{\toB{$current\,status$ } is \textbf{Developing} or \toB{$current\,status$ } is \textbf{Inter-dispersal}}
-					\If{days of \toB{$current\,status$ } reaches the next stage}
+					\If{\toB{$current\,stage$ } is \textbf{Developing} or \toB{$current\,stage$ } is \textbf{Inter-dispersal}}
+					\If{days of \toB{$current\,stage$ } reaches the next stage}
 					\If{\toB{$T$ } > 24}
-					\State \toB{$current\,status$ } $\gets$ \textbf{Dispersal} with probability 0.125
-					\If{\textbf{Dispersal} successfully}
-					\State \toB{$current\,status$ } $\gets$ \textbf{Dispersal}
+					\State \toB{$current\,stage$ } $\gets$ \textbf{Dispersal} with probability 0.125
+					\If{\textbf{Dispersal} succeeds}
+					\State \toB{$current\,stage$ } $\gets$ \textbf{Dispersal}
 					\Else
-					\State \toB{$previous\,status$ } $\gets$ \toB{$current\,status$}
-					\State \toB{$current\,status$ } $\gets$ \textbf{Hold}
+					\State \toB{$previous\,stage$ } $\gets$ \toB{$current\,stage$}
+					\State \toB{$current\,stage$ } $\gets$ \textbf{Hold}
 					\EndIf
 					\Else
-					\State \toB{$current\,status$ } $\gets$ \textbf{Dispersal}
+					\State \toB{$current\,stage$ } $\gets$ \textbf{Dispersal}
 					\EndIf
 					\EndIf
 					\EndIf
 					
-					\If{\toB{$current\,status$ } is \textbf{Seed}}
-					\State \textbf{if} days of \toB{$current\,status$ } reaches the next stage \textbf{then} \toB{$current\,status$ } $\gets$ \textbf{Developing}
+					\If{\toB{$current\,stage$ } is \textbf{Seed}}
+					\State \textbf{if} days of \toB{$current\,stage$ } reaches the next stage \textbf{then} \toB{$current\,stage$ } $\gets$ \textbf{Developing}
 					\EndIf
 					
-					\If{\toB{$current\,status$ } is \textbf{Dispersal}}
-					\State determine the seed count that needs to be dispersed
+					\If{\toB{$current\,stage$ } is \textbf{Dispersal}}
+					\State determine the seed count that needs to be dispersed per Section \ref{sec:life}
 					\ForAll{\toB{$seed$ } in dispersing seeds}
 					\State calculate dispersal distance per Section \ref{sec:wind}
 					\State calculate land location and add it to \toB{$locations$ }
-					\State generate a \toB{$new dandelion$ } with state \textbf{Seed}
+					\State generate a \toB{$new\,dandelion$ } with stage \textbf{Seed}
 					\EndFor
-					\State \textbf{if} days of \toB{$current\,status$ } reaches the next stage \textbf{then} \toB{$current\,status$ } $\gets$ \textbf{Inter-dispersal}
+					\State \textbf{if} days of \toB{$current\,stage$ } reaches the next stage \textbf{then} \toB{$current\,stage$ } $\gets$ \textbf{Inter-dispersal}
 					\EndIf
 					
 					
 					\EndFor
 					\EndFor
 					\EndFor
-					\State calculate \toB{$numbers$ } and \toB{$distances$ } per \toB{$locations$}
-					\State \textbf{Return}{ \toB{$locations$ }, \toB{$numbers$ } and \toB{$distances$}}
+					\State calculate \toB{$numbers$ } and \toB{$mean\,distances$ } from \toB{$locations$}
+					\State \textbf{Return}{ \toB{$locations$ }, \toB{$numbers$ } and \toB{$mean\,distances$}}
 				\end{algorithmic}
 				
 				{
@@ -418,7 +416,7 @@
 				\fontsize{10}{14}\selectfont
 				{
 					\begin{longtable}{ccccccc}
-						\caption{Environmental factors for six locations}
+						\caption{Environmental factors for six locations\autocite{USA}}
 						\label{tb:locs}\\
 						\toprule
 						State&Abbreviation&$\mu_T$ ($^\circ$C)&$\sigma_T$ ($^\circ$C)&$\mu_W$ (m/s)&$\sigma_W$ (m/s)&$\mu_H$ (\%)\\
@@ -484,7 +482,7 @@
 				\label{fig:freqDand}
 			\end{figure}
 			
-			We calculated several statistical characteristics for each location, as shown in Table \ref{tb:numDistribution} and Table \ref{tb:distDistribution}.	 We examine the statistics for dandelion number.  The confidence interval of the mean is relatively small for all locations, which implies the mean is quite accurate.  The standard deviation and range are large, which shows that the spread of dandelions is easily affected by random factors such as fluctuations in the environment.  For all locations except California, the distributions are platykurtic.  For all locations except Alaska, the distribution is skewed to the left.  Its mass is concentrated on the right, so the dandelion number is slightly more likely to be greater than the mean rather than smaller.  However, because of the unfavorable environmental conditions in Alaska, the number is more likely to be smaller than the mean.
+			We calculated several statistical characteristics for each location, as shown in Table \ref{tb:numDistribution} and Table \ref{tb:distDistribution}.	 We examine the statistics for dandelion number.  The confidence intervals of the means are relatively small for all locations, which implies the means are quite accurate.  The standard deviations and ranges are large, which shows that the spread of dandelions is easily affected by random factors such as fluctuations in the environment.  For all locations except California, the distributions are platykurtic.  For all locations except Alaska, the distributions are skewed to the left.  Their masses are concentrated on the right, so the dandelion numbers are slightly more likely to be greater than the means rather than smaller.  However, because of the unfavorable environmental conditions in Alaska, the number is more likely to be smaller than the mean.
 			
 			{
 				\fontsize{10}{14}\selectfont
@@ -527,7 +525,7 @@
 				}
 			}
 			
-			Out of the 1000 runs, we select the run that has a dandelion number closest to the mean value.  The positions and current stages of the dandelions at the end of 12 months are shown in Fig.\ref{fig:scatter5loc}.  For all locations except the District of Columbia, most dandelions grow in a semicircular ring centered at the origin.  Alaska is apparently unsuitable for dandelions to spread.  In California, Hawaii, Florida, and Kansas, dandelions all spread to a moderate range.
+			Out of the 1000 runs, we select the run that has dandelion number closest to the mean value.  The positions and current stages of the dandelions at the end of 12 months are shown in Fig.\ref{fig:scatter5loc}.  For all locations except the District of Columbia, most dandelions grow in a semicircular ring centered at the origin.  Alaska is apparently unsuitable for dandelions to spread.  In California, Hawaii, Florida, and Kansas, dandelions all spread to a moderate range.
 			
 			\begin{figure}[htbp]
 				\centering
@@ -543,9 +541,9 @@
 			\end{figure}
 			\newpage
 			
-			District of Columbia has the most dandelions at the of 12 months.  We plotted dandelion spread at the end of each month this location (see Fig.\ref{fig:spreadDC}) so that it can be clearly seen how the dandelions spread in the course of time.  Compared to other locations, District of Columnbia has greater wind speed so the dandelions spread much further and they form a semicircle instead of a ring.  The closer to the origin, the denser the plants.  Additionally, there is a sudden increase every three months, which is caused by the flowering of a new generation of dandelions.
+			The District of Columbia has the most dandelions at the end of 12 months.  We plot dandelion spread at the end of each month at this location (see Fig.\ref{fig:spreadDC}) so that it can be clearly seen how the dandelions spread in the course of time.  Compared to other locations, the District of Columnbia has greater wind speed so that the dandelions spread much further and they form a semicircle instead of a ring.  The closer to the origin, the denser the plants.  Additionally, there is a sudden increase every three months, which is caused by the flowering of a new generation of dandelions.
 			
-			Finally, we draw a graph of the natural logarithm of dandelion number in Fig.\ref{fig:time}.  The lines have several jumps and platforms.  The dandelion number increases exponentially at the end of each fixed period.  This conclusion coincides with our observation in Fig.\ref{fig:spreadDC}.  Again, Alaska is different.  Dandelions there are dormant in the first three months of the year, and eventually produce fewer offspring than other locations.
+			Finally, we draw a graph of the natural logarithm of dandelion number in Fig.\ref{fig:time}.  The lines have several step changes and platforms.  The dandelion number increases exponentially at the end of each fixed period.  This conclusion coincides with our observation in Fig.\ref{fig:spreadDC}.  Again, Alaska is different.  Dandelions in Alaska are dormant in the first three months of a year, and eventually produce fewer offspring than other locations.
 			
 			\begin{figure}[htbp]
 				\centering
@@ -558,11 +556,11 @@
 		
 		\subsection{Sensitivity Analysis}
 			
-			We conduct a sensitivity analysis on the five factors from Table \ref{tb:vars} by varying one of them while keeping the other four fixed.  
+			We conduct a sensitivity analysis on the five environmental factors from Table \ref{tb:vars} by varying one of them while keeping the other four fixed.  
 			
-			Fig.\ref{fig:saT} shows the results for temperature.  When $\mu_T$ falls below 7$^\circ$C or rises above 23$^\circ$C, dandelion number decreases sharply.  This is because dandelions are transferred to the dormancy or hold stages at certain temperatures.  The number is very sensitive to extreme temperatures, but only moderately sensitive to mild temperatures.  The mean distance increases with $\mu_T$ up to 19$^\circ$C, where the it temporarily levels off and begins to fall at 23$^\circ$C.  It has medium sensitivity to $\mu_T$.
+			Fig.\ref{fig:saT} shows the results for temperature.  When $\mu_T$ falls below 7$^\circ$C or rises above 23$^\circ$C, dandelion number decreases sharply.  This is because dandelions are transferred to the dormancy or hold stages at certain temperatures.  The number is very sensitive to extreme temperatures, but only moderately sensitive to mild temperatures.  The mean distance increases with $\mu_T$ up to 19$^\circ$C, where it temporarily levels off and begins to fall at 23$^\circ$C.  It has medium sensitivity to $\mu_T$.
 			
-			Both number and mean distance decreases as $\sigma_T$ increases.  They decrease relatively slowly below $\sigma_T = 5^\circ$C and rapidly above that value.  However, the overall sensitivity is not high for either number or mean distance.
+			Both number and mean distance decrease as $\sigma_T$ increases.  They decrease relatively slowly below $\sigma_T = 5^\circ$C and rapidly above that temperature.  However, the overall sensitivity is not high for either number or mean distance.
 			
 			\begin{figure}[htbp]
 				\centering
@@ -578,7 +576,7 @@
 				\label{fig:saT}
 			\end{figure}
 			
-			Fig.\ref{fig:saW} shows the results for wind speed.  The number and mean distance have a positive correlation with $\mu_W$ and $\sigma_W$ and change drastically when the two factors vary.  When $\mu_W$ increases, seeds are dispersed farther and land further apart from each other.  When $\sigma_W$ increases, there is greater variation in dispersal distance.  In both cases it is less likely for seeds to land on other plants, making dandelion number rise quickly.
+			Fig.\ref{fig:saW} shows the results for wind speed.  The number and mean distance have positive correlations with $\mu_W$ and $\sigma_W$ and change drastically when the two factors vary.  When $\mu_W$ increases, seeds are dispersed farther and land further apart from each other.  When $\sigma_W$ increases, there is greater variation in dispersal distance.  In both cases it is less likely for seeds to land on other plants or exceed the density, making dandelion number rise quickly.
 			
 			\begin{figure}[htbp]
 				\centering
@@ -610,10 +608,10 @@
 			\vspace{-0.1cm}
 			\begin{itemize}
 				\vspace{-0.3cm}
-				\item Our model is \textbf{realistic}.  We used data for real locations.  And we considered how environmental factors and random variations contribute to dandelion spread.  Besides, we tracked every plant during the entire spread process.  
+				\item Our model is \textbf{realistic}.  We use data for real locations.  And we consider how environmental factors and random variations contribute to dandelion spread.  Besides, we track every plant during the entire spread process.  
 				
 				\vspace{-0.3cm}
-				\item Our model is \textbf{easy to understand and implement}.  The simulation method is very intuitive, and the model only requires five input values that are easily acquired from meteorological databases.
+				\item Our model is \textbf{easy to understand and implement}.  The simulation method is very intuitive, and the model only requires five input parameters that are easily acquired from meteorological databases.
 				
 				\vspace{-0.3cm}
 				\item Our model is \textbf{extensible}.  We can easily consider other factors by adding a component to the model.  For example, if we want to consider the effect of rain, we can determine the effects of rain on the different stages of dandelions and add this new component to our current model.
@@ -629,7 +627,7 @@
 				\item The \textbf{adaptation factor} may be an over-simplification.  It may not represent the reality very accurately.  If we can acquire the relationship between dandelion parameters and climate conditions, we will be able to substitute the adaptation factor with some more accurate components.
 				
 				\vspace{-0.3cm}
-				\item Our model \textbf{misses certain factors}.  We did not consider rain, which stops flowers from blooming and hinders seed dispersal.  Other missed factors include interactions with other plants and human intervention.  These can be added as new components in the future.
+				\item Our model \textbf{misses certain factors}.  We do not consider rain, which stops flowers from blooming and hinders seed dispersal.  Other missed factors include interactions with other plants and human intervention.  Also, regarding long dispersal distance, the wind speed is not considered.  These can be added as new components in the future.
 				
 			\end{itemize}
 
@@ -643,13 +641,13 @@
 	
 		\begin{enumerate}
 			
-			\item \textbf{A plant's impact has a direct correlation with its biological characteristics.}
+			\item \textbf{A plant's impact has a positive correlation with its biological characteristics.}
 			\vspace{-0.125in}
 			\begin{description}
 				\item[Justification:] Study shows that the invasiveness of plant species is closely related to \\performance-related traits\autocite{van2010meta}.  Thus we can think of biological characteristics as fairly reliable indicators on the invasiveness, which is the plant's ability to cause harm to the environment and to humans.  
 			\end{description}
 			
-			\item \label{assumption:offset} \textbf{A plant's impact can be mitigated by its benefits.}
+			\item \label{assumption:offset} \textbf{A plant's impact can be lessened by its benefits.}
 			\vspace{-0.125in}
 			\begin{description}
 				\item[Justification:] If plants are edible for animals or beneficial for the environment in some other ways, it is likely that the environment will be subject to less harm overall.  Likewise, if plants can be made into products or utilized in other ways, they can benefit the economy and cause less harm to humans.  
@@ -658,7 +656,7 @@
 			\item \textbf{At locations with higher population density, the impact of a plant is greater.}
 			\vspace{-0.125in}
 			\begin{description}
-				\item[Justification:] At places with higher population density, it is likely that people try harder to get rid of undesirable species.  This leads to more expenditure on the control of the species, which means the impact is greater.  At places with low population density, there is less human intervention. Non-native plants may reach an equilibrium with native ones, thus causing less impact.  
+				\item[Justification:] At places with higher population density, it is likely that people try harder to control undesirable species.  This leads to more expenditure, which means the impact is greater.  At places with low population density, there is less human intervention. Non-native plants may reach an equilibrium with native ones, thus causing less impact.  
 			\end{description}
 			
 		\end{enumerate}
@@ -669,11 +667,13 @@
 		
 		The \textbf{impact factor} is a measure of adverse impact that an invasive plant can make on the environment and human beings.  
 		
-		We define two types of impact factors, namely \textbf{global impact factor} and \textbf{local impact factor}.  We also break down all the impact attributes into 3 categories.  \textbf{Category \textit{A}} is related to plant characteristics, \textbf{Category \textit{B}} is related to human and environment and \textbf{Category \textit{C}} is related to plant's local adaptation.  Global impact factor considers attributes from both \textbf{Category \textit{A}} and \textbf{Category \textit{B}}.  Local impact factor considers attributes from all 3 categories.
+		We define two types of impact factors, namely \textbf{global impact factor} and \textbf{local impact factor}. 
 		
 		With global impact factor, we can compare the invasiveness between species in general perspective.  For example, by using global impact factor, we can tell which one has more invasiveness between dandelion and clover, by and large.
 		
 		Local impact factor does more refined work.  By introducing more local adaptation attributes, we can tell the difference of invasiveness between locations for one species .  We can also compare the invasiveness for different species in different places.
+		
+		Impact factor is determined by a group of impact attributes.  We break down all the attributes into 3 categories.  \textbf{Category \textit{A}} is related to plant characteristics, \textbf{Category \textit{B}} is related to human and environment and \textbf{Category \textit{C}} is related to plant's local adaptation.  Global impact factor considers attributes from both \textbf{Category \textit{A}} and \textbf{Category \textit{B}}.  Local impact factor considers attributes from all 3 categories.
 		
 		Table \ref{tb:syms} lists all the variables we will use in this model.
 		
@@ -799,7 +799,7 @@
 		\subsubsection{Attribute weights}
 		\label{sec:attr_weight}
 		
-		We use the Analytic Hierarchy Process (AHP) to obtain the weight vector.  When it is not easy to construct a weight vector by conferring to research papers, AHP is an option.  Since it makes pairwise comparisons and has a method to evaluate the rationality for those comparisons, it can reach a relatively reasonable result.
+		We use the Analytic Hierarchy Process (AHP) to obtain the weight vector.  When it is not easy to construct a weight vector by conferring to research results, AHP is an option.  Since AHP makes pairwise comparisons and has a method to evaluate the rationality for those comparisons, it can reach a relatively reasonable result.
 		
 		We make comparisons between attributes according to Saaty's fundamental scale of absolute numbers\autocite{AHP}.  When two attributes are equally important, we get 1; when one attribute is moderately more important than the other, we get 3; when one attribute is strongly more important than the other, we get 5; when one attribute is much strongly more important than the other, we get 7; when one attribute is extremely more important than the other, we get 9.  Number 2, 4, 6 and 8 are used to express intermediate values.  
 		
@@ -1000,16 +1000,16 @@
 		
 		We draw a histogram by using 226 global factors IF$_G$ (see Fig.\ref{fig:freqIF}), and calculate several statistical characteristics for the distribution (see Table \ref{tb:IFDistribution}).  
 		
-		IF$_G$ is roughly concentrated around the mean and the median but does not exactly follow a normal distribution.  The distribution is skewed to the right according to the table, meaning that there is a longer left tail.  However, we can observe a right tail as well on the histogram.  Neither tail is very long.  There are no values below 30 or above 90.
+		IF$_G$ is roughly concentrated around the mean and the median but does not exactly follow a normal distribution.  The distribution is skewed to the right according to the table, meaning that there is a longer right tail.  However, we can observe a left tail as well on the histogram.  Neither tail is very long.  There are no global impact factors below 30 or above 90.
 		
 	\subsubsection{Local Impact Factor Results}
 		
 		For calculating local impact factor IF$_L$:
 		\vspace{-0.2cm}
 		\begin{itemize}
-		\item First, we chose 3 locations Florida (FL), Neveda (NV), and Alaska (AK), where Florida is warm and humid, Neveda is hot and dry, and Alaska is extremely cold;
+		\item First, we choose 3 locations Alaska (AK), Florida (FL), and Nevada (NV), where Florida is warm and humid, Nevada is hot and dry, and Alaska is extremely cold;
 		\vspace{-0.2cm}
-		\item Then, we chose 5 plants that are invasive at these locations.  Sweetclover ranks the first in global impact factor; the tree of heaven is the highest ranking tree in terms of global impact factor; yellow salsify has the highest global impact factor among nontoxic plants; mugo pine is in the last place in the global impact table; also, dandelion is not left out.
+		\item Then, we choose 4 plants that are invasive at these locations (the exceptions are: no trees of heaven in Alaska and no yellow salsifies in Nevada).  Sweetclover ranks the first in global impact factor; the tree of heaven is the highest ranking tree in terms of global impact factor (rank 3); yellow salsify has the highest global impact factor among nontoxic plants (rank 21); also, dandelion is not left out (rank 26).
 		\vspace{-0.2cm}
 		\item Last, we prepare all the attributes options with regards to \textbf{Category \textit{C}} and implement the model to get local impact factor IF$_L$.
 		\end{itemize} 	
@@ -1031,7 +1031,7 @@
 	
 	\subsection{Sensitivity Analysis}
 	
-		In \textbf{Eq.\ref{eq:ifg}} and Eq.\ref{eq:ifl}, the impact factors are evaluated as 100$\rho$ multiplied by a linear combination of attribute values.  We discuss the model's sensitivity as follows:
+		In Eq.\ref{eq:ifg} and Eq.\ref{eq:ifl}, the impact factors are evaluated as 100$\rho$ multiplied by a linear combination of attribute values.  We discuss the model's sensitivity as follows:
 		\vspace{-0.2cm}
 		\begin{itemize}
 			\item For variable $\rho$, when other variables do not change, changing $\rho$ from 1.0 to 0.9 will lead to a 90\% discount to current \textbf{IF} value;
@@ -1056,7 +1056,7 @@
 			
 			\vspace{0.15cm}
 			
-			For example, if only attribute $B_1$ (Toxicity) changes from ``None'' to ``Severe'', the change of attribute value $\Delta v$ equals 1 (Table \ref{tb:mat}).  Considering that the weight of $B_1$ for global impact factor is $\beta_1$ = 0.227 and for local impact factor is $\beta_1$ = 0.192 (Table \ref{tb:weights}), we will conclude that global impact factor will increase 22.7$\rho$ and local impact factor will increase 19.2$\rho$.
+			For example, if only attribute $B_1$ (Toxicity) changes from ``Slight'' to ``Severe'', the change of attribute value $\Delta v$ equals 0.5 (Table \ref{tb:mat}).  Considering that the weight of $B_1$ for global impact factor is $\beta_1$ = 0.227 and for local impact factor is $\beta_1$ = 0.192 (Table \ref{tb:weights}), we will conclude that global impact factor will increase 11.4$\rho$ and local impact factor will increase 9.6$\rho$.
 			
 		\end{itemize} 
 		
@@ -1074,7 +1074,7 @@
 		\vspace{-0.5cm}
 		\begin{itemize}
 			\vspace{-0.3cm}
-			\item Our model is \textbf{subjective}.  The weights are subjectively determined.  If we could involve experts or research results in determining the attribute weights, our model could be more accurate.
+			\item Our model is \textbf{subjective}.  The weights are subjectively determined.  If we could involve more research results in determining the attribute weights, our model could be more accurate.
 			
 			\vspace{-0.2cm}
 			\item Our attribute design may be \textbf{uncomprehensive}.  It is possible that we have overlooked some other important attributes.
@@ -1090,7 +1090,7 @@ We know how children love dandelions.  They never tire of blowing puffballs and 
 
 Whether we like them or not, dandelions spread all over the world.  They can adapt to almost all kinds of environments, regardless of what the soil quality, humidity and temperature are.  They grow fast, have abundant seeds and propagate without relying on other creatures.  They never tire of dispersing, germinating and flowering.  Looking at them, we have to admit they are so vigorous and full of vitality.
 
-That is why they cannot stop ``invading''.  But we need to be aware that ``invasion'' should be a neutral word than a negative word for nature species.  When we talk about species invading, it should be no difference from talking about emergence, prosperity, mutation or even extinction of species.  These are all natural processes.  Study has proved that without human intervention, even invasive species can get to an equilibrium with other species.  At some points, the invasive species could develop very fast and occupy a lot of resources, but gradually, when other species go into competition sufficiently, all the species will get along in harmony and share our planet peacefully.
+That is why they cannot stop ``invading''.  But we need to be aware that ``invasion'' should be a neutral word than a derogatory one for nature species.  When we talk about species invading, it should be no difference from talking about emergence, prosperity, mutation or even extinction of species.  These are all natural processes.  Study has proved that without human intervention, even invasive species can get to an equilibrium with other species.  At some points, the invasive species could develop very fast and occupy a lot of resources, but gradually, when other species go into competition sufficiently, all the species will get along in harmony and share our planet peacefully.
 
 We believe it is the same for our human beings - we will get along well with all the species including invasive ones.
 

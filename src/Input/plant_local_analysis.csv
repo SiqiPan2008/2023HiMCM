@@ -1,12 +1,11 @@
-﻿scientificName,vernacularName,State,Impact factor,Orignal Rank,Current Rank
-Melilotus officinalis,Sweetclover,FL,80.24610541,1,1
-Melilotus officinalis,Sweetclover,AK,77.1055871,1,2
-Ailanthus altissima,Tree of heaven,FL,80.68710903,3,3
-Ailanthus altissima,Tree of heaven,NV,74.93163022,3,4
-Ailanthus altissima,Tree of heaven,AK,72.31666971,3,5
-Tragopogon dubius,Yellow salsify,FL,70.38307989,19,6
-Tragopogon dubius,Yellow salsify,AK,64.62760109,19,7
-Taraxacum officinale ssp. officinale,Common dandelion,FL,65.43591567,26,8
-Taraxacum officinale ssp. officinale,Common dandelion,NV,62.29539737,26,9
-Pinus mugo,Mugo pine,FL,39.37721499,226,10
-Pinus mugo,Mugo pine,AK,34.19728406,226,11
+﻿scientificName,vernacularName,State,Impact factor
+Melilotus officinalis,Sweetclover,AK,77.1055871
+Melilotus officinalis,Sweetclover,FL,80.24610541
+Melilotus officinalis,Sweetclover,NV,77.1055871
+Ailanthus altissima,Tree of heaven,FL,80.68710903
+Ailanthus altissima,Tree of heaven,NV,74.93163022
+Tragopogon dubius,Yellow salsify,AK,64.62760109
+Tragopogon dubius,Yellow salsify,NV,64.62760109
+Taraxacum officinale ssp. officinale,Common dandelion,AK,62.29539737
+Taraxacum officinale ssp. officinale,Common dandelion,FL,65.43591567
+Taraxacum officinale ssp. officinale,Common dandelion,NV,62.29539737
